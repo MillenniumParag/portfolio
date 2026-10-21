@@ -272,7 +272,7 @@ collections:
       # Projects Catalog Header Page
       - name: "projects_page"
         label: "Projects Catalog Page"
-        file: "src/projects/index.md"
+        file: "src/projects.md"
         fields:
           - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/projects-catalog.njk" }
           - { label: "Permalink", name: "permalink", widget: "hidden", default: "/projects/" }
