@@ -57,8 +57,7 @@ collections:
               - { label: "Metric Value", name: "value", widget: "string" }
               - { label: "Metric Label", name: "label", widget: "string" }
               - { label: "Accent Color", name: "color", widget: "select", options: ["primary", "secondary", "accent"], default: "primary" }
-          - { label: "Projects Section Subtitle", name: "projectsSectionSubtitle", widget: "string", default: "Portfolio Showcase" }
-          - { label: "Projects Section Title", name: "projectsSectionTitle", widget: "string", default: "Featured Engineering & Practice" }
+          - { label: "Projects Section Title", name: "projectsSectionTitle", widget: "string", default: "Engineering & Practice" }
           - label: "Engineering Pillars"
             name: "pillars"
             widget: "list"
@@ -67,8 +66,7 @@ collections:
               - { label: "Icon Identifier", name: "icon", widget: "string", default: "palette" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Tech Tags", name: "tags", widget: "list" }
-          - { label: "Blog Section Subtitle", name: "blogSectionSubtitle", widget: "string" }
-          - { label: "Blog Section Title", name: "blogSectionTitle", widget: "string" }
+          - { label: "Blog Section Title", name: "blogSectionTitle", widget: "string", default: "Recent Thoughts & Learning" }
           - label: "Call to Action Banner"
             name: "cta"
             widget: "object"

@@ -22,8 +22,7 @@ stats:
   - value: 2023–27
     label: BCA(H) 4 Years
     color: secondary
-projectsSectionSubtitle: Engineering & Practice
-projectsSectionTitle: Featured Engineering & Practice
+projectsSectionTitle: Engineering & Practice
 pillars:
   - title: Frontend & UI Engineering
     icon: palette
@@ -60,7 +59,6 @@ pillars:
       - Networks
       - Linux WSL
       - Git / GitHub
-blogSectionSubtitle: Writing & Insights
 blogSectionTitle: Recent Thoughts & Learning
 cta:
   title: Interested in discussing engineering opportunities?

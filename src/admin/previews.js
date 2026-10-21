@@ -118,7 +118,7 @@
         pillars.length > 0 ? h('div', {},
           h('h2', { className: 'preview-section-title' },
             h('span', { className: 'preview-section-tag' }, 'Section'),
-            data.projectsSectionTitle || 'Engineering Pillars'
+            data.projectsSectionTitle || 'Engineering & Practice'
           ),
           h('div', { className: 'preview-pillars-grid' },
             pillars.map(function (p, idx) {
