@@ -41,20 +41,27 @@
     </style>
   </head>
   <body class="min-h-screen flex flex-col bg-base-100 text-base-content antialiased selection:bg-primary selection:text-primary-content">
-    <!-- Top Announcement / Status Bar using daisyUI alert/badge style -->
+    <!-- Top Announcement / Status Bar using daisyUI alert/badge style (Editable via Admin) -->
+    {% set currentBanner = topBanner or banner %}
+    {% if currentBanner.enabled != false %}
     <div class="bg-primary/10 border-b border-primary/20 text-xs py-1.5 px-4 text-center font-medium print:hidden">
       <span class="inline-flex items-center gap-1.5">
+        {% if currentBanner.showPulse != false %}
         <span
           class="inline-block w-2 h-2 rounded-full bg-success animate-ping"
         ></span>
         <span
           class="inline-block w-2 h-2 rounded-full bg-success -ml-3.5"
         ></span>
-        <span>BCA (Hons) 4 Years (Batch 2023–2027) • Techno India (Hooghly Campus), MAKAUT</span>
-        <a href="{{ site.social.linkedin or 'https://www.linkedin.com/in/chatterjeeparag/' }}" target="_blank" rel="noopener noreferrer" class="text-primary font-bold hover:underline ml-1"
-        >Connect on LinkedIn ↗</a>
+        {% endif %}
+        <span>{{ currentBanner.text or "BCA (Hons) 4 Years (Batch 2023–2027) • Techno India (Hooghly Campus), MAKAUT" }}</span>
+        {% if currentBanner.linkText %}
+        <a href="{{ currentBanner.linkUrl or 'https://www.linkedin.com/in/chatterjeeparag/' }}" {% if (currentBanner.linkUrl or '') | startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %} class="text-primary font-bold hover:underline ml-1"
+        >{{ currentBanner.linkText }}</a>
+        {% endif %}
       </span>
     </div>
+    {% endif %}
 
     <!-- Navigation Bar Component -->
     {% include "components/navbar.njk" %}
