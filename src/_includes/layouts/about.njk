@@ -347,7 +347,7 @@ layout: layouts/base.njk
 </div>
 
 <!-- Floating Bottom Tab Controller -->
-<div class="fixed bottom-6 inset-x-0 z-40 flex justify-center pointer-events-none px-4 print:hidden">
+<div id="about-floating-tabs" class="fixed bottom-6 inset-x-0 z-40 flex justify-center pointer-events-none px-4 print:hidden">
   <div
     class="pointer-events-auto inline-flex items-center p-1.5 rounded-2xl bg-base-100/90 backdrop-blur-xl border border-base-300 shadow-2xl shadow-base-content/10 gap-1.5 transition-all duration-300"
     role="tablist"
@@ -389,6 +389,37 @@ layout: layouts/base.njk
 </div>
 
 <script>
+  var isTicking = false;
+  function updateTabsPosition() {
+    var tabs = document.getElementById('about-floating-tabs');
+    var footer = document.querySelector('footer');
+    if (!tabs || !footer) return;
+
+    var footerRect = footer.getBoundingClientRect();
+    var viewportHeight = window.innerHeight;
+    var defaultBottom = 24;
+
+    var footerOverlap = viewportHeight - footerRect.top;
+    if (footerOverlap > 0) {
+      tabs.style.bottom = (defaultBottom + footerOverlap) + 'px';
+    } else {
+      tabs.style.bottom = defaultBottom + 'px';
+    }
+  }
+
+  function handleScrollOrResize() {
+    if (!isTicking) {
+      window.requestAnimationFrame(function() {
+        updateTabsPosition();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }
+
+  window.addEventListener('scroll', handleScrollOrResize, { passive: true });
+  window.addEventListener('resize', handleScrollOrResize, { passive: true });
+
   function setActiveTab(tab, shouldScroll) {
     var meContent = document.getElementById('tab-content-me');
     var expContent = document.getElementById('tab-content-exp');
@@ -445,6 +476,9 @@ layout: layouts/base.njk
     if (shouldScroll && window.scrollY > 120) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // Recalculate position as content height may have changed
+    setTimeout(updateTabsPosition, 50);
   }
 
   function checkUrlForTab() {
@@ -457,6 +491,7 @@ layout: layouts/base.njk
     } else {
       setActiveTab('me');
     }
+    updateTabsPosition();
   }
 
   if (document.readyState === 'loading') {
