@@ -672,12 +672,13 @@
         ),
 
         h('h2', { className: 'preview-section-title' }, 'Banner Visual Preview (Top of every page)'),
-        data.enabled ? h('div', { className: 'preview-announcement-bar' },
+        data.enabled ? h('div', { className: 'preview-announcement-bar', style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 12px' } },
           h('div', { style: { display: 'flex', alignItems: 'center', gap: '8px' } },
             data.showPulse ? h('span', { className: 'preview-pulse-dot' }) : null,
-            h('span', {}, data.text || 'Your announcement text...')
+            h('span', {}, data.text || 'Your announcement text...'),
+            data.linkText ? h('span', { style: { color: '#34d399', fontWeight: '700', textDecoration: 'underline', marginLeft: '6px' } }, data.linkText) : null
           ),
-          data.linkText ? h('span', { style: { color: '#34d399', fontWeight: '700', textDecoration: 'underline' } }, data.linkText) : null
+          h('span', { title: 'Close banner button (public site)', style: { opacity: 0.6, fontSize: '13px', padding: '0 4px' } }, '✕')
         ) : h('div', { className: 'preview-empty-hint' }, 'The top announcement banner is currently toggled OFF in settings.')
       );
     }

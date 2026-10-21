@@ -6,7 +6,6 @@ description: Personal portfolio of Parag Chatterjee — BCA (Hons) 4 Years Stude
   (Batch of 2023–2027) at Techno India (Hooghly Campus), MAKAUT. Skilled in
   Java, Spring Boot, React, Angular, C, Python, and AWS.
 hero:
-  badge: BCA (Hons) 4 Years (Batch 2023–2027) • Techno India (Hooghly Campus), MAKAUT
   headline: Building software with solid foundations.
   bio: Hi, I'm Parag, a BCA (Hons) student passionate about building software with
     Java, Spring Boot, React, Angular, C, and Python.

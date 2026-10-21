@@ -395,7 +395,7 @@ collections:
         file: "src/_data/banner.json"
         format: "json"
         fields:
-          - { label: "Enable Banner", name: "enabled", widget: "boolean", default: true }
+          - { label: "Enable Banner (Toggle ON / OFF)", name: "enabled", widget: "boolean", default: true, hint: "Switch this toggle to turn the top announcement banner ON or OFF across the public website." }
           - { label: "Banner Text", name: "text", widget: "string", default: "BCA (Hons) 4 Years (Batch 2023–2027) • Techno India (Hooghly Campus), MAKAUT" }
           - { label: "Link Text", name: "linkText", widget: "string", default: "Read About Me →", required: false }
           - { label: "Link URL", name: "linkUrl", widget: "string", default: "/about/", required: false }

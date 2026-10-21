@@ -48,26 +48,55 @@
     </style>
   </head>
   <body class="min-h-screen flex flex-col bg-base-100 text-base-content antialiased selection:bg-primary selection:text-primary-content">
-    <!-- Top Announcement / Status Bar using daisyUI alert/badge style (Editable via Admin) -->
+    <!-- Top Announcement / Status Bar with Public Close / Dismiss Button (Editable via Admin) -->
     {% set currentBanner = topBanner or banner %}
     {% if currentBanner.enabled != false %}
-    <div class="bg-primary/10 border-b border-primary/20 text-xs py-1.5 px-4 text-center font-medium print:hidden">
-      <span class="inline-flex items-center gap-1.5">
-        {% if currentBanner.showPulse != false %}
-        <span
-          class="inline-block w-2 h-2 rounded-full bg-success animate-ping"
-        ></span>
-        <span
-          class="inline-block w-2 h-2 rounded-full bg-success -ml-3.5"
-        ></span>
-        {% endif %}
-        <span>{{ currentBanner.text or "BCA (Hons) 4 Years (Batch 2023–2027) • Techno India (Hooghly Campus), MAKAUT" }}</span>
-        {% if currentBanner.linkText %}
-        <a href="{{ currentBanner.linkUrl or 'https://www.linkedin.com/in/chatterjeeparag/' }}" {% if (currentBanner.linkUrl or '') | startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %} class="text-primary font-bold hover:underline ml-1"
-        >{{ currentBanner.linkText }}</a>
-        {% endif %}
-      </span>
+    <div id="site-top-banner" class="bg-primary/10 border-b border-primary/20 text-xs py-1.5 px-4 font-medium print:hidden relative transition-all duration-300">
+      <div class="max-w-6xl mx-auto flex items-center justify-between gap-2">
+        <div class="w-6 shrink-0 sm:block hidden"></div>
+        <div class="grow text-center flex flex-wrap items-center justify-center gap-1.5">
+          {% if currentBanner.showPulse != false %}
+          <span class="inline-flex items-center justify-center relative w-2 h-2 mr-1">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-success"></span>
+          </span>
+          {% endif %}
+          <span>{{ currentBanner.text or "BCA (Hons) 4 Years (Batch 2023–2027) • Techno India (Hooghly Campus), MAKAUT" }}</span>
+          {% if currentBanner.linkText %}
+          <a href="{{ currentBanner.linkUrl or '/about/' }}" {% if (currentBanner.linkUrl or '') | startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %} class="text-primary font-bold hover:underline ml-1">
+            {{ currentBanner.linkText }}
+          </a>
+          {% endif %}
+        </div>
+        <button
+          type="button"
+          id="close-banner-btn"
+          onclick="dismissTopBanner()"
+          class="btn btn-ghost btn-circle btn-xs text-base-content/60 hover:text-base-content hover:bg-primary/20 shrink-0"
+          aria-label="Close banner"
+          title="Close banner"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
     </div>
+    <script>
+      (function() {
+        if (sessionStorage.getItem('top-banner-closed') === 'true') {
+          var el = document.getElementById('site-top-banner');
+          if (el) el.style.display = 'none';
+        }
+      })();
+      function dismissTopBanner() {
+        var el = document.getElementById('site-top-banner');
+        if (el) {
+          el.style.display = 'none';
+          sessionStorage.setItem('top-banner-closed', 'true');
+        }
+      }
+    </script>
     {% endif %}
 
     <!-- Navigation Bar Component -->
