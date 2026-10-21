@@ -137,6 +137,42 @@ collections:
               - { label: "Subtitle", name: "subtitle", widget: "text" }
               - { label: "Button Text", name: "buttonText", widget: "string" }
               - { label: "Button URL", name: "buttonUrl", widget: "string" }
+          - label: "Uses & Workstation Setup"
+            name: "workstation"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Badge Pill Text", name: "badgeText", widget: "string", default: "Developer Setup • Updated 2026" }
+              - { label: "Headline", name: "headline", widget: "string", default: "Operating Systems, Tools & Software I Rely On" }
+              - { label: "Introduction", name: "intro", widget: "text" }
+              - label: "Hardware & Gear"
+                name: "hardware"
+                widget: "list"
+                fields:
+                  - { label: "Item Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Badges", name: "badges", widget: "list" }
+              - label: "Code Editors & Dev Tools"
+                name: "devtools"
+                widget: "list"
+                fields:
+                  - { label: "Item Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Badges", name: "badges", widget: "list" }
+              - label: "Terminal & CLI Environment"
+                name: "terminal"
+                widget: "list"
+                fields:
+                  - { label: "Item Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Badges", name: "badges", widget: "list" }
+              - label: "Productivity & Everyday Apps"
+                name: "productivity"
+                widget: "list"
+                fields:
+                  - { label: "Item Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Badges", name: "badges", widget: "list" }
 
       # Experience Page
       - name: "experience"
@@ -227,46 +263,7 @@ collections:
               - { label: "Relevant Coursework", name: "coursework", widget: "list" }
           - { label: "Certifications & Achievements", name: "certifications", widget: "list" }
 
-      # Uses & Workstation Page
-      - name: "uses"
-        label: "Uses & Gear Page"
-        file: "src/uses.md"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/uses.njk" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/uses/" }
-          - { label: "Page Title", name: "title", widget: "string" }
-          - { label: "Meta Description", name: "description", widget: "text" }
-          - { label: "Badge Pill Text", name: "badgeText", widget: "string" }
-          - { label: "Headline", name: "headline", widget: "string" }
-          - { label: "Introduction", name: "intro", widget: "text" }
-          - label: "Hardware & Gear"
-            name: "hardware"
-            widget: "list"
-            fields:
-              - { label: "Item Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Badges", name: "badges", widget: "list" }
-          - label: "Code Editors & Dev Tools"
-            name: "devtools"
-            widget: "list"
-            fields:
-              - { label: "Item Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Badges", name: "badges", widget: "list" }
-          - label: "Terminal & CLI Environment"
-            name: "terminal"
-            widget: "list"
-            fields:
-              - { label: "Item Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Badges", name: "badges", widget: "list" }
-          - label: "Productivity & Everyday Apps"
-            name: "productivity"
-            widget: "list"
-            fields:
-              - { label: "Item Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Badges", name: "badges", widget: "list" }
+
 
 
       # Projects Catalog Header Page
