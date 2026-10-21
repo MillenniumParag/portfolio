@@ -11,6 +11,17 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#10b981" />
 
+    <!-- Immediate Theme Setup (Zero FOUC) -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('theme');
+          var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'forest' : 'emerald');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch(e) {}
+      })();
+    </script>
+
     <!-- Comprehensive Google & Bing SEO Optimization, OpenGraph, Twitter, & Schema.org JSON-LD -->
     {% include "components/seo.njk" %}
     <link
@@ -175,6 +186,80 @@ if (window.netlifyIdentity) {
           initLenis();
         }
       })();
+    </script>
+
+    <!-- Global Dark Mode Controller Script -->
+    <script>
+      function getActiveTheme() {
+        return document.documentElement.getAttribute('data-theme') || 'emerald';
+      }
+
+      function syncThemeUI(theme) {
+        var isDark = theme === 'forest';
+        var sunIcons = document.querySelectorAll('.theme-icon-sun');
+        var moonIcons = document.querySelectorAll('.theme-icon-moon');
+        var btns = document.querySelectorAll('#theme-toggle-btn');
+
+        sunIcons.forEach(function(icon) {
+          if (isDark) {
+            icon.classList.remove('hidden');
+            icon.classList.add('inline-block');
+          } else {
+            icon.classList.add('hidden');
+            icon.classList.remove('inline-block');
+          }
+        });
+
+        moonIcons.forEach(function(icon) {
+          if (isDark) {
+            icon.classList.add('hidden');
+            icon.classList.remove('inline-block');
+          } else {
+            icon.classList.remove('hidden');
+            icon.classList.add('inline-block');
+          }
+        });
+
+        btns.forEach(function(btn) {
+          btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+          btn.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        });
+
+        var metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) {
+          metaThemeColor.setAttribute('content', isDark ? '#171212' : '#10b981');
+        }
+      }
+
+      function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        try {
+          localStorage.setItem('theme', theme);
+        } catch(e) {}
+        syncThemeUI(theme);
+      }
+
+      function toggleTheme() {
+        var current = getActiveTheme();
+        var next = current === 'forest' ? 'emerald' : 'forest';
+        setTheme(next);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          syncThemeUI(getActiveTheme());
+        });
+      } else {
+        syncThemeUI(getActiveTheme());
+      }
+
+      try {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+          if (!localStorage.getItem('theme')) {
+            setTheme(e.matches ? 'forest' : 'emerald');
+          }
+        });
+      } catch(e) {}
     </script>
   </body>
 </html>
