@@ -5,44 +5,7 @@ layout: layouts/base.njk
 
 {% set ws = workstation or uses %}
 
-<div class="max-w-6xl mx-auto px-4 py-12 sm:px-6">
-  <!-- Top Tab Switcher: "About Me", "Experience & Training", & "Uses & Workstation" -->
-  <div class="flex justify-center mb-10">
-    <div class="inline-flex flex-wrap justify-center p-1.5 rounded-2xl bg-base-200 border border-base-300 gap-1.5 shadow-xs">
-      <button
-        id="tab-btn-me"
-        type="button"
-        onclick="setActiveTab('me')"
-        class="btn btn-sm rounded-xl font-bold transition-all btn-primary shadow-xs"
-        aria-selected="true"
-        aria-controls="tab-content-me"
-      >
-        <span>About</span>
-      </button>
-
-      <button
-        id="tab-btn-exp"
-        type="button"
-        onclick="setActiveTab('exp')"
-        class="btn btn-sm rounded-xl font-bold transition-all btn-ghost text-base-content/70 hover:text-base-content"
-        aria-selected="false"
-        aria-controls="tab-content-exp"
-      >
-        <span>Experience</span>
-      </button>
-
-      <button
-        id="tab-btn-uses"
-        type="button"
-        onclick="setActiveTab('uses')"
-        class="btn btn-sm rounded-xl font-bold transition-all btn-ghost text-base-content/70 hover:text-base-content"
-        aria-selected="false"
-        aria-controls="tab-content-uses"
-      >
-        <span>Uses</span>
-      </button>
-    </div>
-  </div>
+<div class="max-w-6xl mx-auto px-4 pt-12 pb-32 sm:px-6">
 
   <!-- ============================================== -->
   <!-- TAB 1: ABOUT ME                                -->
@@ -383,8 +346,50 @@ layout: layouts/base.njk
   </div>
 </div>
 
+<!-- Floating Bottom Tab Controller -->
+<div class="fixed bottom-6 inset-x-0 z-40 flex justify-center pointer-events-none px-4 print:hidden">
+  <div
+    class="pointer-events-auto inline-flex items-center p-1.5 rounded-2xl bg-base-100/90 backdrop-blur-xl border border-base-300 shadow-2xl shadow-base-content/10 gap-1.5 transition-all duration-300"
+    role="tablist"
+    aria-label="About section tabs"
+  >
+    <button
+      id="tab-btn-me"
+      type="button"
+      onclick="setActiveTab('me', true)"
+      class="btn btn-sm rounded-xl font-bold transition-all btn-primary shadow-xs"
+      aria-selected="true"
+      aria-controls="tab-content-me"
+    >
+      <span>About</span>
+    </button>
+
+    <button
+      id="tab-btn-exp"
+      type="button"
+      onclick="setActiveTab('exp', true)"
+      class="btn btn-sm rounded-xl font-bold transition-all btn-ghost text-base-content/70 hover:text-base-content"
+      aria-selected="false"
+      aria-controls="tab-content-exp"
+    >
+      <span>Experience</span>
+    </button>
+
+    <button
+      id="tab-btn-uses"
+      type="button"
+      onclick="setActiveTab('uses', true)"
+      class="btn btn-sm rounded-xl font-bold transition-all btn-ghost text-base-content/70 hover:text-base-content"
+      aria-selected="false"
+      aria-controls="tab-content-uses"
+    >
+      <span>Uses</span>
+    </button>
+  </div>
+</div>
+
 <script>
-  function setActiveTab(tab) {
+  function setActiveTab(tab, shouldScroll) {
     var meContent = document.getElementById('tab-content-me');
     var expContent = document.getElementById('tab-content-exp');
     var usesContent = document.getElementById('tab-content-uses');
@@ -435,6 +440,10 @@ layout: layouts/base.njk
       if (window.location.hash === '#experience' || window.location.hash === '#uses' || window.location.hash === '#workstation') {
         history.replaceState(null, '', window.location.pathname);
       }
+    }
+
+    if (shouldScroll && window.scrollY > 120) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
 
