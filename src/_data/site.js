@@ -3,8 +3,65 @@ import fs from "node:fs";
 const siteJsonPath = new URL("./site.json", import.meta.url);
 const siteData = JSON.parse(fs.readFileSync(siteJsonPath, "utf8"));
 
+const rawLinks = siteData.socialLinks || [];
+const socialObj = siteData.social || {};
+
+const resolvedSocialLinks =
+  Array.isArray(rawLinks) && rawLinks.length > 0
+    ? rawLinks
+    : [
+        {
+          platform: "GitHub",
+          url: socialObj.github || "https://github.com/MillenniumParag",
+          icon: "github"
+        },
+        {
+          platform: "LinkedIn",
+          url:
+            socialObj.linkedin ||
+            "https://www.linkedin.com/in/chatterjeeparag/",
+          icon: "linkedin"
+        },
+        ...(socialObj.twitter
+          ? [
+              {
+                platform: "Twitter",
+                url: socialObj.twitter,
+                icon: "twitter"
+              }
+            ]
+          : []),
+        ...(socialObj.email
+          ? [{ platform: "Email", url: `mailto:${socialObj.email}`, icon: "email" }]
+          : [])
+      ];
+
+const findUrl = (key) => {
+  const match = resolvedSocialLinks.find(
+    (item) =>
+      (item.icon && item.icon.toLowerCase() === key) ||
+      (item.platform && item.platform.toLowerCase().includes(key)) ||
+      (item.url && item.url.toLowerCase().includes(key))
+  );
+  return match ? match.url : "";
+};
+
 export default {
   ...siteData,
+  socialLinks: resolvedSocialLinks,
+  social: {
+    ...socialObj,
+    github:
+      findUrl("github") ||
+      socialObj.github ||
+      "https://github.com/MillenniumParag",
+    linkedin:
+      findUrl("linkedin") ||
+      socialObj.linkedin ||
+      "https://www.linkedin.com/in/chatterjeeparag/",
+    twitter: findUrl("twitter") || findUrl("x.com") || socialObj.twitter || "",
+    email: findUrl("email") || findUrl("mailto:") || socialObj.email || ""
+  },
   imageStandards: {
     socialShareOg: {
       label: "Social Share & OpenGraph (Google Discover / Bing / Twitter / LinkedIn)",

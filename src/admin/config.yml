@@ -415,13 +415,31 @@ collections:
           - { label: "SEO Keywords", name: "keywords", widget: "list" }
           - { label: "Default OpenGraph Image URL", name: "ogImage", widget: "string" }
           - { label: "Twitter / X Handle", name: "twitterHandle", widget: "string", required: false }
-          - label: "Social Links"
-            name: "social"
-            widget: "object"
+          - label: "Social & Developer Links"
+            name: "socialLinks"
+            widget: "list"
+            summary: "{{fields.platform}} ({{fields.url}})"
+            hint: "Add as many social or developer profile links as you want (multiple links can be added, reordered, or removed)."
             fields:
-              - { label: "GitHub URL", name: "github", widget: "string" }
-              - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
-              - { label: "Twitter / X URL", name: "twitter", widget: "string", required: false }
+              - { label: "Platform Name", name: "platform", widget: "string", hint: "E.g. GitHub, LinkedIn, X, YouTube, LeetCode, CodeChef, Instagram, Discord, Email, Portfolio" }
+              - { label: "Profile / Action URL", name: "url", widget: "string", hint: "Full URL (e.g. https://github.com/username) or mailto link (e.g. mailto:name@domain.com)" }
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                required: false
+                default: "auto"
+                options:
+                  - { label: "Auto-detect from platform / URL", value: "auto" }
+                  - { label: "GitHub", value: "github" }
+                  - { label: "LinkedIn", value: "linkedin" }
+                  - { label: "X / Twitter", value: "twitter" }
+                  - { label: "YouTube", value: "youtube" }
+                  - { label: "LeetCode", value: "leetcode" }
+                  - { label: "CodeChef", value: "codechef" }
+                  - { label: "Instagram", value: "instagram" }
+                  - { label: "Discord", value: "discord" }
+                  - { label: "Email (Mail)", value: "email" }
+                  - { label: "Website / Web Link", value: "globe" }
           - label: "Webmaster Verification Tokens"
             name: "verification"
             widget: "object"

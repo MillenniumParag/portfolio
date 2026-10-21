@@ -38,6 +38,18 @@
   "locale": "en_US",
   "ogImage": "/uploads/og-default.png",
   "twitterHandle": "",
+  "socialLinks": [
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/MillenniumParag",
+      "icon": "github"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/in/chatterjeeparag/",
+      "icon": "linkedin"
+    }
+  ],
   "social": {
     "github": "https://github.com/MillenniumParag",
     "linkedin": "https://www.linkedin.com/in/chatterjeeparag/",
