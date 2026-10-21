@@ -349,13 +349,14 @@ layout: layouts/base.njk
 <!-- Floating Bottom Tab Controller -->
 <div id="about-floating-tabs" class="fixed bottom-6 inset-x-0 z-40 flex justify-center pointer-events-none px-4 print:hidden">
   <div
-    class="pointer-events-auto inline-flex items-center p-1.5 rounded-2xl bg-base-100/90 backdrop-blur-xl border border-base-300 shadow-2xl shadow-base-content/10 gap-1.5 transition-all duration-300"
+    class="pointer-events-auto inline-flex items-center p-1.5 rounded-2xl frosted-glass gap-1.5 transition-all duration-300"
     role="tablist"
     aria-label="About section tabs"
   >
     <button
       id="tab-btn-me"
       type="button"
+      role="tab"
       onclick="setActiveTab('me', true)"
       class="btn btn-sm rounded-xl font-bold transition-all btn-primary shadow-xs"
       aria-selected="true"
@@ -367,6 +368,7 @@ layout: layouts/base.njk
     <button
       id="tab-btn-exp"
       type="button"
+      role="tab"
       onclick="setActiveTab('exp', true)"
       class="btn btn-sm rounded-xl font-bold transition-all btn-ghost text-base-content/70 hover:text-base-content"
       aria-selected="false"
@@ -378,6 +380,7 @@ layout: layouts/base.njk
     <button
       id="tab-btn-uses"
       type="button"
+      role="tab"
       onclick="setActiveTab('uses', true)"
       class="btn btn-sm rounded-xl font-bold transition-all btn-ghost text-base-content/70 hover:text-base-content"
       aria-selected="false"
