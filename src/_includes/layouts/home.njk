@@ -109,54 +109,249 @@ layout: layouts/base.njk
   {% endif %}
 </section>
 
-<!-- Core Engineering Pillars -->
-<section class="bg-base-200/50 py-20 border-y border-base-300">
+<!-- Core Engineering Pillars / What I Work With Carousel -->
+<section class="bg-base-200/50 py-20 border-y border-base-300 overflow-hidden">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="text-center max-w-2xl mx-auto mb-16">
-      <h2 class="text-2xl sm:text-3xl font-black tracking-tight">
-        What I Work With
-      </h2>
-      <p class="text-sm text-base-content/70 mt-2">
-        Software development stack, programming languages, and engineering domains.
-      </p>
+    <!-- Header with Section Title and Carousel Controls -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl sm:text-3xl font-black tracking-tight">
+          What I Work With
+        </h2>
+        <p class="text-sm text-base-content/70 mt-2">
+          Software development stack, programming languages, and engineering domains.
+        </p>
+      </div>
+
+      <!-- Navigation buttons -->
+      <div class="flex items-center gap-3 self-start sm:self-end">
+        <button
+          id="pillars-prev"
+          type="button"
+          class="btn btn-circle btn-sm btn-ghost border border-base-300 hover:btn-primary hover:border-primary transition-all duration-200 shadow-xs"
+          aria-label="Previous slide"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button
+          id="pillars-next"
+          type="button"
+          class="btn btn-circle btn-sm btn-ghost border border-base-300 hover:btn-primary hover:border-primary transition-all duration-200 shadow-xs"
+          aria-label="Next slide"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {% for pillar in pillars %}
-        <div class="card bg-base-100 border border-base-200/80 p-8 rounded-3xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl group">
-          <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-content transition-colors duration-300">
-            {% if pillar.icon == "palette" %}
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-              </svg>
-            {% elif pillar.icon == "server" %}
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-              </svg>
-            {% elif pillar.icon == "cpu" %}
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 3v2m6-2v2M9 19v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-              </svg>
-            {% else %}
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-            {% endif %}
+    <!-- Carousel Track: 3 cards on desktop (lg), 2 on tablet (sm), 1 on mobile -->
+    <div class="relative">
+      <div
+        id="pillars-carousel"
+        data-lenis-prevent
+        class="carousel w-full gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-4 no-scrollbar cursor-grab select-none"
+        tabindex="0"
+        role="region"
+        aria-label="What I Work With Carousel"
+      >
+        {% for pillar in pillars %}
+          <div class="carousel-item w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex-none snap-start">
+            <div class="card bg-base-100 border border-base-200/80 p-7 sm:p-8 rounded-3xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl group w-full flex flex-col justify-between h-full min-h-[340px]">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-content transition-colors duration-300">
+                  {% if pillar.icon == "palette" %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                    </svg>
+                  {% elif pillar.icon == "server" %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                    </svg>
+                  {% elif pillar.icon == "cloud" %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z" />
+                    </svg>
+                  {% elif pillar.icon == "cpu" %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 3v2m6-2v2M9 19v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                    </svg>
+                  {% elif pillar.icon == "database" %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                    </svg>
+                  {% elif pillar.icon == "terminal" %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  {% endif %}
+                </div>
+                <h3 class="text-lg font-bold mb-2">{{ pillar.title }}</h3>
+                <p class="text-sm text-base-content/75 leading-relaxed mb-6">
+                  {{ pillar.description }}
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-1.5 text-xs font-mono pt-4 border-t border-base-200/60">
+                {% for tag in pillar.tags %}
+                  <span class="badge badge-sm badge-ghost">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            </div>
           </div>
-          <h3 class="text-lg font-bold mb-2">{{ pillar.title }}</h3>
-          <p class="text-sm text-base-content/75 leading-relaxed mb-6">
-            {{ pillar.description }}
-          </p>
-          <div class="flex flex-wrap gap-1.5 text-xs font-mono">
-            {% for tag in pillar.tags %}
-              <span class="badge badge-sm badge-ghost">{{ tag }}</span>
-            {% endfor %}
-          </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
+
+      <!-- Slide Indicator Dots -->
+      <div id="pillars-indicators" class="flex justify-center items-center gap-2 mt-6"></div>
     </div>
   </div>
 </section>
+
+<script>
+  (function() {
+    function initPillarsCarousel() {
+      var carousel = document.getElementById('pillars-carousel');
+      var prevBtn = document.getElementById('pillars-prev');
+      var nextBtn = document.getElementById('pillars-next');
+      var indicatorsContainer = document.getElementById('pillars-indicators');
+      if (!carousel || !prevBtn || !nextBtn) return;
+
+      var items = carousel.querySelectorAll('.carousel-item');
+      var totalItems = items.length;
+      if (totalItems === 0) return;
+
+      function getItemWidth() {
+        var item = carousel.querySelector('.carousel-item');
+        if (!item) return 360;
+        var style = window.getComputedStyle(carousel);
+        var gap = parseFloat(style.gap) || 24;
+        return item.getBoundingClientRect().width + gap;
+      }
+
+      function scrollToItem(index) {
+        var step = getItemWidth();
+        carousel.scrollTo({
+          left: index * step,
+          behavior: 'smooth'
+        });
+      }
+
+      // Generate indicator dots
+      if (indicatorsContainer) {
+        indicatorsContainer.innerHTML = '';
+        for (var i = 0; i < totalItems; i++) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'h-2 rounded-full transition-all duration-300 ' + (i === 0 ? 'bg-primary w-6' : 'bg-base-content/20 hover:bg-base-content/40 w-2');
+          dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+          dot.dataset.index = i;
+          dot.addEventListener('click', function(e) {
+            var targetIndex = parseInt(e.currentTarget.dataset.index, 10);
+            scrollToItem(targetIndex);
+          });
+          indicatorsContainer.appendChild(dot);
+        }
+      }
+
+      function updateControls() {
+        var scrollLeft = carousel.scrollLeft;
+        var maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        var step = getItemWidth();
+        var activeIndex = Math.round(scrollLeft / step);
+        if (activeIndex < 0) activeIndex = 0;
+        if (activeIndex >= totalItems) activeIndex = totalItems - 1;
+
+        if (indicatorsContainer) {
+          var dots = indicatorsContainer.querySelectorAll('button');
+          dots.forEach(function(d, idx) {
+            if (idx === activeIndex) {
+              d.className = 'h-2 rounded-full transition-all duration-300 bg-primary w-6';
+            } else {
+              d.className = 'h-2 rounded-full transition-all duration-300 bg-base-content/20 hover:bg-base-content/40 w-2';
+            }
+          });
+        }
+
+        if (scrollLeft <= 5) {
+          prevBtn.classList.add('opacity-40');
+        } else {
+          prevBtn.classList.remove('opacity-40');
+        }
+
+        if (scrollLeft >= maxScroll - 5) {
+          nextBtn.classList.add('opacity-40');
+        } else {
+          nextBtn.classList.remove('opacity-40');
+        }
+      }
+
+      prevBtn.addEventListener('click', function() {
+        var step = getItemWidth();
+        if (carousel.scrollLeft <= 5) {
+          carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
+        } else {
+          carousel.scrollBy({ left: -step, behavior: 'smooth' });
+        }
+      });
+
+      nextBtn.addEventListener('click', function() {
+        var step = getItemWidth();
+        var maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        if (carousel.scrollLeft >= maxScroll - 5) {
+          carousel.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          carousel.scrollBy({ left: step, behavior: 'smooth' });
+        }
+      });
+
+      carousel.addEventListener('scroll', function() {
+        window.requestAnimationFrame(updateControls);
+      }, { passive: true });
+
+      // Mouse drag support
+      var isDown = false;
+      var startX, scrollLeftPos;
+
+      carousel.addEventListener('mousedown', function(e) {
+        isDown = true;
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeftPos = carousel.scrollLeft;
+        carousel.classList.add('cursor-grabbing');
+      });
+
+      window.addEventListener('mouseup', function() {
+        if (isDown) {
+          isDown = false;
+          carousel.classList.remove('cursor-grabbing');
+        }
+      });
+
+      carousel.addEventListener('mousemove', function(e) {
+        if (!isDown) return;
+        e.preventDefault();
+        var x = e.pageX - carousel.offsetLeft;
+        var walk = (x - startX) * 1.5;
+        carousel.scrollLeft = scrollLeftPos - walk;
+      });
+
+      window.addEventListener('resize', updateControls);
+      updateControls();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPillarsCarousel);
+    } else {
+      initPillarsCarousel();
+    }
+  })();
+</script>
 
 <!-- Latest Articles Preview -->
 <section class="max-w-6xl mx-auto px-4 sm:px-6 py-20">

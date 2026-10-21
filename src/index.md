@@ -26,39 +26,58 @@ projectsSectionTitle: Engineering & Practice
 pillars:
   - title: Frontend & UI Engineering
     icon: palette
-    description: Building responsive, accessible, and fast web interfaces with
-      HTML5, CSS3, JavaScript, TypeScript, React, Angular, TailwindCSS
-      (v2/v3/v4), and Bootstrap v6.
+    description: Building responsive, accessible, and fast web interfaces with HTML5, CSS3, JavaScript, TypeScript, React, Angular, TailwindCSS, and DaisyUI.
     tags:
       - React
       - Angular
       - TypeScript
       - TailwindCSS
-      - Bootstrap
-  - title: Backend & Database Architecture
+      - DaisyUI
+  - title: Backend & Enterprise APIs
     icon: server
-    description: Developing robust backend APIs and services using Java (Spring
-      Boot) and Python 3, with structured data persistence across MySQL,
-      PostgreSQL, Oracle SQL Plus, and NeonDB.
+    description: Developing robust backend APIs and services using Java (Spring Boot) and Python 3, with clean architectures and build tooling.
     tags:
-      - Spring Boot
       - Java
+      - Spring Boot
       - Python 3
-      - PostgreSQL
-      - NeonDB
-      - MySQL
-  - title: Cloud, Systems & Core CS
-    icon: cpu
-    description: Demonstrated cloud pipelining on AWS, enterprise business logic
-      with SAP ABAP, deep computer networking knowledge, and system
-      administration across Windows 10/11 & Linux/UNIX WSL.
+      - REST APIs
+      - Maven
+  - title: Cloud & DevOps Pipelines
+    icon: cloud
+    description: Demonstrated cloud pipelining on AWS, automated deployments, CI/CD with GitHub Actions, and production build optimization.
     tags:
       - AWS Cloud
-      - SAP ABAP
-      - DSA with C
-      - Networks
+      - CodePipeline
+      - S3
+      - CI/CD
+      - Git Workflows
+  - title: Data Structures & Systems CS
+    icon: cpu
+    description: Deep grounding in low-level memory allocation, pointers, and data structures & algorithms rigorously benchmarked in C.
+    tags:
+      - C
+      - DSA
+      - Memory Management
+      - Pointers
+      - Benchmarks
+  - title: Database Engineering
+    icon: database
+    description: Relational schema design, normalization, ACID compliance, query optimization across MySQL, PostgreSQL, Oracle SQL Plus, and NeonDB.
+    tags:
+      - PostgreSQL
+      - MySQL
+      - Oracle SQL Plus
+      - NeonDB
+      - SQL
+  - title: Operating Systems & Tooling
+    icon: terminal
+    description: Cross-platform engineering workflows across Windows 10/11 and native Linux/UNIX distributions using WSL with Zsh and modern CLI tools.
+    tags:
       - Linux WSL
-      - Git / GitHub
+      - Ubuntu
+      - Debian
+      - Zsh
+      - VS Code
 blogSectionTitle: Recent Thoughts & Learning
 cta:
   title: Interested in discussing engineering opportunities?
