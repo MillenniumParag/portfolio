@@ -242,6 +242,30 @@
           )
         ) : null,
 
+        // Experience & Training Tab Preview
+        Array.isArray(data.timeline) && data.timeline.length > 0 ? h('div', { className: 'preview-card' },
+          h('h2', { className: 'preview-section-title' }, '💼 Experience & Practical Training (Tab 2)'),
+          h('div', { className: 'preview-timeline' },
+            data.timeline.map(function (item, idx) {
+              var skills = Array.isArray(item.skills) ? item.skills : [];
+              return h('div', { key: idx, className: 'preview-timeline-item' },
+                h('h3', { className: 'preview-item-title' }, item.role || 'Role Title'),
+                h('div', { className: 'preview-item-meta' },
+                  (item.company || '') +
+                  (item.type ? ' • ' + item.type : '') +
+                  (item.period ? ' • ' + item.period : '')
+                ),
+                item.description ? h('p', { className: 'preview-item-desc' }, item.description) : null,
+                skills.length > 0 ? h('div', { className: 'preview-tags' },
+                  skills.map(function (sk, ski) {
+                    return h('span', { key: ski, className: 'preview-tag' }, sk);
+                  })
+                ) : null
+              );
+            })
+          )
+        ) : null,
+
         // Workstation & Uses Preview
         workstation.headline ? h('div', { className: 'preview-card' },
           h('h2', { className: 'preview-section-title' }, '💻 ' + workstation.headline),

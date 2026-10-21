@@ -7,9 +7,9 @@ layout: layouts/base.njk
 {% set ws = workstation or uses %}
 
 <div class="max-w-6xl mx-auto px-4 py-12 sm:px-6">
-  <!-- Top Tab Switcher: "About Me" & "Uses & Workstation" -->
+  <!-- Top Tab Switcher: "About Me", "Experience & Training", & "Uses & Workstation" -->
   <div class="flex justify-center mb-10">
-    <div class="inline-flex p-1.5 rounded-2xl bg-base-200 border border-base-300 gap-1.5 shadow-xs">
+    <div class="inline-flex flex-wrap justify-center p-1.5 rounded-2xl bg-base-200 border border-base-300 gap-1.5 shadow-xs">
       <button
         id="tab-btn-me"
         type="button"
@@ -23,6 +23,21 @@ layout: layouts/base.njk
         </svg>
         <span>About Me</span>
       </button>
+
+      <button
+        id="tab-btn-exp"
+        type="button"
+        onclick="setActiveTab('exp')"
+        class="btn btn-sm rounded-xl font-bold transition-all btn-ghost text-base-content/70 hover:text-base-content gap-2"
+        aria-selected="false"
+        aria-controls="tab-content-exp"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <span>Experience &amp; Training</span>
+      </button>
+
       <button
         id="tab-btn-uses"
         type="button"
@@ -54,10 +69,10 @@ layout: layouts/base.njk
         </p>
         <div class="flex flex-wrap gap-3 pt-2">
           <a href="{{ primaryButtonUrl or '/projects/' }}" class="btn btn-primary rounded-xl">
-            {{ primaryButtonText or "Explore Projects" }}
+            {{ primaryButtonText or "Explore Portfolio" }}
           </a>
-          <a href="{{ secondaryButtonUrl or 'https://www.linkedin.com/in/chatterjeeparag/' }}" {% if (secondaryButtonUrl or 'https://www.linkedin.com/in/chatterjeeparag/') | startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %} class="btn btn-outline rounded-xl">
-            {{ secondaryButtonText or "Connect on LinkedIn ↗" }}
+          <a href="{{ secondaryButtonUrl or '/resume/' }}" class="btn btn-outline rounded-xl">
+            {{ secondaryButtonText or "View Resume" }}
           </a>
         </div>
       </div>
@@ -163,16 +178,125 @@ layout: layouts/base.njk
     <!-- Call to Action -->
     <div class="pt-4">
       {{ ctaBanner(
-        title=cta.title or "Interested in working together or hiring?",
-        subtitle=cta.subtitle or "I'm eager to connect with engineering teams, hiring managers, and mentors.",
-        buttonText=cta.buttonText or "Connect on LinkedIn →",
-        buttonUrl=cta.buttonUrl or "https://www.linkedin.com/in/chatterjeeparag/"
+        title=cta.title or "Interested in discussing opportunities or projects?",
+        subtitle=cta.subtitle or "Feel free to explore my projects or view my complete resume.",
+        buttonText=cta.buttonText or "View Resume / CV →",
+        buttonUrl=cta.buttonUrl or "/resume/",
+        secondaryText=cta.secondaryText or "Explore Portfolio",
+        secondaryUrl=cta.secondaryUrl or "/projects/"
       ) }}
     </div>
   </div>
 
   <!-- ============================================== -->
-  <!-- TAB 2: USES & WORKSTATION                      -->
+  <!-- TAB 2: EXPERIENCE & TRAINING                   -->
+  <!-- ============================================== -->
+  <div id="tab-content-exp" class="hidden space-y-14">
+    <!-- Header -->
+    <header class="max-w-3xl">
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight mb-4 leading-tight">
+        Industry Training &amp; Practical Experience
+      </h2>
+      <p class="text-lg text-base-content/75 leading-relaxed">
+        Specialized enterprise bootcamps, practical cloud training programs, and academic development completed alongside my university coursework at Techno India (Hooghly Campus), MAKAUT.
+      </p>
+    </header>
+
+    <!-- Career Timeline Section -->
+    <section>
+      <div class="flex items-center justify-between mb-8 pb-2 border-b border-base-200">
+        <h3 class="text-2xl font-black flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-primary"></span>
+          <span>Experience Timeline</span>
+        </h3>
+      </div>
+
+      <div class="space-y-8 relative before:absolute before:inset-0 before:left-3.5 sm:before:left-4 before:w-0.5 before:bg-base-300">
+        {% for item in timeline %}
+          <div class="relative pl-10 sm:pl-12 group">
+            <div class="absolute left-1.5 sm:left-2 top-1.5 w-5 h-5 rounded-full bg-primary border-4 border-base-100"></div>
+            <div class="card bg-base-100 border border-base-200 p-6 sm:p-8 rounded-2xl">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                <div>
+                  <h4 class="text-xl font-black text-base-content">
+                    {{ item.role }}
+                  </h4>
+                  <p class="text-sm font-semibold text-primary">
+                    {{ item.company }} • {{ item.type }}
+                  </p>
+                </div>
+                <div class="text-xs font-mono text-base-content/60 bg-base-200/80 px-3 py-1.5 rounded-lg w-fit">
+                  {{ item.period }} • {{ item.location }}
+                </div>
+              </div>
+
+              <p class="text-sm text-base-content/75 mb-4 leading-relaxed">
+                {{ item.description }}
+              </p>
+
+              {% if item.highlights %}
+                <div class="space-y-1.5 mb-4">
+                  <div class="text-xs font-bold uppercase tracking-wider text-base-content/60">Key Contributions:</div>
+                  <ul class="list-disc list-inside text-xs text-base-content/75 space-y-1 pl-1">
+                    {% for h in item.highlights %}
+                      <li>{{ h }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+
+              <div class="flex flex-wrap gap-1.5 pt-2 border-t border-base-200">
+                {% for skill in item.skills %}
+                  <span class="badge badge-sm badge-ghost font-mono text-xs">{{ skill }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Education & Honors Card -->
+    {% if educationCard %}
+      <section>
+        <div class="card bg-base-100 border border-base-200 p-8 rounded-3xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+            <div>
+              <div class="text-xs font-bold uppercase tracking-wider text-primary mb-1">Academic Credentials</div>
+              <h3 class="text-2xl font-black">{{ educationCard.degree }}</h3>
+              <p class="text-sm text-primary font-semibold">{{ educationCard.school }}</p>
+            </div>
+            <div class="text-xs font-mono bg-base-200 px-3 py-1.5 rounded-lg w-fit font-bold">
+              {{ educationCard.period }} • {{ educationCard.gpa }}
+            </div>
+          </div>
+          <div class="space-y-2 mt-4 pt-4 border-t border-base-200">
+            <div class="text-xs font-bold uppercase tracking-wider text-base-content/60">Academic Honors &amp; Awards:</div>
+            <ul class="list-disc list-inside text-sm text-base-content/75 space-y-1">
+              {% for honor in educationCard.honors %}
+                <li>{{ honor }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </section>
+    {% endif %}
+
+    <!-- Call to Action Banner -->
+    <div class="pt-4">
+      {{ ctaBanner(
+        title="Ready to discuss engineering opportunities?",
+        subtitle="Explore my projects or take a look at my complete curriculum vitae.",
+        buttonText="View Resume / CV →",
+        buttonUrl="/resume/",
+        secondaryText="Explore Portfolio",
+        secondaryUrl="/projects/"
+      ) }}
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- TAB 3: USES & WORKSTATION                      -->
   <!-- ============================================== -->
   <div id="tab-content-uses" class="hidden space-y-14">
     <!-- Header -->
@@ -288,10 +412,12 @@ layout: layouts/base.njk
     <!-- Call to Action Banner -->
     <div class="pt-4">
       {{ ctaBanner(
-        title=cta.title or "Interested in working together or hiring?",
-        subtitle=cta.subtitle or "I'm eager to connect with engineering teams, hiring managers, and mentors.",
-        buttonText=cta.buttonText or "Connect on LinkedIn →",
-        buttonUrl=cta.buttonUrl or "https://www.linkedin.com/in/chatterjeeparag/"
+        title="Ready to discuss engineering opportunities?",
+        subtitle="Explore my projects or take a look at my complete curriculum vitae.",
+        buttonText="View Resume / CV →",
+        buttonUrl="/resume/",
+        secondaryText="Explore Portfolio",
+        secondaryUrl="/projects/"
       ) }}
     </div>
   </div>
@@ -300,40 +426,53 @@ layout: layouts/base.njk
 <script>
   function setActiveTab(tab) {
     var meContent = document.getElementById('tab-content-me');
+    var expContent = document.getElementById('tab-content-exp');
     var usesContent = document.getElementById('tab-content-uses');
     var meBtn = document.getElementById('tab-btn-me');
+    var expBtn = document.getElementById('tab-btn-exp');
     var usesBtn = document.getElementById('tab-btn-uses');
 
-    if (!meContent || !usesContent || !meBtn || !usesBtn) return;
+    if (!meContent || !expContent || !usesContent || !meBtn || !expBtn || !usesBtn) return;
 
-    if (tab === 'uses') {
-      meContent.classList.add('hidden');
+    // Reset all tabs to hidden and ghost styling
+    meContent.classList.add('hidden');
+    expContent.classList.add('hidden');
+    usesContent.classList.add('hidden');
+
+    meBtn.classList.remove('btn-primary', 'shadow-xs');
+    meBtn.classList.add('btn-ghost', 'text-base-content/70');
+    meBtn.setAttribute('aria-selected', 'false');
+
+    expBtn.classList.remove('btn-primary', 'shadow-xs');
+    expBtn.classList.add('btn-ghost', 'text-base-content/70');
+    expBtn.setAttribute('aria-selected', 'false');
+
+    usesBtn.classList.remove('btn-primary', 'shadow-xs');
+    usesBtn.classList.add('btn-ghost', 'text-base-content/70');
+    usesBtn.setAttribute('aria-selected', 'false');
+
+    if (tab === 'exp') {
+      expContent.classList.remove('hidden');
+      expBtn.classList.remove('btn-ghost', 'text-base-content/70');
+      expBtn.classList.add('btn-primary', 'shadow-xs');
+      expBtn.setAttribute('aria-selected', 'true');
+      if (window.location.hash !== '#experience' && window.location.hash !== '#training') {
+        history.replaceState(null, '', '#experience');
+      }
+    } else if (tab === 'uses') {
       usesContent.classList.remove('hidden');
-
-      meBtn.classList.remove('btn-primary', 'shadow-xs');
-      meBtn.classList.add('btn-ghost', 'text-base-content/70');
-      meBtn.setAttribute('aria-selected', 'false');
-
       usesBtn.classList.remove('btn-ghost', 'text-base-content/70');
       usesBtn.classList.add('btn-primary', 'shadow-xs');
       usesBtn.setAttribute('aria-selected', 'true');
-
       if (window.location.hash !== '#uses' && window.location.hash !== '#workstation') {
         history.replaceState(null, '', '#uses');
       }
     } else {
-      usesContent.classList.add('hidden');
       meContent.classList.remove('hidden');
-
-      usesBtn.classList.remove('btn-primary', 'shadow-xs');
-      usesBtn.classList.add('btn-ghost', 'text-base-content/70');
-      usesBtn.setAttribute('aria-selected', 'false');
-
       meBtn.classList.remove('btn-ghost', 'text-base-content/70');
       meBtn.classList.add('btn-primary', 'shadow-xs');
       meBtn.setAttribute('aria-selected', 'true');
-
-      if (window.location.hash === '#uses' || window.location.hash === '#workstation') {
+      if (window.location.hash === '#experience' || window.location.hash === '#uses' || window.location.hash === '#workstation') {
         history.replaceState(null, '', window.location.pathname);
       }
     }
@@ -342,7 +481,9 @@ layout: layouts/base.njk
   function checkUrlForTab() {
     var hash = window.location.hash;
     var urlParams = new URLSearchParams(window.location.search);
-    if (hash === '#uses' || hash === '#workstation' || urlParams.get('tab') === 'uses') {
+    if (hash === '#experience' || hash === '#training' || urlParams.get('tab') === 'experience') {
+      setActiveTab('exp');
+    } else if (hash === '#uses' || hash === '#workstation' || urlParams.get('tab') === 'uses') {
       setActiveTab('uses');
     } else {
       setActiveTab('me');

@@ -44,10 +44,10 @@ collections:
                   hint: "Hero portrait image (upload from your device or select from media folder)." 
                 }
               - { label: "Hero Image Alt Text", name: "imageAlt", widget: "string", default: "Parag Chatterjee" }
-              - { label: "Primary Button Text", name: "primaryButtonText", widget: "string", default: "Explore Experience & Training →" }
-              - { label: "Primary Button URL", name: "primaryButtonUrl", widget: "string", default: "/experience/" }
-              - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string", default: "Connect on LinkedIn ↗" }
-              - { label: "Secondary Button URL", name: "secondaryButtonUrl", widget: "string", default: "https://www.linkedin.com/in/chatterjeeparag/" }
+              - { label: "Primary Button Text", name: "primaryButtonText", widget: "string", default: "Explore Portfolio →" }
+              - { label: "Primary Button URL", name: "primaryButtonUrl", widget: "string", default: "/projects/" }
+              - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string", required: false }
+              - { label: "Secondary Button URL", name: "secondaryButtonUrl", widget: "string", required: false }
               - { label: "CV Button Text", name: "cvButtonText", widget: "string", default: "View Resume / CV" }
               - { label: "CV Button URL", name: "cvButtonUrl", widget: "string", default: "/resume/" }
           - label: "Stat Metrics"
@@ -92,10 +92,10 @@ collections:
           - { label: "Top Badge Text", name: "introBadge", widget: "string" }
           - { label: "Main Headline", name: "headline", widget: "string" }
           - { label: "Introduction Text", name: "intro", widget: "text" }
-          - { label: "Primary Button Text", name: "primaryButtonText", widget: "string", default: "Explore Projects" }
+          - { label: "Primary Button Text", name: "primaryButtonText", widget: "string", default: "Explore Portfolio" }
           - { label: "Primary Button URL", name: "primaryButtonUrl", widget: "string", default: "/projects/" }
-          - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string", default: "Connect on LinkedIn ↗" }
-          - { label: "Secondary Button URL", name: "secondaryButtonUrl", widget: "string", default: "https://www.linkedin.com/in/chatterjeeparag/" }
+          - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string", default: "View Resume" }
+          - { label: "Secondary Button URL", name: "secondaryButtonUrl", widget: "string", default: "/resume/" }
           - label: "Bio Card"
             name: "bioCard"
             widget: "object"
@@ -107,6 +107,18 @@ collections:
               - { label: "Badge 2", name: "badge2", widget: "string", default: "Open to Relocate / Remote" }
           - { label: "Story Headline", name: "storyTitle", widget: "string" }
           - { label: "Story Paragraphs", name: "storyParagraphs", widget: "list", field: { label: "Paragraph", name: "para", widget: "text" } }
+          - label: "Experience & Training Timeline (Tab)"
+            name: "timeline"
+            widget: "list"
+            fields:
+              - { label: "Job Title / Role", name: "role", widget: "string" }
+              - { label: "Organization / Company", name: "company", widget: "string" }
+              - { label: "Type", name: "type", widget: "string" }
+              - { label: "Time Period", name: "period", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Key Highlights", name: "highlights", widget: "list" }
+              - { label: "Technologies / Skills", name: "skills", widget: "list" }
           - label: "Education & Foundations"
             name: "education"
             widget: "object"
@@ -135,8 +147,8 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Subtitle", name: "subtitle", widget: "text" }
-              - { label: "Button Text", name: "buttonText", widget: "string" }
-              - { label: "Button URL", name: "buttonUrl", widget: "string" }
+              - { label: "Button Text", name: "buttonText", widget: "string", default: "View Resume / CV →" }
+              - { label: "Button URL", name: "buttonUrl", widget: "string", default: "/resume/" }
           - label: "Uses & Workstation Setup"
             name: "workstation"
             widget: "object"
@@ -384,8 +396,8 @@ collections:
         fields:
           - { label: "Enable Banner", name: "enabled", widget: "boolean", default: true }
           - { label: "Banner Text", name: "text", widget: "string", default: "BCA (Hons) 4 Years (Batch 2023–2027) • Techno India (Hooghly Campus), MAKAUT" }
-          - { label: "Link Text", name: "linkText", widget: "string", default: "Connect on LinkedIn ↗", required: false }
-          - { label: "Link URL", name: "linkUrl", widget: "string", default: "https://www.linkedin.com/in/chatterjeeparag/", required: false }
+          - { label: "Link Text", name: "linkText", widget: "string", default: "Read About Me →", required: false }
+          - { label: "Link URL", name: "linkUrl", widget: "string", default: "/about/", required: false }
           - { label: "Show Pulsing Active Dot", name: "showPulse", widget: "boolean", default: true }
 
       - name: "general"

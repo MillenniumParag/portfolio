@@ -49,8 +49,8 @@ layout: layouts/base.njk
           <a href="{{ site.social.github or 'https://github.com/MillenniumParag' }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm rounded-xl font-bold">
             Visit GitHub (MillenniumParag) ↗
           </a>
-          <a href="{{ site.social.linkedin or 'https://www.linkedin.com/in/chatterjeeparag/' }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm rounded-xl font-bold">
-            Connect on LinkedIn ↗
+          <a href="/resume/" class="btn btn-primary btn-sm rounded-xl font-bold">
+            View Resume / CV →
           </a>
         </div>
       </div>
@@ -61,9 +61,9 @@ layout: layouts/base.njk
   <div class="mt-16">
     {{ ctaBanner(
       title=cta.title or "Looking for an ambitious, fast-learning developer?",
-      subtitle=cta.subtitle or "I am actively looking for software engineering internships and junior developer roles. Let's connect!",
-      buttonText=cta.buttonText or "Connect on LinkedIn →",
-      buttonUrl=cta.buttonUrl or "https://www.linkedin.com/in/chatterjeeparag/"
+      subtitle=cta.subtitle or "Explore my background and technical curriculum vitae.",
+      buttonText=cta.buttonText or "View Resume / CV →",
+      buttonUrl=cta.buttonUrl or "/resume/"
     ) }}
   </div>
 </div>

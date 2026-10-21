@@ -38,18 +38,20 @@ layout: layouts/base.njk
             href="{{ hero.primaryButtonUrl or '/projects/' }}"
             class="btn btn-primary rounded-xl px-7 text-base font-bold"
           >
-            {{ hero.primaryButtonText or "Explore Projects →" }}
+            {{ hero.primaryButtonText or "Explore Portfolio →" }}
           </a>
+          {% if hero.secondaryButtonText %}
           <a
-            href="{{ hero.secondaryButtonUrl or 'https://www.linkedin.com/in/chatterjeeparag/' }}"
-            {% if (hero.secondaryButtonUrl or 'https://www.linkedin.com/in/chatterjeeparag/') | startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}
+            href="{{ hero.secondaryButtonUrl or '/about/' }}"
+            {% if (hero.secondaryButtonUrl) | startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}
             class="btn btn-outline rounded-xl px-7 text-base"
           >
-            {{ hero.secondaryButtonText or "Connect on LinkedIn ↗" }}
+            {{ hero.secondaryButtonText }}
           </a>
+          {% endif %}
           <a
             href="{{ hero.cvButtonUrl or '/resume/' }}"
-            class="btn btn-ghost rounded-xl px-4 text-base-content/70 hover:text-primary"
+            class="btn btn-ghost rounded-xl px-4 text-base-content/70 hover:text-primary font-semibold"
           >
             {{ hero.cvButtonText or "View Resume / CV" }}
           </a>
@@ -210,12 +212,12 @@ layout: layouts/base.njk
 <section class="max-w-6xl mx-auto px-4 sm:px-6 mb-20">
   {{
     ctaBanner(
-      title=cta.title or "Interested in connecting or discussing engineering opportunities?",
-      subtitle=cta.subtitle or "I am actively seeking software engineering internships and junior developer opportunities. Let's connect on LinkedIn!",
-      buttonText=cta.buttonText or "Connect on LinkedIn →",
-      buttonUrl=cta.buttonUrl or "https://www.linkedin.com/in/chatterjeeparag/",
-      secondaryText=cta.secondaryText or "View GitHub Profile",
-      secondaryUrl=cta.secondaryUrl or "https://github.com/MillenniumParag"
+      title=cta.title or "Interested in discussing engineering opportunities?",
+      subtitle=cta.subtitle or "Feel free to explore my portfolio or view my complete curriculum vitae.",
+      buttonText=cta.buttonText or "View Resume / CV →",
+      buttonUrl=cta.buttonUrl or "/resume/",
+      secondaryText=cta.secondaryText or "Explore Portfolio",
+      secondaryUrl=cta.secondaryUrl or "/projects/"
     )
   }}
 </section>

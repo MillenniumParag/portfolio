@@ -6,17 +6,15 @@ description: Personal portfolio of Parag Chatterjee — BCA (Hons) 4 Years Stude
   (Batch of 2023–2027) at Techno India (Hooghly Campus), MAKAUT. Skilled in
   Java, Spring Boot, React, Angular, C, Python, and AWS.
 hero:
-  primaryButtonText: Explore Experience & Training →
   badge: BCA (Hons) 4 Years (Batch 2023–2027) • Techno India (Hooghly Campus), MAKAUT
+  headline: Building software with solid foundations and modern technologies.
   bio: Hi, I'm Parag, a BCA (Hons) student passionate about building software with
     Java, Spring Boot, React, Angular, C, and Python.
-  secondaryButtonUrl: https://www.linkedin.com/in/chatterjeeparag/
+  primaryButtonText: Explore Portfolio →
+  primaryButtonUrl: /projects/
+  cvButtonText: View Resume / CV
   cvButtonUrl: /resume/
   imageAlt: Parag Chatterjee — Developer & BCA (Hons) Student
-  cvButtonText: View Resume / CV
-  secondaryButtonText: Connect on LinkedIn ↗
-  headline: Building software with solid foundations and modern technologies.
-  primaryButtonUrl: /experience/
   image: /uploads/20250330_234130.avif
 stats:
   - value: "7.89"
@@ -66,11 +64,10 @@ pillars:
 blogSectionSubtitle: Writing & Insights
 blogSectionTitle: Recent Thoughts & Learning
 cta:
-  title: Interested in connecting or discussing engineering opportunities?
-  subtitle: I am actively seeking software engineering internships, frontend, and
-    full-stack developer roles. Let's connect on LinkedIn!
-  buttonText: Connect on LinkedIn →
-  buttonUrl: https://www.linkedin.com/in/chatterjeeparag/
-  secondaryText: View GitHub Profile
-  secondaryUrl: https://github.com/MillenniumParag
+  title: Interested in discussing engineering opportunities?
+  subtitle: Feel free to explore my portfolio or view my complete curriculum vitae.
+  buttonText: View Resume / CV →
+  buttonUrl: /resume/
+  secondaryText: Explore Portfolio
+  secondaryUrl: /projects/
 ---
