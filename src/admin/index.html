@@ -133,13 +133,8 @@
   <!-- Decap CMS Core Script -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
-  <script>
-    // Decap CMS Default Previews: Apply site stylesheet to native preview pane
-    if (window.CMS) {
-      CMS.registerPreviewStyle('/styles/index.css');
-      CMS.registerPreviewStyle('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap');
-    }
-  </script>
+  <!-- Decap CMS Native Preview Templates & Styles -->
+  <script src="/admin/previews.js"></script>
 
   <!-- Client-Side Auto-Compressor & SEO Guide Interface -->
   <button id="seo-guide-button" type="button" onclick="toggleSeoModal()">
