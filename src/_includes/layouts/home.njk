@@ -100,7 +100,7 @@ layout: layouts/base.njk
   </div>
 
   {% if collections.project and collections.project.length > 0 %}
-    <ul class="list bg-base-100 rounded-none border border-base-200 shadow-sm overflow-hidden">
+    <ul class="list bg-base-100 border-t border-base-200">
       {% for project in collections.project | limit(4) %}
         {{ projectCard(project) }}
       {% endfor %}
@@ -181,7 +181,7 @@ layout: layouts/base.njk
   </div>
 
   {% if collections.post and collections.post.length > 0 %}
-    <ul class="list bg-base-100 rounded-none border border-base-200 shadow-sm overflow-hidden">
+    <ul class="list bg-base-100 border-t border-base-200">
       {% for post in collections.post | reverse | limit(3) %}
         {{ articleCard(post) }}
       {% endfor %}
