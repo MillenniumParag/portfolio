@@ -67,16 +67,9 @@
     <!-- Global Footer Component -->
     {% include "components/footer.njk" %}
 
-    <!-- Theme Persist & Netlify Identity Script -->
+    <!-- Netlify Identity Admin Redirect Script -->
     <script>
-    function setTheme(theme) {
-  document.documentElement.setAttribute("data-theme", theme);
-  localStorage.setItem("site-theme", theme);
-}
-const savedTheme = localStorage.getItem("site-theme");
-if (savedTheme) {
-  document.documentElement.setAttribute("data-theme", savedTheme);
-}
+      localStorage.removeItem("site-theme");
 
 if (window.netlifyIdentity) {
   window.netlifyIdentity.on("init", user => {
