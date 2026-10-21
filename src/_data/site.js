@@ -47,8 +47,6 @@ const findUrl = (key) => {
 };
 
 export default {
-  ...siteData,
-  socialLinks: resolvedSocialLinks,
   social: {
     ...socialObj,
     github:

@@ -21,16 +21,22 @@ layout: layouts/base.njk
   {% if collections.project and collections.project.length > 0 %}
     <div class="flex justify-start mb-8">
       <div
-        class="inline-flex flex-wrap p-1.5 rounded-2xl frosted-glass gap-1.5 shadow-xs"
+        class="relative inline-flex flex-wrap p-1.5 rounded-xl frosted-glass border border-base-200/80 gap-1 shadow-xs"
         role="tablist"
         aria-label="Filter projects by category"
         id="project-filters"
       >
+        <!-- Sliding Fill Indicator -->
+        <div
+          id="project-filter-indicator"
+          class="absolute rounded-lg bg-primary pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] z-0 shadow-xs opacity-0"
+        ></div>
+
         <button
           type="button"
           role="tab"
           aria-selected="true"
-          class="btn btn-sm rounded-xl font-bold transition-all btn-primary shadow-xs filter-btn active"
+          class="relative z-10 btn btn-sm rounded-lg font-bold border-none bg-transparent hover:bg-transparent filter-btn active text-primary-content transition-colors duration-200"
           data-filter="all"
         >
           <span>All</span>
@@ -39,7 +45,7 @@ layout: layouts/base.njk
           type="button"
           role="tab"
           aria-selected="false"
-          class="btn btn-sm rounded-xl font-bold transition-all btn-ghost text-base-content/70 hover:text-base-content filter-btn"
+          class="relative z-10 btn btn-sm rounded-lg font-bold border-none bg-transparent hover:bg-transparent filter-btn text-base-content/70 hover:text-base-content transition-colors duration-200"
           data-filter="Full Stack"
         >
           <span>Full Stack</span>
@@ -48,7 +54,7 @@ layout: layouts/base.njk
           type="button"
           role="tab"
           aria-selected="false"
-          class="btn btn-sm rounded-xl font-bold transition-all btn-ghost text-base-content/70 hover:text-base-content filter-btn"
+          class="relative z-10 btn btn-sm rounded-lg font-bold border-none bg-transparent hover:bg-transparent filter-btn text-base-content/70 hover:text-base-content transition-colors duration-200"
           data-filter="Frontend"
         >
           <span>Frontend</span>
@@ -57,7 +63,7 @@ layout: layouts/base.njk
           type="button"
           role="tab"
           aria-selected="false"
-          class="btn btn-sm rounded-xl font-bold transition-all btn-ghost text-base-content/70 hover:text-base-content filter-btn"
+          class="relative z-10 btn btn-sm rounded-lg font-bold border-none bg-transparent hover:bg-transparent filter-btn text-base-content/70 hover:text-base-content transition-colors duration-200"
           data-filter="Cloud & DevOps"
         >
           <span>Cloud & DevOps</span>
@@ -66,7 +72,7 @@ layout: layouts/base.njk
           type="button"
           role="tab"
           aria-selected="false"
-          class="btn btn-sm rounded-xl font-bold transition-all btn-ghost text-base-content/70 hover:text-base-content filter-btn"
+          class="relative z-10 btn btn-sm rounded-lg font-bold border-none bg-transparent hover:bg-transparent filter-btn text-base-content/70 hover:text-base-content transition-colors duration-200"
           data-filter="Systems"
         >
           <span>Systems</span>
@@ -100,24 +106,40 @@ layout: layouts/base.njk
   {% endif %}
 </div>
 
-<!-- Interactive Filtering Script -->
+<!-- Interactive Filtering Script with Sliding Indicator -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const filterButtons = document.querySelectorAll(".filter-btn");
   const cards = document.querySelectorAll(".project-card");
   const emptyCategoryState = document.getElementById("no-category-projects");
   const projectsList = document.getElementById("projects-list");
+  const indicator = document.getElementById("project-filter-indicator");
+
+  function updateProjectIndicator(activeBtn, isInitial) {
+    if (!indicator || !activeBtn) return;
+    if (isInitial) {
+      indicator.style.transition = "none";
+    } else {
+      indicator.style.transition = "all 300ms cubic-bezier(0.25, 1, 0.5, 1)";
+    }
+    indicator.style.left = activeBtn.offsetLeft + "px";
+    indicator.style.top = activeBtn.offsetTop + "px";
+    indicator.style.width = activeBtn.offsetWidth + "px";
+    indicator.style.height = activeBtn.offsetHeight + "px";
+    indicator.style.opacity = "1";
+  }
 
   filterButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       filterButtons.forEach(b => {
-        b.classList.remove("btn-primary", "active", "shadow-xs");
-        b.classList.add("btn-ghost", "text-base-content/70");
+        b.classList.remove("active", "text-primary-content");
+        b.classList.add("text-base-content/70");
         b.setAttribute("aria-selected", "false");
       });
-      btn.classList.add("btn-primary", "active", "shadow-xs");
-      btn.classList.remove("btn-ghost", "text-base-content/70");
+      btn.classList.add("active", "text-primary-content");
+      btn.classList.remove("text-base-content/70");
       btn.setAttribute("aria-selected", "true");
+      updateProjectIndicator(btn, false);
 
       const selectedFilter = btn.getAttribute("data-filter");
       let visibleCount = 0;
@@ -141,6 +163,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     });
+  });
+
+  const initialActive = document.querySelector(".filter-btn.active") || filterButtons[0];
+  if (initialActive) {
+    requestAnimationFrame(() => updateProjectIndicator(initialActive, true));
+  }
+
+  window.addEventListener("resize", () => {
+    const currentActive = document.querySelector(".filter-btn.active");
+    if (currentActive) updateProjectIndicator(currentActive, true);
   });
 });
 </script>

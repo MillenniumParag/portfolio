@@ -28,7 +28,7 @@ layout: layouts/base.njk
         <div class="flex flex-wrap items-center gap-4 pt-2">
           <a
             href="{{ hero.primaryButtonUrl or '/projects/' }}"
-            class="btn btn-primary rounded-xl px-7 text-base font-bold"
+            class="btn btn-primary rounded-lg px-7 text-base font-bold"
           >
             {{ hero.primaryButtonText or "Explore Portfolio →" }}
           </a>
@@ -36,14 +36,14 @@ layout: layouts/base.njk
           <a
             href="{{ hero.secondaryButtonUrl or '/about/' }}"
             {% if (hero.secondaryButtonUrl) | startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}
-            class="btn btn-outline rounded-xl px-7 text-base"
+            class="btn btn-outline rounded-lg px-7 text-base"
           >
             {{ hero.secondaryButtonText }}
           </a>
           {% endif %}
           <a
             href="{{ hero.cvButtonUrl or '/resume/' }}"
-            class="btn btn-ghost rounded-xl px-4 text-base-content/70 hover:text-primary font-semibold"
+            class="btn btn-ghost rounded-lg px-4 text-base-content/70 hover:text-primary font-semibold"
           >
             {{ hero.cvButtonText or "View Resume / CV" }}
           </a>
@@ -67,7 +67,7 @@ layout: layouts/base.njk
       <!-- Simple Hero Image (Updatable via Decap CMS Admin) -->
       <div class="lg:col-span-4 flex justify-center">
         <div class="w-full max-w-sm">
-          <div class="relative overflow-hidden rounded-3xl border border-base-200 shadow-2xl shadow-primary/10 bg-base-200 aspect-4/5 group">
+          <div class="relative overflow-hidden rounded-xl border border-base-200 shadow-2xl shadow-primary/10 bg-base-200 aspect-4/5 group">
             <img
               src="{{ hero.image or '/uploads/me.avif' }}"
               alt="{{ hero.imageAlt or 'Parag Chatterjee' }}"
@@ -75,11 +75,60 @@ layout: layouts/base.njk
               loading="eager"
               onerror="this.onerror=null; this.src='/uploads/me.webp';"
             />
-            <div class="absolute inset-0 ring-1 ring-inset ring-base-content/10 rounded-3xl pointer-events-none"></div>
+            <div class="absolute inset-0 ring-1 ring-inset ring-base-content/10 rounded-xl pointer-events-none"></div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Infinite Tech Stack Marquee (Languages, Libraries, Frameworks) -->
+<section class="border-y border-base-200/80 bg-base-200/30 py-4 overflow-hidden relative">
+  <!-- Subtle Gradient Edge Masks -->
+  <div class="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-linear-to-r from-base-100 to-transparent z-10"></div>
+  <div class="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-linear-to-l from-base-100 to-transparent z-10"></div>
+
+  <div class="animate-marquee flex items-center gap-3 select-none">
+    {% set techStack = [
+      { name: "Java", category: "Language" },
+      { name: "Spring Boot", category: "Framework" },
+      { name: "React", category: "Library" },
+      { name: "Angular", category: "Framework" },
+      { name: "TypeScript", category: "Language" },
+      { name: "C / DSA", category: "Core CS" },
+      { name: "Python 3", category: "Language" },
+      { name: "AWS Cloud", category: "Cloud" },
+      { name: "PostgreSQL", category: "Database" },
+      { name: "MySQL", category: "Database" },
+      { name: "Oracle SQL Plus", category: "Database" },
+      { name: "NeonDB", category: "Database" },
+      { name: "TailwindCSS", category: "CSS" },
+      { name: "daisyUI", category: "UI" },
+      { name: "Linux / WSL", category: "Systems" },
+      { name: "Git / GitHub", category: "Tooling" },
+      { name: "REST APIs", category: "Architecture" },
+      { name: "Maven & Vite", category: "Build Tools" },
+      { name: "SAP ABAP", category: "Enterprise" }
+    ] %}
+
+    <!-- Loop 1 -->
+    {% for item in techStack %}
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-base-100 border border-base-200 text-xs sm:text-sm font-semibold text-base-content/85 shadow-2xs hover:border-primary/50 hover:text-primary transition-colors whitespace-nowrap">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary/70"></span>
+        <span>{{ item.name }}</span>
+        <span class="text-[10px] font-mono text-base-content/40 uppercase tracking-wider pl-1 border-l border-base-200">{{ item.category }}</span>
+      </div>
+    {% endfor %}
+
+    <!-- Loop 2 (Mirror for seamless loop) -->
+    {% for item in techStack %}
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-base-100 border border-base-200 text-xs sm:text-sm font-semibold text-base-content/85 shadow-2xs hover:border-primary/50 hover:text-primary transition-colors whitespace-nowrap">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary/70"></span>
+        <span>{{ item.name }}</span>
+        <span class="text-[10px] font-mono text-base-content/40 uppercase tracking-wider pl-1 border-l border-base-200">{{ item.category }}</span>
+      </div>
+    {% endfor %}
   </div>
 </section>
 
@@ -91,7 +140,7 @@ layout: layouts/base.njk
         {{ projectsSectionTitle or "Engineering & Practice" }}
       </h2>
     </div>
-    <a href="/projects/" class="btn btn-outline rounded-xl font-bold">
+    <a href="/projects/" class="btn btn-outline rounded-lg font-bold">
       View Projects & Repositories →
     </a>
   </div>
@@ -160,9 +209,9 @@ layout: layouts/base.njk
       >
         {% for pillar in pillars %}
           <div class="carousel-item w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex-none snap-start">
-            <div class="card bg-base-100 border border-base-200/80 p-7 sm:p-8 rounded-3xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl group w-full flex flex-col justify-between h-full min-h-[340px]">
+            <div class="card bg-base-100 border border-base-200/80 p-7 sm:p-8 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl group w-full flex flex-col justify-between h-full min-h-[340px]">
               <div>
-                <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-content transition-colors duration-300">
+                <div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-content transition-colors duration-300">
                   {% if pillar.icon == "palette" %}
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
@@ -361,7 +410,7 @@ layout: layouts/base.njk
         {{ blogSectionTitle or "Recent Thoughts" }}
       </h2>
     </div>
-    <a href="/blog/" class="btn btn-outline rounded-xl font-bold">
+    <a href="/blog/" class="btn btn-outline rounded-lg font-bold">
       Read All Articles →
     </a>
   </div>

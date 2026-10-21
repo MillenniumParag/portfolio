@@ -12,43 +12,46 @@ layout: layouts/base.njk
   <!-- ============================================== -->
   <div id="tab-content-me" class="space-y-16">
     <!-- Hero / Introduction -->
-    <header class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-12 border-b border-base-200">
-      <div class="md:col-span-8 space-y-4">
-        <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
-          {{ headline or "Turning curiosity & code into impactful software." }}
-        </h1>
-        <p class="text-base sm:text-lg text-base-content/75 leading-relaxed">
-          {{ intro }}
-        </p>
+    <!-- Hero / Introduction -->
+    <header class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch pb-12 border-b border-base-200">
+      <div class="lg:col-span-8 flex flex-col justify-between space-y-6">
+        <div class="space-y-4">
+          <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+            {{ headline or "Turning curiosity & code into impactful software." }}
+          </h1>
+          <p class="text-base sm:text-lg text-base-content/75 leading-relaxed">
+            {{ intro }}
+          </p>
+        </div>
         <div class="flex flex-wrap gap-3 pt-2">
-          <a href="{{ primaryButtonUrl or '/projects/' }}" class="btn btn-primary rounded-xl">
+          <a href="{{ primaryButtonUrl or '/projects/' }}" class="btn btn-primary rounded-lg font-medium">
             {{ primaryButtonText or "Explore Portfolio" }}
           </a>
-          <a href="{{ secondaryButtonUrl or '/resume/' }}" class="btn btn-outline rounded-xl">
+          <a href="{{ secondaryButtonUrl or '/resume/' }}" class="btn btn-outline rounded-lg font-medium">
             {{ secondaryButtonText or "View Resume" }}
           </a>
         </div>
       </div>
 
       <!-- Avatar / Bio Card -->
-      <div class="md:col-span-4">
-        <div class="card bg-base-100 border border-base-200 p-6 rounded-3xl text-center space-y-4">
+      <div class="lg:col-span-4 flex flex-col">
+        <div class="card bg-base-100 border border-base-200 p-8 sm:p-10 rounded-xl text-center flex flex-col justify-between items-center h-full space-y-6 shadow-xs">
           <div class="avatar online mx-auto">
-            <div class="w-32 h-32 rounded-3xl overflow-hidden ring-4 ring-primary/20 shadow-xl shadow-primary/10 bg-primary/10">
-              <img src="{{ bioCard.avatar or '/uploads/me.avif' }}" alt="{{ bioCard.name or 'Parag Chatterjee' }}" class="w-full h-full object-cover" width="128" height="128" onerror="this.onerror=null; this.src='/uploads/me.webp';" />
+            <div class="w-44 h-44 sm:w-52 sm:h-52 rounded-xl overflow-hidden ring-4 ring-primary/20 shadow-xl shadow-primary/10 bg-primary/10">
+              <img src="{{ bioCard.avatar or '/uploads/me.avif' }}" alt="{{ bioCard.name or 'Parag Chatterjee' }}" class="w-full h-full object-cover" width="208" height="208" onerror="this.onerror=null; this.src='/uploads/me.webp';" />
               <div class="hidden w-full h-full bg-primary text-primary-content items-center justify-center text-4xl font-black">
                 {{ (bioCard.name or 'P')[0] }}
               </div>
             </div>
           </div>
-          <div>
-            <h3 class="text-xl font-bold">{{ bioCard.name or "Parag Chatterjee" }}</h3>
-            <p class="text-xs text-primary font-semibold">{{ bioCard.role or "BCA (Hons) '27 • Aspiring SDE" }}</p>
+          <div class="space-y-1">
+            <h3 class="text-2xl font-bold">{{ bioCard.name or "Parag Chatterjee" }}</h3>
+            <p class="text-xs sm:text-sm text-primary font-semibold tracking-wide">{{ bioCard.role or "BCA (Hons) '27 • Aspiring SDE" }}</p>
           </div>
-          <div class="text-xs text-base-content/70 leading-relaxed">
+          <div class="text-xs sm:text-sm text-base-content/75 leading-relaxed max-w-sm">
             {{ bioCard.summary or "Grounded in core CS fundamentals, eager to build with Java, Spring Boot, React, and AWS." }}
           </div>
-          <div class="divider my-1"></div>
+          <div class="divider my-0 w-full"></div>
           <div class="text-xs text-base-content/65 flex items-center justify-center gap-1.5 font-medium">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -76,7 +79,7 @@ layout: layouts/base.njk
 
     <!-- Education & Foundations Card -->
     <section>
-      <div class="card bg-base-200/50 border border-base-300 p-8 rounded-3xl">
+      <div class="card bg-base-200/50 border border-base-300 p-8 rounded-xl">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
             <div class="text-xs font-bold uppercase tracking-wider text-primary mb-1">Academic Foundation</div>
@@ -102,7 +105,7 @@ layout: layouts/base.njk
     <!-- Principles & Quick Facts -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Principles -->
-      <div class="card bg-base-100 border border-base-200 p-8 rounded-3xl space-y-4">
+      <div class="card bg-base-100 border border-base-200 p-8 rounded-xl space-y-4">
         <h3 class="text-xl font-bold">What I Bring to a Team</h3>
         <div class="space-y-4 text-sm text-base-content/75">
           {% for principle in principles %}
@@ -115,7 +118,7 @@ layout: layouts/base.njk
       </div>
 
       <!-- Quick Facts -->
-      <div class="card bg-base-100 border border-base-200 p-8 rounded-3xl space-y-4">
+      <div class="card bg-base-100 border border-base-200 p-8 rounded-xl space-y-4">
         <h3 class="text-xl font-black">Quick Facts</h3>
         <div class="space-y-3 text-sm">
           {% for fact in quickFacts %}
@@ -158,7 +161,7 @@ layout: layouts/base.njk
         {% for item in timeline %}
           <div class="relative pl-10 sm:pl-12 group">
             <div class="absolute left-1.5 sm:left-2 top-1.5 w-5 h-5 rounded-full bg-primary border-4 border-base-100"></div>
-            <div class="card bg-base-100 border border-base-200 p-6 sm:p-8 rounded-2xl">
+            <div class="card bg-base-100 border border-base-200 p-6 sm:p-8 rounded-xl">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
                 <div>
                   <h4 class="text-lg font-bold text-base-content">
@@ -202,7 +205,7 @@ layout: layouts/base.njk
     <!-- Education & Honors Card -->
     {% if educationCard %}
       <section>
-        <div class="card bg-base-100 border border-base-200 p-8 rounded-3xl">
+        <div class="card bg-base-100 border border-base-200 p-8 rounded-xl">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
             <div>
               <div class="text-xs font-bold uppercase tracking-wider text-primary mb-1">Academic Credentials</div>
@@ -254,7 +257,7 @@ layout: layouts/base.njk
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {% for item in ws.hardware %}
-          <div class="card bg-base-100 border border-base-200 p-6 rounded-2xl">
+          <div class="card bg-base-100 border border-base-200 p-6 rounded-xl">
             <h4 class="font-black text-lg mb-1">{{ item.title }}</h4>
             <p class="text-sm text-base-content/75 mb-3">{{ item.description }}</p>
             <div class="flex flex-wrap gap-2">
@@ -279,7 +282,7 @@ layout: layouts/base.njk
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {% for item in ws.devtools %}
-          <div class="card bg-base-100 border border-base-200 p-6 rounded-2xl">
+          <div class="card bg-base-100 border border-base-200 p-6 rounded-xl">
             <h4 class="font-black text-lg mb-1">{{ item.title }}</h4>
             <p class="text-sm text-base-content/75 mb-3">{{ item.description }}</p>
             <div class="flex flex-wrap gap-2">
@@ -304,7 +307,7 @@ layout: layouts/base.njk
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {% for item in ws.terminal %}
-          <div class="card bg-base-100 border border-base-200 p-6 rounded-2xl">
+          <div class="card bg-base-100 border border-base-200 p-6 rounded-xl">
             <h4 class="font-black text-lg mb-1">{{ item.title }}</h4>
             <p class="text-sm text-base-content/75 mb-3">{{ item.description }}</p>
             <div class="flex flex-wrap gap-2">
@@ -329,7 +332,7 @@ layout: layouts/base.njk
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {% for item in ws.productivity %}
-          <div class="card bg-base-100 border border-base-200 p-6 rounded-2xl">
+          <div class="card bg-base-100 border border-base-200 p-6 rounded-xl">
             <h4 class="font-black text-lg mb-1">{{ item.title }}</h4>
             <p class="text-sm text-base-content/75 mb-3">{{ item.description }}</p>
             <div class="flex flex-wrap gap-2">
@@ -349,16 +352,22 @@ layout: layouts/base.njk
 <!-- Floating Bottom Tab Controller -->
 <div id="about-floating-tabs" class="fixed bottom-6 inset-x-0 z-40 flex justify-center pointer-events-none px-4 print:hidden">
   <div
-    class="pointer-events-auto inline-flex items-center p-1.5 rounded-2xl frosted-glass gap-1.5 transition-all duration-300"
+    class="pointer-events-auto relative inline-flex items-center p-1.5 rounded-xl frosted-glass border border-base-200/80 gap-1 transition-all duration-300"
     role="tablist"
     aria-label="About section tabs"
   >
+    <!-- Sliding Fill Indicator -->
+    <div
+      id="about-tab-indicator"
+      class="absolute rounded-lg bg-primary pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] z-0 shadow-xs opacity-0"
+    ></div>
+
     <button
       id="tab-btn-me"
       type="button"
       role="tab"
       onclick="setActiveTab('me', true)"
-      class="btn btn-sm rounded-xl font-bold transition-all btn-primary shadow-xs"
+      class="relative z-10 btn btn-sm rounded-lg font-bold border-none bg-transparent hover:bg-transparent transition-colors duration-200 text-primary-content"
       aria-selected="true"
       aria-controls="tab-content-me"
     >
@@ -370,7 +379,7 @@ layout: layouts/base.njk
       type="button"
       role="tab"
       onclick="setActiveTab('exp', true)"
-      class="btn btn-sm rounded-xl font-bold transition-all btn-ghost text-base-content/70 hover:text-base-content"
+      class="relative z-10 btn btn-sm rounded-lg font-bold border-none bg-transparent hover:bg-transparent transition-colors duration-200 text-base-content/70 hover:text-base-content"
       aria-selected="false"
       aria-controls="tab-content-exp"
     >
@@ -382,7 +391,7 @@ layout: layouts/base.njk
       type="button"
       role="tab"
       onclick="setActiveTab('gear', true)"
-      class="btn btn-sm rounded-xl font-bold transition-all btn-ghost text-base-content/70 hover:text-base-content"
+      class="relative z-10 btn btn-sm rounded-lg font-bold border-none bg-transparent hover:bg-transparent transition-colors duration-200 text-base-content/70 hover:text-base-content"
       aria-selected="false"
       aria-controls="tab-content-gear"
     >
@@ -434,6 +443,21 @@ layout: layouts/base.njk
     document.addEventListener('DOMContentLoaded', hookLenis);
   }
 
+  function updateAboutIndicator(activeBtn, isInitial) {
+    var indicator = document.getElementById('about-tab-indicator');
+    if (!indicator || !activeBtn) return;
+    if (isInitial) {
+      indicator.style.transition = 'none';
+    } else {
+      indicator.style.transition = 'all 300ms cubic-bezier(0.25, 1, 0.5, 1)';
+    }
+    indicator.style.left = activeBtn.offsetLeft + 'px';
+    indicator.style.top = activeBtn.offsetTop + 'px';
+    indicator.style.width = activeBtn.offsetWidth + 'px';
+    indicator.style.height = activeBtn.offsetHeight + 'px';
+    indicator.style.opacity = '1';
+  }
+
   function setActiveTab(tab, shouldScroll) {
     if (tab === 'uses') tab = 'gear';
 
@@ -446,48 +470,42 @@ layout: layouts/base.njk
 
     if (!meContent || !expContent || !gearContent || !meBtn || !expBtn || !gearBtn) return;
 
-    // Reset all tabs to hidden and ghost styling
+    // Reset all tabs to hidden
     meContent.classList.add('hidden');
     expContent.classList.add('hidden');
     gearContent.classList.add('hidden');
 
-    meBtn.classList.remove('btn-primary', 'shadow-xs');
-    meBtn.classList.add('btn-ghost', 'text-base-content/70');
-    meBtn.setAttribute('aria-selected', 'false');
+    [meBtn, expBtn, gearBtn].forEach(function(btn) {
+      btn.classList.remove('text-primary-content');
+      btn.classList.add('text-base-content/70');
+      btn.setAttribute('aria-selected', 'false');
+    });
 
-    expBtn.classList.remove('btn-primary', 'shadow-xs');
-    expBtn.classList.add('btn-ghost', 'text-base-content/70');
-    expBtn.setAttribute('aria-selected', 'false');
-
-    gearBtn.classList.remove('btn-primary', 'shadow-xs');
-    gearBtn.classList.add('btn-ghost', 'text-base-content/70');
-    gearBtn.setAttribute('aria-selected', 'false');
-
+    var activeBtn = meBtn;
     if (tab === 'exp') {
       expContent.classList.remove('hidden');
-      expBtn.classList.remove('btn-ghost', 'text-base-content/70');
-      expBtn.classList.add('btn-primary', 'shadow-xs');
-      expBtn.setAttribute('aria-selected', 'true');
+      activeBtn = expBtn;
       if (window.location.hash !== '#experience' && window.location.hash !== '#training') {
         history.replaceState(null, '', '#experience');
       }
     } else if (tab === 'gear') {
       gearContent.classList.remove('hidden');
-      gearBtn.classList.remove('btn-ghost', 'text-base-content/70');
-      gearBtn.classList.add('btn-primary', 'shadow-xs');
-      gearBtn.setAttribute('aria-selected', 'true');
+      activeBtn = gearBtn;
       if (window.location.hash !== '#gear' && window.location.hash !== '#uses' && window.location.hash !== '#workstation') {
         history.replaceState(null, '', '#gear');
       }
     } else {
       meContent.classList.remove('hidden');
-      meBtn.classList.remove('btn-ghost', 'text-base-content/70');
-      meBtn.classList.add('btn-primary', 'shadow-xs');
-      meBtn.setAttribute('aria-selected', 'true');
+      activeBtn = meBtn;
       if (window.location.hash === '#experience' || window.location.hash === '#gear' || window.location.hash === '#uses' || window.location.hash === '#workstation') {
         history.replaceState(null, '', window.location.pathname);
       }
     }
+
+    activeBtn.classList.remove('text-base-content/70');
+    activeBtn.classList.add('text-primary-content');
+    activeBtn.setAttribute('aria-selected', 'true');
+    updateAboutIndicator(activeBtn, false);
 
     if (shouldScroll && window.scrollY > 120) {
       if (window.lenis) {
@@ -512,7 +530,18 @@ layout: layouts/base.njk
       setActiveTab('me');
     }
     updateTabsPosition();
+    var activeBtn = document.querySelector('#about-floating-tabs [aria-selected="true"]');
+    if (activeBtn) {
+      requestAnimationFrame(function() {
+        updateAboutIndicator(activeBtn, true);
+      });
+    }
   }
+
+  window.addEventListener('resize', function() {
+    var activeBtn = document.querySelector('#about-floating-tabs [aria-selected="true"]');
+    if (activeBtn) updateAboutIndicator(activeBtn, true);
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', checkUrlForTab);

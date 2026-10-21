@@ -93,7 +93,7 @@ layout: layouts/base.njk
   <!-- Medium-Inspired Hero Banner Image Container -->
   {% if image %}
     <figure class="mb-12">
-      <div class="relative w-full aspect-video sm:aspect-21/9 rounded-3xl overflow-hidden border border-base-200/80 bg-base-200">
+      <div class="relative w-full aspect-video sm:aspect-21/9 rounded-xl overflow-hidden border border-base-200/80 bg-base-200">
         <img
           src="{{ image }}"
           alt="{{ title }}"
@@ -109,7 +109,7 @@ layout: layouts/base.njk
     </figure>
   {% else %}
     <!-- Generative Fallback Banner if no custom image is uploaded -->
-    <div class="mb-12 w-full aspect-video sm:aspect-21/9 rounded-3xl overflow-hidden border border-base-200 bg-linear-to-r from-base-200 via-base-300 to-base-200 flex flex-col justify-center items-center p-8 text-center">
+    <div class="mb-12 w-full aspect-video sm:aspect-21/9 rounded-xl overflow-hidden border border-base-200 bg-linear-to-r from-base-200 via-base-300 to-base-200 flex flex-col justify-center items-center p-8 text-center">
       <h2 class="text-2xl sm:text-3xl font-black max-w-xl text-base-content/80">
         {{ title }}
       </h2>
@@ -122,10 +122,10 @@ layout: layouts/base.njk
   </div>
 
   <!-- Author Bio Card at End of Post -->
-  <div class="mt-16 card bg-base-200/60 border border-base-300 p-6 sm:p-8 rounded-3xl">
+  <div class="mt-16 card bg-base-200/60 border border-base-300 p-6 sm:p-8 rounded-xl">
     <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
       <div class="avatar">
-        <div class="rounded-2xl w-16 h-16 overflow-hidden ring-2 ring-primary/20 bg-primary/10">
+        <div class="rounded-xl w-16 h-16 overflow-hidden ring-2 ring-primary/20 bg-primary/10">
           <img src="/uploads/me.avif" alt="Parag Chatterjee" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='/uploads/me.webp';" />
         </div>
       </div>
@@ -148,10 +148,10 @@ layout: layouts/base.njk
 
   <!-- Bottom Navigation -->
   <div class="mt-12 pt-8 border-t border-base-200 flex justify-between items-center">
-    <a href="/blog/" class="btn btn-outline btn-sm rounded-xl">
+    <a href="/blog/" class="btn btn-outline btn-sm rounded-lg font-medium">
       ← Back to All Articles
     </a>
-    <a href="/projects/" class="btn btn-primary btn-sm rounded-xl">
+    <a href="/projects/" class="btn btn-primary btn-sm rounded-lg font-medium">
       Explore Projects Showcase →
     </a>
   </div>

@@ -35,7 +35,7 @@ layout: layouts/base.njk
 
     <!-- Print / Download Actions -->
     <div class="flex flex-wrap gap-2.5 print:hidden">
-      <button onclick="window.print()" class="btn btn-primary rounded-xl gap-2 font-bold">
+      <button onclick="window.print()" class="btn btn-primary rounded-lg gap-2 font-bold">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
         </svg>
@@ -45,7 +45,7 @@ layout: layouts/base.njk
   </header>
 
   <!-- Metric Badges -->
-  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 bg-base-200/50 rounded-2xl mb-12 border border-base-200">
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 bg-base-200/50 rounded-xl mb-12 border border-base-200">
     {% for s in statsBanner %}
       <div>
         <div class="text-2xl font-black text-primary">{{ s.value }}</div>
@@ -68,7 +68,7 @@ layout: layouts/base.njk
       <h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-4">Technical Competencies</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {% for cat in skills %}
-          <div class="card bg-base-100 border border-base-200 p-5 rounded-2xl">
+          <div class="card bg-base-100 border border-base-200 p-5 rounded-xl">
             <h3 class="font-bold text-sm text-base-content mb-2">{{ cat.category }}</h3>
             <div class="flex flex-wrap gap-1.5">
               {% for item in cat.items %}
@@ -107,7 +107,7 @@ layout: layouts/base.njk
       <h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-6">Selected Software Engineering Projects</h2>
       <div class="space-y-6">
         {% for proj in projects %}
-          <div class="card bg-base-100 border border-base-200 p-6 rounded-2xl space-y-2">
+          <div class="card bg-base-100 border border-base-200 p-6 rounded-xl space-y-2">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
               <h3 class="font-bold text-base text-base-content">{{ proj.title }}</h3>
               <span class="text-xs font-mono text-primary">{{ proj.tech }}</span>
@@ -126,7 +126,7 @@ layout: layouts/base.njk
     <!-- Education -->
     <section>
       <h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-4">Education &amp; Credentials</h2>
-      <div class="card bg-base-100 border border-base-200 p-6 rounded-2xl">
+      <div class="card bg-base-100 border border-base-200 p-6 rounded-xl">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
           <div>
             <h3 class="font-black text-lg text-base-content">{{ education.degree }}</h3>
