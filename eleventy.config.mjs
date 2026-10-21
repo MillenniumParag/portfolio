@@ -82,6 +82,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/favicon-32x32.png": "favicon-32x32.png" });
   eleventyConfig.addPassthroughCopy({ "src/favicon-16x16.png": "favicon-16x16.png" });
   eleventyConfig.addPassthroughCopy({ "src/apple-touch-icon.png": "apple-touch-icon.png" });
+  eleventyConfig.addPassthroughCopy({ "src/icons": "icons" });
 
   // Watch CSS and image file changes
   eleventyConfig.addWatchTarget("./src/styles/");

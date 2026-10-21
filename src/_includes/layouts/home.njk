@@ -91,42 +91,42 @@ layout: layouts/base.njk
 
   <div class="animate-marquee flex items-center gap-3 select-none">
     {% set techStack = [
-      { name: "Java", category: "Language" },
-      { name: "Spring Boot", category: "Framework" },
-      { name: "React", category: "Library" },
-      { name: "Angular", category: "Framework" },
-      { name: "TypeScript", category: "Language" },
-      { name: "C / DSA", category: "Core CS" },
-      { name: "Python 3", category: "Language" },
-      { name: "AWS Cloud", category: "Cloud" },
-      { name: "PostgreSQL", category: "Database" },
-      { name: "MySQL", category: "Database" },
-      { name: "Oracle SQL Plus", category: "Database" },
-      { name: "NeonDB", category: "Database" },
-      { name: "TailwindCSS", category: "CSS" },
-      { name: "daisyUI", category: "UI" },
-      { name: "Linux / WSL", category: "Systems" },
-      { name: "Git / GitHub", category: "Tooling" },
-      { name: "REST APIs", category: "Architecture" },
-      { name: "Maven & Vite", category: "Build Tools" },
-      { name: "SAP ABAP", category: "Enterprise" }
+      { name: "Java", category: "Language", icon: "/icons/tech/java.svg" },
+      { name: "Spring Boot", category: "Framework", icon: "/icons/tech/spring.svg" },
+      { name: "React", category: "Library", icon: "/icons/tech/react.svg" },
+      { name: "Angular", category: "Framework", icon: "/icons/tech/angular.svg" },
+      { name: "TypeScript", category: "Language", icon: "/icons/tech/typescript.svg" },
+      { name: "C / DSA", category: "Core CS", icon: "/icons/tech/c.svg" },
+      { name: "Python 3", category: "Language", icon: "/icons/tech/python.svg" },
+      { name: "AWS Cloud", category: "Cloud", icon: "/icons/tech/aws.svg" },
+      { name: "PostgreSQL", category: "Database", icon: "/icons/tech/postgresql.svg" },
+      { name: "MySQL", category: "Database", icon: "/icons/tech/mysql.svg" },
+      { name: "Oracle SQL Plus", category: "Database", icon: "/icons/tech/oracle.svg" },
+      { name: "NeonDB", category: "Database", icon: "/icons/tech/neondb.svg" },
+      { name: "TailwindCSS", category: "CSS", icon: "/icons/tech/tailwindcss.svg" },
+      { name: "daisyUI", category: "UI", icon: "/icons/tech/daisyui.svg" },
+      { name: "Linux / WSL", category: "Systems", icon: "/icons/tech/linux.svg" },
+      { name: "Git / GitHub", category: "Tooling", icon: "/icons/tech/git.svg" },
+      { name: "REST APIs", category: "Architecture", icon: "/icons/tech/restapi.svg" },
+      { name: "Maven & Vite", category: "Build Tools", icon: "/icons/tech/vite.svg" },
+      { name: "SAP ABAP", category: "Enterprise", icon: "/icons/tech/sap.svg" }
     ] %}
 
     <!-- Loop 1 -->
     {% for item in techStack %}
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-base-100 border border-base-200 text-xs sm:text-sm font-semibold text-base-content/85 shadow-2xs hover:border-primary/50 hover:text-primary transition-colors whitespace-nowrap">
-        <span class="w-1.5 h-1.5 rounded-full bg-primary/70"></span>
+      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-lg bg-base-100 border border-base-200 text-xs sm:text-sm font-semibold text-base-content/85 shadow-2xs hover:border-primary/50 hover:text-primary transition-all duration-200 whitespace-nowrap group">
+        <img src="{{ item.icon }}" alt="{{ item.name }}" class="w-4 h-4 sm:w-4.5 sm:h-4.5 object-contain shrink-0 transition-transform duration-200 group-hover:scale-110" width="18" height="18" loading="lazy" />
         <span>{{ item.name }}</span>
-        <span class="text-[10px] font-mono text-base-content/40 uppercase tracking-wider pl-1 border-l border-base-200">{{ item.category }}</span>
+        <span class="text-[10px] font-mono text-base-content/40 uppercase tracking-wider pl-1.5 border-l border-base-200">{{ item.category }}</span>
       </div>
     {% endfor %}
 
     <!-- Loop 2 (Mirror for seamless loop) -->
     {% for item in techStack %}
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-base-100 border border-base-200 text-xs sm:text-sm font-semibold text-base-content/85 shadow-2xs hover:border-primary/50 hover:text-primary transition-colors whitespace-nowrap">
-        <span class="w-1.5 h-1.5 rounded-full bg-primary/70"></span>
+      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-lg bg-base-100 border border-base-200 text-xs sm:text-sm font-semibold text-base-content/85 shadow-2xs hover:border-primary/50 hover:text-primary transition-all duration-200 whitespace-nowrap group">
+        <img src="{{ item.icon }}" alt="{{ item.name }}" class="w-4 h-4 sm:w-4.5 sm:h-4.5 object-contain shrink-0 transition-transform duration-200 group-hover:scale-110" width="18" height="18" loading="lazy" />
         <span>{{ item.name }}</span>
-        <span class="text-[10px] font-mono text-base-content/40 uppercase tracking-wider pl-1 border-l border-base-200">{{ item.category }}</span>
+        <span class="text-[10px] font-mono text-base-content/40 uppercase tracking-wider pl-1.5 border-l border-base-200">{{ item.category }}</span>
       </div>
     {% endfor %}
   </div>
