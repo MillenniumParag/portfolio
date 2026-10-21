@@ -3,7 +3,6 @@ layout: layouts/experience.njk
 permalink: /experience/
 title: "Experience & Practical Training | Parag Chatterjee"
 description: "Industry internships, technical bootcamps, practical cloud training, and BCA (Hons) 4 Years education of Parag Chatterjee."
-badgeText: "Curriculum Vitae • BCA (Hons) 4 Years (Batch 2023–2027) • Student / Fresher"
 headline: "Experience & Practical Training"
 intro: "Industry bootcamps, cloud internships, and technical development programs completed alongside my academic studies at Techno India (Hooghly Campus), MAKAUT."
 timeline:

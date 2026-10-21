@@ -3,7 +3,6 @@ layout: layouts/about.njk
 permalink: /about/
 title: "About Parag Chatterjee | BCA (Hons) Student & Developer"
 description: "The background, college journey, technical training, and engineering philosophy of Parag Chatterjee — BCA (Hons) 4 Years Student (Batch of 2023–2027) at Techno India (Hooghly Campus), MAKAUT."
-introBadge: "Hey, I'm Parag Chatterjee"
 headline: "Turning curiosity & code into impactful software."
 intro: "I am a BCA (Hons) 4 Years student (Batch of 2023–2027) at Techno India (Hooghly Campus) affiliated to MAKAUT University, based in Janai, Hooghly. Grounded in solid computer science fundamentals, I build full-stack web applications and cloud deployments using Java, Spring Boot, React, Angular, C, and Python."
 primaryButtonText: "View Practical Experience"
@@ -14,8 +13,6 @@ bioCard:
   name: "Parag Chatterjee"
   role: "BCA (Hons) '27 • Aspiring SDE"
   summary: "Studying at Techno India (Hooghly Campus), MAKAUT. Skilled in Java, Spring Boot, React, Angular, C, Python 3, and AWS Cloud."
-  badge1: "Student / Fresher"
-  badge2: "Janai, Hooghly"
 storyTitle: "The Academic Journey & Practical Training"
 storyParagraphs:
   - "My computer science journey began at Techno India (Hooghly Campus) under MAKAUT University. From my initial programming lectures in C to exploring object-oriented design in Java, I have always been fascinated by understanding how software operates from low-level memory allocation all the way up to distributed cloud infrastructure."

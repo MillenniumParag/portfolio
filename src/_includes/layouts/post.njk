@@ -61,9 +61,8 @@ layout: layouts/base.njk
           </div>
         </div>
         <div>
-          <div class="font-bold text-base-content flex items-center gap-2">
-            <span>{{ author or "Parag Chatterjee" }}</span>
-            <span class="badge badge-xs badge-success text-[10px]">Author</span>
+          <div class="font-bold text-base-content">
+            {{ author or "Parag Chatterjee" }}
           </div>
           <div class="text-xs text-base-content/60 flex items-center gap-2 mt-0.5">
             <time datetime="{{ date }}">{{ date | readableDate }}</time>
@@ -111,8 +110,6 @@ layout: layouts/base.njk
   {% else %}
     <!-- Generative Fallback Banner if no custom image is uploaded -->
     <div class="mb-12 w-full aspect-video sm:aspect-21/9 rounded-3xl overflow-hidden border border-base-200 bg-linear-to-r from-base-200 via-base-300 to-base-200 flex flex-col justify-center items-center p-8 text-center">
-      <span class="badge badge-primary badge-outline text-xs mb-3 font-mono"
-      >Engineering Article</span>
       <h2 class="text-2xl sm:text-3xl font-black max-w-xl text-base-content/80">
         {{ title }}
       </h2>
@@ -133,9 +130,8 @@ layout: layouts/base.njk
         </div>
       </div>
       <div class="space-y-2 grow">
-        <div class="flex items-center gap-2">
+        <div>
           <h3 class="text-xl font-bold">Written by Parag Chatterjee</h3>
-          <span class="badge badge-sm badge-ghost">BCA (Hons) '27</span>
         </div>
         <p class="text-sm text-base-content/75 leading-relaxed max-w-xl">
           BCA (Hons) 4 Years Student (Batch of 2023–2027) at Techno India (Hooghly Campus), MAKAUT. Skilled in Java, Spring Boot, React, Angular, C, Python 3, and AWS Cloud.

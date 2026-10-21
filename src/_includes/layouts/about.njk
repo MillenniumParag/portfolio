@@ -46,12 +46,6 @@ layout: layouts/base.njk
     <!-- Hero / Introduction -->
     <header class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-12 border-b border-base-200">
       <div class="md:col-span-8 space-y-4">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-bold text-xs">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span>{{ introBadge or "Hey, I'm Parag Chatterjee" }}</span>
-        </div>
         <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-tight">
           {{ headline or "Turning curiosity & code into impactful software." }}
         </h1>
@@ -81,15 +75,18 @@ layout: layouts/base.njk
           </div>
           <div>
             <h2 class="text-xl font-black">{{ bioCard.name or "Parag Chatterjee" }}</h2>
-            <p class="text-xs text-primary font-semibold">{{ bioCard.role or "BCA (Hons) '27 • Junior SDE" }}</p>
+            <p class="text-xs text-primary font-semibold">{{ bioCard.role or "BCA (Hons) '27 • Aspiring SDE" }}</p>
           </div>
           <div class="text-xs text-base-content/70 leading-relaxed">
             {{ bioCard.summary or "Grounded in core CS fundamentals, eager to build with Java, Spring Boot, React, and AWS." }}
           </div>
           <div class="divider my-1"></div>
-          <div class="flex justify-center gap-2">
-            <span class="badge badge-sm badge-ghost font-mono">{{ bioCard.badge1 or "Fresher" }}</span>
-            <span class="badge badge-sm badge-success badge-outline font-semibold">{{ bioCard.badge2 or "Janai, Hooghly" }}</span>
+          <div class="text-xs text-base-content/65 flex items-center justify-center gap-1.5 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span>Janai, Hooghly, West Bengal</span>
           </div>
         </div>
       </div>
@@ -114,7 +111,7 @@ layout: layouts/base.njk
       <div class="card bg-base-200/50 border border-base-300 p-8 rounded-3xl">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
-            <span class="badge badge-primary font-bold text-xs uppercase tracking-wider mb-2">Academic Foundation</span>
+            <div class="text-xs font-bold uppercase tracking-wider text-primary mb-1">Academic Foundation</div>
             <h3 class="text-2xl font-black">{{ education.degree or "Bachelor of Computer Applications (Honours) — 4 Years" }}</h3>
             <p class="text-sm text-base-content/70">{{ education.school or "Techno India (Hooghly Campus) — Affiliated to MAKAUT University" }} • {{ education.period or "2023 – 2027" }}</p>
           </div>
@@ -180,9 +177,6 @@ layout: layouts/base.njk
   <div id="tab-content-uses" class="hidden space-y-14">
     <!-- Header -->
     <header class="max-w-3xl">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-bold text-xs mb-4">
-        <span>{{ ws.badgeText or "Developer Setup • Updated 2026" }}</span>
-      </div>
       <h2 class="text-3xl sm:text-5xl font-black tracking-tight mb-4 leading-tight">
         {{ ws.headline or "Operating Systems, Tools & Software I Rely On" }}
       </h2>
@@ -200,7 +194,6 @@ layout: layouts/base.njk
           </svg>
           <span>Workstation &amp; Hardware</span>
         </h3>
-        <span class="badge badge-primary badge-outline text-xs">Hardware</span>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {% for item in ws.hardware %}
@@ -226,7 +219,6 @@ layout: layouts/base.njk
           </svg>
           <span>Code Editors &amp; Dev Tools</span>
         </h3>
-        <span class="badge badge-primary badge-outline text-xs">Software</span>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {% for item in ws.devtools %}
@@ -252,7 +244,6 @@ layout: layouts/base.njk
           </svg>
           <span>Terminal &amp; CLI Tools</span>
         </h3>
-        <span class="badge badge-primary badge-outline text-xs">Environment</span>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {% for item in ws.terminal %}
@@ -278,7 +269,6 @@ layout: layouts/base.njk
           </svg>
           <span>Productivity &amp; Workflow</span>
         </h3>
-        <span class="badge badge-primary badge-outline text-xs">Workflow</span>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {% for item in ws.productivity %}

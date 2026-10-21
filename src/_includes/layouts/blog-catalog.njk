@@ -12,7 +12,7 @@ layout: layouts/base.njk
     pageHeader(
       title=headerTitle or "Engineering Journal & Notes",
       description=headerDescription or "Reflections on distributed systems, modern frontend tooling, database benchmarking, and practical lessons learned while building web applications.",
-      badgeText=badgeText or ("Publications & Technical Writing" if not (collections.post and collections.post.length) else "Publications & Articles • " + collections.post.length + " Stories"),
+      badgeText=badgeText,
       badgeType="primary"
     )
   }}

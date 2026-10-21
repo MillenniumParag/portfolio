@@ -11,7 +11,7 @@ layout: layouts/base.njk
   {{ pageHeader(
     title=headerTitle or "Selected Projects & Engineering Work",
     description=headerDescription or "A collection of full-stack web applications, distributed systems projects, and developer tools built throughout my college capstones, internships, and open-source exploration.",
-    badgeText=badgeText or ("Project Showcase" if not (collections.project and collections.project.length) else "Project Showcase • " + collections.project.length + " Projects"),
+    badgeText=badgeText,
     badgeType="primary"
   ) }}
 
