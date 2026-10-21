@@ -1,47 +1,38 @@
-<!-- Global Footer using daisyUI footer -->
-<footer class="bg-base-200/70 border-t border-base-300 text-base-content mt-16 print:hidden">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<!-- Global Footer -->
+<footer class="bg-base-200/60 border-t border-base-200 text-base-content mt-20 print:hidden">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-base-200">
       
-      <!-- Column 1: Brand Info -->
-      <div class="md:col-span-2 space-y-4">
-        <a href="/" class="text-2xl font-black tracking-tight">
+      <!-- Brand & Tagline -->
+      <div class="space-y-1">
+        <a href="/" class="text-2xl font-black tracking-tight inline-block">
           Parag<span class="text-primary font-black">.</span>me
         </a>
-        <p class="text-sm text-base-content/75 max-w-sm leading-relaxed">
-          BCA (Hons) 4 Years Student (Batch 2023–2027) at Techno India (Hooghly Campus), MAKAUT. Based in Janai, Hooghly. Passionate about Java, Spring Boot, React, Angular, C, Python 3, and AWS Cloud.
+        <p class="text-sm text-base-content/70">
+          Building software with solid foundations.
         </p>
-        <div class="pt-2">
-          {% include "components/social-links.njk" %}
-        </div>
       </div>
 
-      <!-- Column 2: Navigation Links -->
-      <div>
-        <div class="font-bold text-xs uppercase tracking-wider text-base-content/60 mb-3">Explore</div>
-        <ul class="space-y-2 text-sm">
+      <!-- Quick Nav Links -->
+      <nav aria-label="Footer navigation">
+        <ul class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold">
           <li><a href="/" class="hover:text-primary transition-colors">Home</a></li>
           <li><a href="/about/" class="hover:text-primary transition-colors">About</a></li>
           <li><a href="/blog/" class="hover:text-primary transition-colors">Blog</a></li>
           <li><a href="/projects/" class="hover:text-primary transition-colors">Portfolio</a></li>
           <li><a href="/resume/" class="hover:text-primary transition-colors">Resume</a></li>
         </ul>
-      </div>
+      </nav>
 
-      <!-- Column 3: About & Background Tabs -->
+      <!-- Social Links -->
       <div>
-        <div class="font-bold text-xs uppercase tracking-wider text-base-content/60 mb-3">About &amp; Journey</div>
-        <ul class="space-y-2 text-sm">
-          <li><a href="/about/" class="hover:text-primary transition-colors">Story &amp; Foundations</a></li>
-          <li><a href="/about/#experience" class="hover:text-primary transition-colors">Experience &amp; Training</a></li>
-          <li><a href="/about/#uses" class="hover:text-primary transition-colors">Uses &amp; Workstation</a></li>
-        </ul>
+        {% include "components/social-links.njk" %}
       </div>
-
     </div>
 
-    <div class="pt-8 border-t border-base-300 text-center text-xs text-base-content/60">
-      <p>© {% currentYear %} Parag Chatterjee. All rights reserved. • Janai, Hooghly, West Bengal</p>
+    <!-- Bottom Copyright -->
+    <div class="pt-6 text-center text-xs text-base-content/60">
+      <p>© {% currentYear %} Parag Chatterjee</p>
     </div>
   </div>
 </footer>
