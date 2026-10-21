@@ -12,13 +12,13 @@ layout: layouts/base.njk
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <!-- Left Content -->
       <div class="lg:col-span-8 space-y-6">
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-base-content leading-[1.08]">
+        <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-base-content leading-tight">
           {{
             hero.headline or "Bridging solid CS fundamentals with production-ready software."
           }}
         </h1>
 
-        <p class="text-lg sm:text-xl text-base-content/75 max-w-2xl leading-relaxed">
+        <p class="text-base sm:text-lg text-base-content/75 max-w-2xl leading-relaxed">
           {{
             hero.bio or "Hi, I'm Parag Chatterjee. I am a BCA (Hons) 4 Years student at Techno India (Hooghly Campus) affiliated to MAKAUT University, based in Janai, Hooghly. Skilled in Java, Spring Boot, React, Angular, C, Python 3, and AWS Cloud."
           }}
@@ -90,7 +90,7 @@ layout: layouts/base.njk
       <div class="text-xs uppercase font-bold tracking-widest text-primary mb-2">
         {{ projectsSectionSubtitle or "Portfolio Showcase" }}
       </div>
-      <h2 class="text-3xl sm:text-5xl font-black tracking-tight">
+      <h2 class="text-2xl sm:text-3xl font-black tracking-tight">
         {{ projectsSectionTitle or "Featured Engineering & Practice" }}
       </h2>
     </div>
@@ -134,7 +134,7 @@ layout: layouts/base.njk
       <div class="text-xs uppercase font-bold tracking-widest text-secondary mb-2">
         Skills &amp; Knowledge
       </div>
-      <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
+      <h2 class="text-2xl sm:text-3xl font-black tracking-tight">
         What I Work With
       </h2>
       <p class="text-sm text-base-content/70 mt-2">
@@ -164,7 +164,7 @@ layout: layouts/base.njk
               </svg>
             {% endif %}
           </div>
-          <h3 class="text-xl font-black mb-3">{{ pillar.title }}</h3>
+          <h3 class="text-lg font-bold mb-2">{{ pillar.title }}</h3>
           <p class="text-sm text-base-content/75 leading-relaxed mb-6">
             {{ pillar.description }}
           </p>
@@ -186,7 +186,7 @@ layout: layouts/base.njk
       <div class="text-xs uppercase font-bold tracking-widest text-accent mb-2">
         {{ blogSectionSubtitle or "Writing & Tutorials" }}
       </div>
-      <h2 class="text-3xl sm:text-5xl font-black tracking-tight">
+      <h2 class="text-2xl sm:text-3xl font-black tracking-tight">
         {{ blogSectionTitle or "Recent Thoughts" }}
       </h2>
     </div>

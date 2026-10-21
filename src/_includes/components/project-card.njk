@@ -31,26 +31,26 @@
           {{ project.data.title }}
         </a>
         {% if project.data.category %}
-          <span class="badge badge-sm badge-outline font-mono text-[11px]">{{
+          <span class="badge badge-sm badge-outline font-mono text-xs">{{
             project.data.category
           }}</span>
         {% endif %}
         {% if project.data.featured %}
-          <span class="badge badge-sm badge-primary text-[11px] font-bold">Featured</span>
+          <span class="badge badge-sm badge-primary text-xs font-bold">Featured</span>
         {% endif %}
       </div>
 
-      <p class="text-xs sm:text-sm text-base-content/75 line-clamp-2 leading-relaxed">
+      <p class="text-sm text-base-content/75 line-clamp-2 leading-relaxed">
         {{ project.data.description }}
       </p>
 
       <!-- Tech Stack Badges & Year -->
       <div class="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
-        <span class="text-base-content/50 font-mono text-[11px] mr-1">{{
+        <span class="text-base-content/50 font-mono text-xs mr-1">{{
           project.data.year or '2026'
         }} •</span>
         {% for tech in project.data.techStack %}
-          <span class="badge badge-xs badge-ghost font-mono text-[10px]">{{
+          <span class="badge badge-sm badge-ghost font-mono text-xs">{{
             tech
           }}</span>
         {% endfor %}
