@@ -4,7 +4,6 @@ layout: layouts/base.njk
 
 {% from "components/page-header.njk" import pageHeader %}
 {% from "components/project-card.njk" import projectCard %}
-{% from "components/cta-banner.njk" import ctaBanner %}
 
 <div class="max-w-6xl mx-auto px-4 py-12 sm:px-6">
   <!-- Reusable Page Header Component -->
@@ -57,15 +56,7 @@ layout: layouts/base.njk
     {% endif %}
   </div>
 
-  <!-- Reusable Call To Action Banner Component -->
-  <div class="mt-16">
-    {{ ctaBanner(
-      title=cta.title or "Looking for an ambitious, fast-learning developer?",
-      subtitle=cta.subtitle or "Explore my background and technical curriculum vitae.",
-      buttonText=cta.buttonText or "View Resume / CV →",
-      buttonUrl=cta.buttonUrl or "/resume/"
-    ) }}
-  </div>
+
 </div>
 
 <!-- Interactive Filtering Script -->

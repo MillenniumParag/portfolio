@@ -2,7 +2,6 @@
 layout: layouts/base.njk
 ---
 
-{% from "components/cta-banner.njk" import ctaBanner %}
 
 {% set ws = workstation or uses %}
 
@@ -175,17 +174,7 @@ layout: layouts/base.njk
       </div>
     </div>
 
-    <!-- Call to Action -->
-    <div class="pt-4">
-      {{ ctaBanner(
-        title=cta.title or "Interested in discussing opportunities or projects?",
-        subtitle=cta.subtitle or "Feel free to explore my projects or view my complete resume.",
-        buttonText=cta.buttonText or "View Resume / CV →",
-        buttonUrl=cta.buttonUrl or "/resume/",
-        secondaryText=cta.secondaryText or "Explore Portfolio",
-        secondaryUrl=cta.secondaryUrl or "/projects/"
-      ) }}
-    </div>
+
   </div>
 
   <!-- ============================================== -->
@@ -282,17 +271,7 @@ layout: layouts/base.njk
       </section>
     {% endif %}
 
-    <!-- Call to Action Banner -->
-    <div class="pt-4">
-      {{ ctaBanner(
-        title="Ready to discuss engineering opportunities?",
-        subtitle="Explore my projects or take a look at my complete curriculum vitae.",
-        buttonText="View Resume / CV →",
-        buttonUrl="/resume/",
-        secondaryText="Explore Portfolio",
-        secondaryUrl="/projects/"
-      ) }}
-    </div>
+
   </div>
 
   <!-- ============================================== -->
@@ -409,17 +388,7 @@ layout: layouts/base.njk
       </div>
     </section>
 
-    <!-- Call to Action Banner -->
-    <div class="pt-4">
-      {{ ctaBanner(
-        title="Ready to discuss engineering opportunities?",
-        subtitle="Explore my projects or take a look at my complete curriculum vitae.",
-        buttonText="View Resume / CV →",
-        buttonUrl="/resume/",
-        secondaryText="Explore Portfolio",
-        secondaryUrl="/projects/"
-      ) }}
-    </div>
+
   </div>
 </div>
 

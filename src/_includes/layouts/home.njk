@@ -5,7 +5,6 @@ layout: layouts/base.njk
 
 {% from "components/project-card.njk" import projectCard %}
 {% from "components/article-card.njk" import articleCard %}
-{% from "components/cta-banner.njk" import ctaBanner %}
 
 <!-- Hero Section -->
 <section class="relative overflow-hidden py-16 sm:py-24 bg-linear-to-b from-base-200/40 via-base-100 to-base-100 border-b border-base-200">
@@ -226,16 +225,3 @@ layout: layouts/base.njk
   {% endif %}
 </section>
 
-<!-- Call to Action Banner -->
-<section class="max-w-6xl mx-auto px-4 sm:px-6 mb-20">
-  {{
-    ctaBanner(
-      title=cta.title or "Interested in discussing engineering opportunities?",
-      subtitle=cta.subtitle or "Feel free to explore my portfolio or view my complete curriculum vitae.",
-      buttonText=cta.buttonText or "View Resume / CV →",
-      buttonUrl=cta.buttonUrl or "/resume/",
-      secondaryText=cta.secondaryText or "Explore Portfolio",
-      secondaryUrl=cta.secondaryUrl or "/projects/"
-    )
-  }}
-</section>
