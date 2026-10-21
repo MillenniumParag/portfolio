@@ -36,12 +36,18 @@ layout: layouts/base.njk
             </svg>
           </a>
           {% if hero.secondaryButtonText %}
+          {% set isExtSec = (hero.secondaryButtonUrl or '') | startsWith('http') %}
           <a
             href="{{ hero.secondaryButtonUrl or '/about/' }}"
-            {% if (hero.secondaryButtonUrl) | startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}
-            class="btn btn-outline rounded-lg px-7 text-base"
+            {% if isExtSec %}target="_blank" rel="noopener noreferrer"{% endif %}
+            class="btn btn-outline rounded-lg px-7 text-base group inline-flex items-center gap-2"
           >
-            {{ hero.secondaryButtonText }}
+            <span>{{ hero.secondaryButtonText }}</span>
+            {% if isExtSec %}
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+            {% endif %}
           </a>
           {% endif %}
           <a

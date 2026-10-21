@@ -10,21 +10,36 @@
         {{ subtitle }}
       </p>
       <div class="pt-4 flex flex-wrap gap-4">
+        {% set isExtPrimary = (buttonUrl or '') | startsWith('http') %}
         <a
           href="{{ buttonUrl }}"
+          {% if isExtPrimary %}target="_blank" rel="noopener noreferrer"{% endif %}
           class="btn bg-base-100 text-base-content hover:bg-base-200 border-none rounded-lg px-8 font-bold group inline-flex items-center gap-2"
         >
           <span>{{ buttonText | replace("→", "") | trim }}</span>
+          {% if isExtPrimary %}
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+          {% else %}
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
           </svg>
+          {% endif %}
         </a>
         {% if secondaryText and secondaryUrl %}
+          {% set isExtSecondary = (secondaryUrl or '') | startsWith('http') %}
           <a
             href="{{ secondaryUrl }}"
-            class="btn btn-outline border-white text-white hover:bg-white hover:text-primary rounded-lg px-6 font-bold"
+            {% if isExtSecondary %}target="_blank" rel="noopener noreferrer"{% endif %}
+            class="btn btn-outline border-white text-white hover:bg-white hover:text-primary rounded-lg px-6 font-bold group inline-flex items-center gap-2"
           >
-            {{ secondaryText }}
+            <span>{{ secondaryText }}</span>
+            {% if isExtSecondary %}
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+            {% endif %}
           </a>
         {% endif %}
       </div>

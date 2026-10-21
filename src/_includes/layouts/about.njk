@@ -24,11 +24,23 @@ layout: layouts/base.njk
           </p>
         </div>
         <div class="flex flex-wrap gap-3 pt-2">
-          <a href="{{ primaryButtonUrl or '/projects/' }}" class="btn btn-primary rounded-lg font-medium">
-            {{ primaryButtonText or "Explore Portfolio" }}
+          {% set isExtAbout1 = (primaryButtonUrl or '') | startsWith('http') %}
+          <a href="{{ primaryButtonUrl or '/projects/' }}" {% if isExtAbout1 %}target="_blank" rel="noopener noreferrer"{% endif %} class="btn btn-primary rounded-lg font-medium group inline-flex items-center gap-2">
+            <span>{{ primaryButtonText or "Explore Portfolio" }}</span>
+            {% if isExtAbout1 %}
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+            {% endif %}
           </a>
-          <a href="{{ secondaryButtonUrl or '/resume/' }}" class="btn btn-outline rounded-lg font-medium">
-            {{ secondaryButtonText or "View Resume" }}
+          {% set isExtAbout2 = (secondaryButtonUrl or '') | startsWith('http') %}
+          <a href="{{ secondaryButtonUrl or '/resume/' }}" {% if isExtAbout2 %}target="_blank" rel="noopener noreferrer"{% endif %} class="btn btn-outline rounded-lg font-medium group inline-flex items-center gap-2">
+            <span>{{ secondaryButtonText or "View Resume" }}</span>
+            {% if isExtAbout2 %}
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+            {% endif %}
           </a>
         </div>
       </div>
