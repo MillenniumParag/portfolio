@@ -11,6 +11,7 @@ secondaryButtonText: "View Resume"
 secondaryButtonUrl: "/resume/"
 bioCard:
   name: "Parag Chatterjee"
+  avatar: "/uploads/me.avif"
   role: "BCA (Hons) '27 • Aspiring SDE"
   summary: "Studying at Techno India (Hooghly Campus), MAKAUT. Skilled in Java, Spring Boot, React, Angular, C, Python 3, and AWS Cloud."
 storyTitle: "The Academic Journey & Practical Training"

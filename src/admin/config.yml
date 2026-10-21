@@ -40,7 +40,7 @@ collections:
                   name: "image", 
                   widget: "image", 
                   required: false, 
-                  default: "/uploads/avatar.jpg", 
+                  default: "/uploads/me.avif", 
                   hint: "Hero portrait image (upload from your device or select from media folder)." 
                 }
               - { label: "Hero Image Alt Text", name: "imageAlt", widget: "string", default: "Parag Chatterjee" }
@@ -101,6 +101,7 @@ collections:
             widget: "object"
             fields:
               - { label: "Name", name: "name", widget: "string", default: "Parag Chatterjee" }
+              - { label: "Avatar Image", name: "avatar", widget: "image", required: false, default: "/uploads/me.avif" }
               - { label: "Role Title", name: "role", widget: "string" }
               - { label: "Summary", name: "summary", widget: "text" }
               - { label: "Badge 1", name: "badge1", widget: "string", default: "Fresher" }

@@ -76,11 +76,11 @@ layout: layouts/base.njk
         <div class="w-full max-w-sm">
           <div class="relative overflow-hidden rounded-3xl border border-base-200 shadow-2xl shadow-primary/10 bg-base-200 aspect-4/5 group">
             <img
-              src="{{ hero.image or '/uploads/avatar.jpg' }}"
+              src="{{ hero.image or '/uploads/me.avif' }}"
               alt="{{ hero.imageAlt or 'Parag Chatterjee' }}"
               class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
               loading="eager"
-              onerror="this.onerror=null; this.src='/uploads/avatar.jpg';"
+              onerror="this.onerror=null; this.src='/uploads/me.webp';"
             />
             <div class="absolute inset-0 ring-1 ring-inset ring-base-content/10 rounded-3xl pointer-events-none"></div>
           </div>

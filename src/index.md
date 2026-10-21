@@ -15,7 +15,7 @@ hero:
   cvButtonText: View Resume / CV
   cvButtonUrl: /resume/
   imageAlt: Parag Chatterjee — Developer & BCA (Hons) Student
-  image: /uploads/20250330_234130.avif
+  image: /uploads/me.avif
 stats:
   - value: "7.89"
     label: Academic GPA

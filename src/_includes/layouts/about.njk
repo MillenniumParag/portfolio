@@ -81,7 +81,7 @@ layout: layouts/base.njk
         <div class="card bg-base-100 border border-base-200 p-6 rounded-3xl text-center space-y-4">
           <div class="avatar online mx-auto">
             <div class="w-32 h-32 rounded-3xl overflow-hidden ring-4 ring-primary/20 shadow-xl shadow-primary/10 bg-primary/10">
-              <img src="{{ bioCard.avatar or '/uploads/avatar.webp' }}" alt="{{ bioCard.name or 'Parag Chatterjee' }}" class="w-full h-full object-cover" width="128" height="128" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+              <img src="{{ bioCard.avatar or '/uploads/me.avif' }}" alt="{{ bioCard.name or 'Parag Chatterjee' }}" class="w-full h-full object-cover" width="128" height="128" onerror="this.onerror=null; this.src='/uploads/me.webp';" />
               <div class="hidden w-full h-full bg-primary text-primary-content items-center justify-center text-4xl font-black">
                 {{ (bioCard.name or 'P')[0] }}
               </div>

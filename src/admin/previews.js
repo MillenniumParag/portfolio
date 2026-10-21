@@ -71,7 +71,7 @@
       var stats = Array.isArray(data.stats) ? data.stats : [];
       var pillars = Array.isArray(data.pillars) ? data.pillars : [];
       var cta = data.cta || {};
-      var heroImg = assetUrl(this.props.getAsset, hero.image || '/uploads/avatar.jpg');
+      var heroImg = assetUrl(this.props.getAsset, hero.image || '/uploads/me.avif');
 
       return h('div', { className: 'cms-preview-root' },
         h('div', { className: 'preview-notice' },
@@ -183,7 +183,7 @@
         // Bio Card
         bioCard.name ? h('div', { className: 'preview-bio-card' },
           h('img', {
-            src: '/uploads/avatar.jpg',
+            src: assetUrl(this.props.getAsset, bioCard.avatar || '/uploads/me.avif'),
             alt: bioCard.name,
             className: 'preview-avatar-img'
           }),
