@@ -9,6 +9,7 @@
     "dev": "eleventy --serve",
     "cms:proxy": "decap-server",
     "icons:download": "node scripts/download-tech-icons.js",
+    "generate:favicons": "node scripts/generate-favicons.js",
     "generate:assets": "node scripts/generate-assets.js",
     "dev:cms": "concurrently \"npm run dev\" \"npm run cms:proxy\" --names \"11TY,DECAP\" --prefix-colors \"cyan,magenta\""
   },
