@@ -103,7 +103,7 @@ educationCard:
 cta:
   title: "Interested in discussing opportunities or projects?"
   subtitle: "Feel free to explore my projects or view my complete resume."
-  buttonText: "View Resume / CV →"
+  buttonText: "View Resume / CV"
   buttonUrl: "/resume/"
   secondaryText: "Explore Portfolio"
   secondaryUrl: "/projects/"

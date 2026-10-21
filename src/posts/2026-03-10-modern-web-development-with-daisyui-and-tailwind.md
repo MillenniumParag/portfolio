@@ -30,7 +30,9 @@ Instead of writing 15 utility classes for a card or button, daisyUI gives you cl
       <div class="font-bold">Project Title</div>
       <div class="text-xs opacity-60">Category &amp; Stack</div>
     </div>
-    <button class="btn btn-square btn-ghost">→</button>
+    <button class="btn btn-square btn-ghost" aria-label="View Details">
+      <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </button>
   </li>
 </ul>
 ```

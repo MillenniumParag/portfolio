@@ -572,8 +572,8 @@
 
           // Links
           h('div', { className: 'preview-buttons' },
-            data.demoUrl ? h('span', { className: 'preview-btn-primary' }, 'Live Demo ↗') : null,
-            data.githubUrl ? h('span', { className: 'preview-btn-outline' }, 'GitHub Code ↗') : null
+            data.demoUrl ? h('span', { className: 'preview-btn-primary' }, 'Live Demo') : null,
+            data.githubUrl ? h('span', { className: 'preview-btn-outline' }, 'GitHub Code') : null
           ),
 
           // Tech Stack

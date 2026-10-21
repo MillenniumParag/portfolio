@@ -1,5 +1,5 @@
 {%
-  macro ctaBanner(title="Have a project or engineering role in mind?", subtitle="I am currently available for select consulting engagements, full-stack architectural builds, and full-time opportunities.", buttonText="Email Me →", buttonUrl="mailto:paragchatterjee.work@gmail.com", secondaryText=null, secondaryUrl=null)
+  macro ctaBanner(title="Have a project or engineering role in mind?", subtitle="I am currently available for select consulting engagements, full-stack architectural builds, and full-time opportunities.", buttonText="Email Me", buttonUrl="mailto:paragchatterjee.work@gmail.com", secondaryText=null, secondaryUrl=null)
 %}
   <div class="card bg-linear-to-r from-primary to-accent text-primary-content p-8 sm:p-14 rounded-xl border border-primary/20 relative overflow-hidden">
     <div class="relative z-10 max-w-2xl space-y-4">
@@ -12,9 +12,12 @@
       <div class="pt-4 flex flex-wrap gap-4">
         <a
           href="{{ buttonUrl }}"
-          class="btn bg-base-100 text-base-content hover:bg-base-200 border-none rounded-lg px-8 font-bold"
+          class="btn bg-base-100 text-base-content hover:bg-base-200 border-none rounded-lg px-8 font-bold group inline-flex items-center gap-2"
         >
-          {{ buttonText }}
+          <span>{{ buttonText | replace("→", "") | trim }}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
         </a>
         {% if secondaryText and secondaryUrl %}
           <a

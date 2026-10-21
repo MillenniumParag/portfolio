@@ -44,7 +44,7 @@ collections:
                   hint: "Hero portrait image (upload from your device or select from media folder)." 
                 }
               - { label: "Hero Image Alt Text", name: "imageAlt", widget: "string", default: "Parag Chatterjee" }
-              - { label: "Primary Button Text", name: "primaryButtonText", widget: "string", default: "Explore Portfolio →" }
+              - { label: "Primary Button Text", name: "primaryButtonText", widget: "string", default: "Explore Portfolio" }
               - { label: "Primary Button URL", name: "primaryButtonUrl", widget: "string", default: "/projects/" }
               - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string", required: false }
               - { label: "Secondary Button URL", name: "secondaryButtonUrl", widget: "string", required: false }
@@ -146,7 +146,7 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Subtitle", name: "subtitle", widget: "text" }
-              - { label: "Button Text", name: "buttonText", widget: "string", default: "View Resume / CV →" }
+              - { label: "Button Text", name: "buttonText", widget: "string", default: "View Resume / CV" }
               - { label: "Button URL", name: "buttonUrl", widget: "string", default: "/resume/" }
           - label: "Gear & Workstation Setup"
             name: "workstation"
@@ -395,7 +395,7 @@ collections:
         fields:
           - { label: "Enable Banner (Toggle ON / OFF)", name: "enabled", widget: "boolean", default: true, hint: "Switch this toggle to turn the top announcement banner ON or OFF across the public website." }
           - { label: "Banner Text", name: "text", widget: "string", default: "BCA (Hons) 4 Years (Batch 2023–2027) • Techno India (Hooghly Campus), MAKAUT" }
-          - { label: "Link Text", name: "linkText", widget: "string", default: "Read About Me →", required: false }
+          - { label: "Link Text", name: "linkText", widget: "string", default: "Read About Me", required: false }
           - { label: "Link URL", name: "linkUrl", widget: "string", default: "/about/", required: false }
           - { label: "Show Pulsing Active Dot", name: "showPulse", widget: "boolean", default: true }
 

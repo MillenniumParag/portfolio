@@ -75,8 +75,11 @@
           {% endif %}
           <span>{{ currentBanner.text or "BCA (Hons) 4 Years (Batch 2023–2027) • Techno India (Hooghly Campus), MAKAUT" }}</span>
           {% if currentBanner.linkText %}
-          <a href="{{ currentBanner.linkUrl or '/about/' }}" {% if (currentBanner.linkUrl or '') | startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %} class="text-primary font-bold hover:underline ml-1">
-            {{ currentBanner.linkText }}
+          <a href="{{ currentBanner.linkUrl or '/about/' }}" {% if (currentBanner.linkUrl or '') | startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %} class="text-primary font-bold hover:underline ml-1 group inline-flex items-center gap-0.5">
+            <span>{{ currentBanner.linkText | replace("→", "") | trim }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
           </a>
           {% endif %}
         </div>

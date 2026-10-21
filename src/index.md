@@ -9,7 +9,7 @@ hero:
   headline: Building software with solid foundations.
   bio: Hi, I'm Parag, a BCA (Hons) student passionate about building software with
     Java, Spring Boot, React, Angular, C, and Python.
-  primaryButtonText: Explore Portfolio →
+  primaryButtonText: Explore Portfolio
   primaryButtonUrl: /projects/
   cvButtonText: View Resume / CV
   cvButtonUrl: /resume/
@@ -82,7 +82,7 @@ blogSectionTitle: Recent Thoughts & Learning
 cta:
   title: Interested in discussing engineering opportunities?
   subtitle: Feel free to explore my portfolio or view my complete curriculum vitae.
-  buttonText: View Resume / CV →
+  buttonText: View Resume / CV
   buttonUrl: /resume/
   secondaryText: Explore Portfolio
   secondaryUrl: /projects/

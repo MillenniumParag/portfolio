@@ -137,10 +137,18 @@ layout: layouts/base.njk
           BCA (Hons) 4 Years Student (Batch of 2023–2027) at Techno India (Hooghly Campus), MAKAUT. Skilled in Java, Spring Boot, React, Angular, C, Python 3, and AWS Cloud.
         </p>
         <div class="pt-1 flex flex-wrap gap-4 text-xs font-semibold">
-          <a href="/about/" class="text-primary hover:underline"
-          >Read Full Story →</a>
-          <a href="/resume/" class="text-base-content/70 hover:text-primary"
-          >View Resume →</a>
+          <a href="/about/" class="text-primary hover:underline group inline-flex items-center gap-1">
+            <span>Read Full Story</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+          <a href="/resume/" class="text-base-content/70 hover:text-primary group inline-flex items-center gap-1">
+            <span>View Resume</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
@@ -148,11 +156,17 @@ layout: layouts/base.njk
 
   <!-- Bottom Navigation -->
   <div class="mt-12 pt-8 border-t border-base-200 flex justify-between items-center">
-    <a href="/blog/" class="btn btn-outline btn-sm rounded-lg font-medium">
-      ← Back to All Articles
+    <a href="/blog/" class="btn btn-outline btn-sm rounded-lg font-medium group inline-flex items-center gap-1.5">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-x-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+      </svg>
+      <span>Back to All Articles</span>
     </a>
-    <a href="/projects/" class="btn btn-primary btn-sm rounded-lg font-medium">
-      Explore Projects Showcase →
+    <a href="/projects/" class="btn btn-primary btn-sm rounded-lg font-medium group inline-flex items-center gap-1.5">
+      <span>Explore Projects Showcase</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+      </svg>
     </a>
   </div>
 </article>

@@ -28,9 +28,12 @@ layout: layouts/base.njk
         <div class="flex flex-wrap items-center gap-4 pt-2">
           <a
             href="{{ hero.primaryButtonUrl or '/projects/' }}"
-            class="btn btn-primary rounded-lg px-7 text-base font-bold"
+            class="btn btn-primary rounded-lg px-7 text-base font-bold group inline-flex items-center gap-2"
           >
-            {{ hero.primaryButtonText or "Explore Portfolio →" }}
+            <span>{{ (hero.primaryButtonText or "Explore Portfolio") | replace("→", "") | trim }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
           </a>
           {% if hero.secondaryButtonText %}
           <a
@@ -140,8 +143,11 @@ layout: layouts/base.njk
         {{ projectsSectionTitle or "Engineering & Practice" }}
       </h2>
     </div>
-    <a href="/projects/" class="btn btn-outline rounded-lg font-bold">
-      View Projects & Repositories →
+    <a href="/projects/" class="btn btn-outline rounded-lg font-bold group inline-flex items-center gap-2">
+      <span>View Projects &amp; Repositories</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+      </svg>
     </a>
   </div>
 
@@ -455,8 +461,11 @@ layout: layouts/base.njk
         {{ blogSectionTitle or "Recent Thoughts" }}
       </h2>
     </div>
-    <a href="/blog/" class="btn btn-outline rounded-lg font-bold">
-      Read All Articles →
+    <a href="/blog/" class="btn btn-outline rounded-lg font-bold group inline-flex items-center gap-2">
+      <span>Read All Articles</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+      </svg>
     </a>
   </div>
 
