@@ -1,5 +1,6 @@
 ---
 layout: layouts/base.njk
+
 ---
 
 {% from "components/page-header.njk" import pageHeader %}
@@ -7,31 +8,60 @@ layout: layouts/base.njk
 
 <div class="max-w-6xl mx-auto px-4 py-12 sm:px-6">
   <!-- Reusable Page Header Component -->
-  {{ pageHeader(
-    title=headerTitle or "Selected Projects & Engineering Work",
-    description=headerDescription or "A collection of full-stack web applications, distributed systems projects, and developer tools built throughout my college capstones, internships, and open-source exploration.",
-    badgeText=badgeText,
-    badgeType="primary"
-  ) }}
+  {{
+    pageHeader(
+      title=headerTitle or "Selected Projects & Engineering Work",
+      description=headerDescription or "A collection of full-stack web applications, distributed systems projects, and developer tools built throughout my college capstones, internships, and open-source exploration.",
+      badgeText=badgeText,
+      badgeType="primary"
+    )
+  }}
 
   <!-- Filter Pills using daisyUI btn components -->
   {% if collections.project and collections.project.length > 0 %}
-  <div class="flex flex-wrap items-center gap-2 mb-8 pb-4 border-b border-base-200" id="project-filters">
-    <button class="btn btn-sm btn-primary rounded-xl filter-btn active" data-filter="all">All Projects</button>
-    <button class="btn btn-sm btn-ghost rounded-xl filter-btn" data-filter="Full Stack">Full Stack</button>
-    <button class="btn btn-sm btn-ghost rounded-xl filter-btn" data-filter="Frontend">Frontend</button>
-    <button class="btn btn-sm btn-ghost rounded-xl filter-btn" data-filter="Cloud & DevOps">Cloud & DevOps</button>
-    <button class="btn btn-sm btn-ghost rounded-xl filter-btn" data-filter="Systems">Systems</button>
-  </div>
+    <div
+      class="flex flex-wrap items-center gap-2 mb-8 pb-4 border-b border-base-200"
+      id="project-filters"
+    >
+      <button
+        class="btn btn-sm btn-primary rounded-xl filter-btn active"
+        data-filter="all"
+      >
+        All Projects
+      </button>
+      <button
+        class="btn btn-sm btn-ghost rounded-xl filter-btn"
+        data-filter="Full Stack"
+      >
+        Full Stack
+      </button>
+      <button
+        class="btn btn-sm btn-ghost rounded-xl filter-btn"
+        data-filter="Frontend"
+      >
+        Frontend
+      </button>
+      <button
+        class="btn btn-sm btn-ghost rounded-xl filter-btn"
+        data-filter="Cloud & DevOps"
+      >
+        Cloud & DevOps
+      </button>
+      <button
+        class="btn btn-sm btn-ghost rounded-xl filter-btn"
+        data-filter="Systems"
+      >
+        Systems
+      </button>
+    </div>
   {% endif %}
 
   <!-- Projects List using DaisyUI List Component -->
   {% if collections.project and collections.project.length > 0 %}
-    <ul class="list bg-base-100 rounded-3xl border border-base-200 shadow-sm overflow-hidden" id="projects-list">
-      <li class="p-4 pb-2 text-xs font-mono uppercase tracking-wider text-base-content/60 flex items-center justify-between border-b border-base-200/50">
-        <span>Portfolio Projects &amp; Repositories ({{ collections.project.length }})</span>
-        <span class="hidden sm:inline">Filter by category above</span>
-      </li>
+    <ul
+      class="list bg-base-100 rounded-3xl border border-base-200 shadow-sm overflow-hidden"
+      id="projects-list"
+    >
       {% for project in collections.project %}
         {{ projectCard(project) }}
       {% endfor %}
@@ -39,18 +69,36 @@ layout: layouts/base.njk
   {% else %}
     <div class="card bg-base-100 border border-base-200 p-10 sm:p-16 text-center rounded-3xl max-w-xl mx-auto my-6 space-y-4">
       <div class="w-16 h-16 rounded-2xl bg-base-200 text-base-content/40 mx-auto flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-8 h-8"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+          />
         </svg>
       </div>
       <div>
-        <h3 class="text-2xl font-bold text-base-content">Nothing here for now</h3>
+        <h3 class="text-2xl font-bold text-base-content">
+          Nothing here for now
+        </h3>
         <p class="text-sm text-base-content/60 mt-1.5 max-w-sm mx-auto">
           No projects have been added yet. Please check back later!
         </p>
       </div>
       <div class="pt-2 flex flex-wrap justify-center gap-3">
-        <a href="{{ site.social.github or 'https://github.com/MillenniumParag' }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm rounded-xl font-bold">
+        <a
+          href="{{ site.social.github or 'https://github.com/MillenniumParag' }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-outline btn-sm rounded-xl font-bold"
+        >
           Visit GitHub (MillenniumParag) ↗
         </a>
         <a href="/resume/" class="btn btn-primary btn-sm rounded-xl font-bold">
@@ -59,34 +107,33 @@ layout: layouts/base.njk
       </div>
     </div>
   {% endif %}
-
 </div>
 
 <!-- Interactive Filtering Script -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.project-card');
+document.addEventListener("DOMContentLoaded", () => {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll(".project-card");
 
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => {
-          b.classList.remove('btn-primary', 'active');
-          b.classList.add('btn-ghost');
-        });
-        btn.classList.add('btn-primary', 'active');
-        btn.classList.remove('btn-ghost');
+  filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach(b => {
+        b.classList.remove("btn-primary", "active");
+        b.classList.add("btn-ghost");
+      });
+      btn.classList.add("btn-primary", "active");
+      btn.classList.remove("btn-ghost");
 
-        const selectedFilter = btn.getAttribute('data-filter');
-        cards.forEach(card => {
-          const category = card.getAttribute('data-category');
-          if (selectedFilter === 'all' || category === selectedFilter) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
-        });
+      const selectedFilter = btn.getAttribute("data-filter");
+      cards.forEach(card => {
+        const category = card.getAttribute("data-category");
+        if (selectedFilter === "all" || category === selectedFilter) {
+          card.classList.remove("hidden");
+        } else {
+          card.classList.add("hidden");
+        }
       });
     });
   });
+});
 </script>
