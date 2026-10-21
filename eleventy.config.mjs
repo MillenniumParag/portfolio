@@ -21,7 +21,7 @@ async function optimizeUploadedImages() {
   }
 
   const files = fs.readdirSync(uploadsDir);
-  const imageExtensions = [".png", ".jpg", ".jpeg", ".webp"];
+  const imageExtensions = [".png", ".jpg", ".jpeg", ".webp", ".avif"];
 
   for (const file of files) {
     const ext = path.extname(file).toLowerCase();
@@ -57,6 +57,14 @@ async function optimizeUploadedImages() {
           .toFile(webpDest);
       } else if (ext === ".webp") {
         await pipeline.webp({ quality: 82 }).toFile(destPath);
+      } else if (ext === ".avif") {
+        await pipeline.avif({ quality: 82 }).toFile(destPath);
+        // Also output a companion WebP
+        const webpDest = path.join(siteUploadsDir, `${path.parse(file).name}.webp`);
+        await sharp(srcPath)
+          .resize({ width: Math.min(metadata.width || 1600, 1600), withoutEnlargement: true })
+          .webp({ quality: 82 })
+          .toFile(webpDest);
       }
     } catch (err) {
       console.warn(`[Image Optimization] Fallback copy for ${file}:`, err.message);
@@ -68,6 +76,7 @@ async function optimizeUploadedImages() {
 export default function (eleventyConfig) {
   // Passthrough static assets
   eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
+  eleventyConfig.addPassthroughCopy({ "src/uploads": "uploads" });
   eleventyConfig.addPassthroughCopy({ "src/favicon.svg": "favicon.svg" });
   eleventyConfig.addPassthroughCopy({ "src/favicon.ico": "favicon.ico" });
   eleventyConfig.addPassthroughCopy({ "src/favicon-32x32.png": "favicon-32x32.png" });

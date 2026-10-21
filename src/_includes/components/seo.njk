@@ -14,8 +14,7 @@
 <!-- Canonical URL -->
 <link rel="canonical" href="{{ pageUrl }}" />
 
-<!-- Standard & Search Engine Specific Meta -->
-<title>{{ pageTitle }} | Parag.dev</title>
+<title>{% if 'Parag' in pageTitle %}{{ pageTitle }}{% else %}{{ pageTitle }} | Parag Chatterjee{% endif %}</title>
 <meta name="description" content="{{ pageDescription }}" />
 <meta name="author" content="{{ site.author }}" />
 <meta name="keywords" content="{{ site.keywords | join(', ') }}" />
@@ -40,13 +39,13 @@
 {%- endif %}
 
 <!-- Open Graph / Facebook / LinkedIn / Discord / Slack -->
-<meta property="og:site_name" content="Parag.dev" />
+<meta property="og:site_name" content="Parag Chatterjee" />
 <meta property="og:title" content="{{ pageTitle }}" />
 <meta property="og:description" content="{{ pageDescription }}" />
 <meta property="og:url" content="{{ pageUrl }}" />
 <meta property="og:type" content="{{ ogType or ('article' if layout == 'layouts/post.njk' else 'website') }}" />
 <meta property="og:image" content="{{ pageImage }}" />
-<meta property="og:image:alt" content="{{ pageTitle }} • Parag.dev" />
+<meta property="og:image:alt" content="{{ pageTitle }} • Parag Chatterjee" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="{{ site.locale }}" />
@@ -70,7 +69,7 @@
 <meta name="twitter:title" content="{{ pageTitle }}" />
 <meta name="twitter:description" content="{{ pageDescription }}" />
 <meta name="twitter:image" content="{{ pageImage }}" />
-<meta name="twitter:image:alt" content="{{ pageTitle }} • Parag.dev" />
+<meta name="twitter:image:alt" content="{{ pageTitle }} • Parag Chatterjee" />
 
 <!-- Structured Data (JSON-LD) for Rich Google & Bing Search Results -->
 <script type="application/ld+json">
@@ -81,7 +80,7 @@
       "@type": "WebSite",
       "@id": "{{ site.url }}/#website",
       "url": "{{ site.url }}",
-      "name": "Parag.dev",
+      "name": "{{ site.name }}",
       "description": "{{ site.description }}",
       "inLanguage": "en-US",
       "publisher": {
