@@ -27,9 +27,6 @@ stats:
   - value: 2023–27
     label: BCA(H) 4 Years
     color: secondary
-  - value: AWS & SAP
-    label: Practical Training
-    color: accent
 projectsSectionSubtitle: Engineering & Practice
 projectsSectionTitle: Featured Engineering & Practice
 pillars:
