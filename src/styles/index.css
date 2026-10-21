@@ -197,3 +197,49 @@ html.lenis body {
     overflow-x: auto;
   }
 }
+
+/* =================================================== */
+/* Infinite Scroll Marquee Blur Masks                  */
+/* Keeps scroll items blurry till the max-w-6xl bounds */
+/* =================================================== */
+.marquee-mask-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: max(3.5rem, calc((100% - 72rem) / 2 + 5rem));
+  background: linear-gradient(
+    to right,
+    color-mix(in oklab, var(--color-base-100, #ffffff) 80%, transparent) 0%,
+    color-mix(in oklab, var(--color-base-100, #ffffff) 70%, transparent) max(0px, calc(100% - 5rem)),
+    color-mix(in oklab, var(--color-base-100, #ffffff) 25%, transparent) max(0px, calc(100% - 2.5rem)),
+    transparent 100%
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  mask-image: linear-gradient(to right, black 0%, black max(0px, calc(100% - 5rem)), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 0%, black max(0px, calc(100% - 5rem)), transparent 100%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.marquee-mask-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: max(3.5rem, calc((100% - 72rem) / 2 + 5rem));
+  background: linear-gradient(
+    to left,
+    color-mix(in oklab, var(--color-base-100, #ffffff) 80%, transparent) 0%,
+    color-mix(in oklab, var(--color-base-100, #ffffff) 70%, transparent) max(0px, calc(100% - 5rem)),
+    color-mix(in oklab, var(--color-base-100, #ffffff) 25%, transparent) max(0px, calc(100% - 2.5rem)),
+    transparent 100%
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  mask-image: linear-gradient(to left, black 0%, black max(0px, calc(100% - 5rem)), transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, black 0%, black max(0px, calc(100% - 5rem)), transparent 100%);
+  pointer-events: none;
+  z-index: 10;
+}

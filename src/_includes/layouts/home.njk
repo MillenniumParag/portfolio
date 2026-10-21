@@ -85,9 +85,9 @@ layout: layouts/base.njk
 
 <!-- Infinite Tech Stack Marquee (Languages, Libraries, Frameworks) -->
 <section class="border-y border-base-200/80 bg-base-200/30 py-4 overflow-hidden relative">
-  <!-- Subtle Gradient Edge Masks -->
-  <div class="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-linear-to-r from-base-100 to-transparent z-10"></div>
-  <div class="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-linear-to-l from-base-100 to-transparent z-10"></div>
+  <!-- Progressive Blur Masks: Keeps scroll items blurry till the max-w-6xl bounds -->
+  <div class="marquee-mask-left"></div>
+  <div class="marquee-mask-right"></div>
 
   <div class="animate-marquee flex items-center gap-3 select-none">
     {% set techStack = [
