@@ -7,19 +7,19 @@ eleventyExcludeFromCollections: true
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 {%- for item in collections.all %}
-  {%- if item.url and not item.data.noindex and not item.data.eleventyExcludeFromCollections and item.url != '/admin/' and item.url != '/404.html' %}
+  {%- if item.url and not item.data.noindex and not item.data.eleventyExcludeFromCollections and item.url != '/admin/' and item.url != '/404.html' and item.url != '/uses/' %}
   <url>
-    <loc>https://parag.dev{{ item.url }}</loc>
+    <loc>{{ site.url or 'https://paragchatterjee.me' }}{{ item.url }}</loc>
     {%- if item.date %}
     <lastmod>{{ item.date.toISOString() if item.date.toISOString else item.date }}</lastmod>
     {%- endif %}
     {%- if item.url == '/' %}
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    {%- elif item.url == '/projects/' or item.url == '/resume/' %}
+    {%- elif item.url == '/about/' or item.url == '/projects/' or item.url == '/experience/' or item.url == '/resume/' %}
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    {%- elif item.url == '/blog/' or item.url == '/about/' %}
+    {%- elif item.url == '/blog/' %}
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     {%- elif item.url.startsWith('/projects/') or item.url.startsWith('/posts/') %}
