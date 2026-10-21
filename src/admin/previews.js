@@ -266,12 +266,12 @@
           )
         ) : null,
 
-        // Workstation & Uses Preview
+        // Workstation & Gear Preview
         workstation.headline ? h('div', { className: 'preview-card' },
           h('h2', { className: 'preview-section-title' }, '💻 ' + workstation.headline),
           workstation.intro ? h('p', { className: 'preview-item-desc' }, workstation.intro) : null,
           h('div', { style: { fontSize: '12px', color: '#64748b', fontStyle: 'italic', marginTop: '8px' } },
-            'Hardware, DevTools, Terminal, and Apps configured under this section render inside the "Uses & Setup" tab on the About page.'
+            'Hardware, DevTools, Terminal, and Apps configured under this section render inside the "Gear" tab on the About page.'
           )
         ) : null,
 

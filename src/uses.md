@@ -1,7 +1,7 @@
 ---
 layout: layouts/uses.njk
 permalink: /uses/
-title: "Uses & Workstation Setup | Parag Chatterjee"
+title: "Gear & Workstation Setup | Parag Chatterjee"
 description: "Workstation setup, operating systems, development environment, terminal preferences, and everyday tools used by Parag Chatterjee."
 badgeText: "Developer Setup • Updated 2026"
 headline: "Operating Systems, Tools & Software I Rely On"

@@ -150,7 +150,7 @@ collections:
               - { label: "Subtitle", name: "subtitle", widget: "text" }
               - { label: "Button Text", name: "buttonText", widget: "string", default: "View Resume / CV →" }
               - { label: "Button URL", name: "buttonUrl", widget: "string", default: "/resume/" }
-          - label: "Uses & Workstation Setup"
+          - label: "Gear & Workstation Setup"
             name: "workstation"
             widget: "object"
             collapsed: true

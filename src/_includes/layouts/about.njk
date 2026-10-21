@@ -3,7 +3,7 @@ layout: layouts/base.njk
 ---
 
 
-{% set ws = workstation or uses %}
+{% set ws = workstation or gear or uses %}
 
 <div class="max-w-6xl mx-auto px-4 pt-12 pb-32 sm:px-6">
 
@@ -229,9 +229,9 @@ layout: layouts/base.njk
   </div>
 
   <!-- ============================================== -->
-  <!-- TAB 3: USES & WORKSTATION                      -->
+  <!-- TAB 3: GEAR & WORKSTATION                      -->
   <!-- ============================================== -->
-  <div id="tab-content-uses" class="hidden space-y-14">
+  <div id="tab-content-gear" class="hidden space-y-14">
     <!-- Header -->
     <header class="max-w-3xl">
       <h2 class="text-2xl sm:text-3xl font-black tracking-tight mb-3 leading-tight">
@@ -378,15 +378,15 @@ layout: layouts/base.njk
     </button>
 
     <button
-      id="tab-btn-uses"
+      id="tab-btn-gear"
       type="button"
       role="tab"
-      onclick="setActiveTab('uses', true)"
+      onclick="setActiveTab('gear', true)"
       class="btn btn-sm rounded-xl font-bold transition-all btn-ghost text-base-content/70 hover:text-base-content"
       aria-selected="false"
-      aria-controls="tab-content-uses"
+      aria-controls="tab-content-gear"
     >
-      <span>Uses</span>
+      <span>Gear</span>
     </button>
   </div>
 </div>
@@ -435,19 +435,21 @@ layout: layouts/base.njk
   }
 
   function setActiveTab(tab, shouldScroll) {
+    if (tab === 'uses') tab = 'gear';
+
     var meContent = document.getElementById('tab-content-me');
     var expContent = document.getElementById('tab-content-exp');
-    var usesContent = document.getElementById('tab-content-uses');
+    var gearContent = document.getElementById('tab-content-gear') || document.getElementById('tab-content-uses');
     var meBtn = document.getElementById('tab-btn-me');
     var expBtn = document.getElementById('tab-btn-exp');
-    var usesBtn = document.getElementById('tab-btn-uses');
+    var gearBtn = document.getElementById('tab-btn-gear') || document.getElementById('tab-btn-uses');
 
-    if (!meContent || !expContent || !usesContent || !meBtn || !expBtn || !usesBtn) return;
+    if (!meContent || !expContent || !gearContent || !meBtn || !expBtn || !gearBtn) return;
 
     // Reset all tabs to hidden and ghost styling
     meContent.classList.add('hidden');
     expContent.classList.add('hidden');
-    usesContent.classList.add('hidden');
+    gearContent.classList.add('hidden');
 
     meBtn.classList.remove('btn-primary', 'shadow-xs');
     meBtn.classList.add('btn-ghost', 'text-base-content/70');
@@ -457,9 +459,9 @@ layout: layouts/base.njk
     expBtn.classList.add('btn-ghost', 'text-base-content/70');
     expBtn.setAttribute('aria-selected', 'false');
 
-    usesBtn.classList.remove('btn-primary', 'shadow-xs');
-    usesBtn.classList.add('btn-ghost', 'text-base-content/70');
-    usesBtn.setAttribute('aria-selected', 'false');
+    gearBtn.classList.remove('btn-primary', 'shadow-xs');
+    gearBtn.classList.add('btn-ghost', 'text-base-content/70');
+    gearBtn.setAttribute('aria-selected', 'false');
 
     if (tab === 'exp') {
       expContent.classList.remove('hidden');
@@ -469,20 +471,20 @@ layout: layouts/base.njk
       if (window.location.hash !== '#experience' && window.location.hash !== '#training') {
         history.replaceState(null, '', '#experience');
       }
-    } else if (tab === 'uses') {
-      usesContent.classList.remove('hidden');
-      usesBtn.classList.remove('btn-ghost', 'text-base-content/70');
-      usesBtn.classList.add('btn-primary', 'shadow-xs');
-      usesBtn.setAttribute('aria-selected', 'true');
-      if (window.location.hash !== '#uses' && window.location.hash !== '#workstation') {
-        history.replaceState(null, '', '#uses');
+    } else if (tab === 'gear') {
+      gearContent.classList.remove('hidden');
+      gearBtn.classList.remove('btn-ghost', 'text-base-content/70');
+      gearBtn.classList.add('btn-primary', 'shadow-xs');
+      gearBtn.setAttribute('aria-selected', 'true');
+      if (window.location.hash !== '#gear' && window.location.hash !== '#uses' && window.location.hash !== '#workstation') {
+        history.replaceState(null, '', '#gear');
       }
     } else {
       meContent.classList.remove('hidden');
       meBtn.classList.remove('btn-ghost', 'text-base-content/70');
       meBtn.classList.add('btn-primary', 'shadow-xs');
       meBtn.setAttribute('aria-selected', 'true');
-      if (window.location.hash === '#experience' || window.location.hash === '#uses' || window.location.hash === '#workstation') {
+      if (window.location.hash === '#experience' || window.location.hash === '#gear' || window.location.hash === '#uses' || window.location.hash === '#workstation') {
         history.replaceState(null, '', window.location.pathname);
       }
     }
@@ -504,8 +506,8 @@ layout: layouts/base.njk
     var urlParams = new URLSearchParams(window.location.search);
     if (hash === '#experience' || hash === '#training' || urlParams.get('tab') === 'experience') {
       setActiveTab('exp');
-    } else if (hash === '#uses' || hash === '#workstation' || urlParams.get('tab') === 'uses') {
-      setActiveTab('uses');
+    } else if (hash === '#gear' || hash === '#uses' || hash === '#workstation' || urlParams.get('tab') === 'gear' || urlParams.get('tab') === 'uses') {
+      setActiveTab('gear');
     } else {
       setActiveTab('me');
     }
