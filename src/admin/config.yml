@@ -380,6 +380,17 @@ collections:
     label: "Site Settings & SEO"
     delete: false
     files:
+      - name: "banner"
+        label: "Top Announcement Banner"
+        file: "src/_data/banner.json"
+        format: "json"
+        fields:
+          - { label: "Enable Banner", name: "enabled", widget: "boolean", default: true }
+          - { label: "Banner Text", name: "text", widget: "string", default: "BCA (Hons) 4 Years (Batch 2023–2027) • Techno India (Hooghly Campus), MAKAUT" }
+          - { label: "Link Text", name: "linkText", widget: "string", default: "Connect on LinkedIn ↗", required: false }
+          - { label: "Link URL", name: "linkUrl", widget: "string", default: "https://www.linkedin.com/in/chatterjeeparag/", required: false }
+          - { label: "Show Pulsing Active Dot", name: "showPulse", widget: "boolean", default: true }
+
       - name: "general"
         label: "Global Site Configuration"
         file: "src/_data/site.json"
@@ -393,15 +404,14 @@ collections:
           - { label: "Global Meta Description", name: "description", widget: "text" }
           - { label: "SEO Keywords", name: "keywords", widget: "list" }
           - { label: "Default OpenGraph Image URL", name: "ogImage", widget: "string" }
-          - { label: "Twitter / X Handle", name: "twitterHandle", widget: "string" }
+          - { label: "Twitter / X Handle", name: "twitterHandle", widget: "string", required: false }
           - label: "Social Links"
             name: "social"
             widget: "object"
             fields:
               - { label: "GitHub URL", name: "github", widget: "string" }
               - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
-              - { label: "Twitter / X URL", name: "twitter", widget: "string" }
-              - { label: "Contact Email", name: "email", widget: "string" }
+              - { label: "Twitter / X URL", name: "twitter", widget: "string", required: false }
           - label: "Webmaster Verification Tokens"
             name: "verification"
             widget: "object"
