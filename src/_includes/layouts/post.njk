@@ -1,0 +1,169 @@
+---
+layout: layouts/base.njk
+
+---
+
+<article class="max-w-4xl mx-auto px-4 py-12 sm:px-6">
+  <!-- Top Navigation & Category -->
+  <div class="mb-8">
+    <div class="flex items-center justify-between gap-4 mb-6">
+      <a
+        href="/blog/"
+        class="btn btn-ghost btn-sm gap-2 pl-0 hover:bg-transparent text-primary inline-flex items-center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          />
+        </svg>
+        Back to all articles
+      </a>
+
+      {% if tags %}
+        <div class="flex flex-wrap gap-1.5">
+          {% for tag in tags %}
+            {% if tag != "post" %}
+              <span
+                class="badge badge-sm badge-outline badge-primary font-mono text-xs"
+              >{{ tag }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Article Headline -->
+    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-4 text-base-content leading-[1.12]">
+      {{ title }}
+    </h1>
+
+    {% if description %}
+      <p class="text-lg sm:text-xl text-base-content/75 leading-relaxed mb-6 font-normal">
+        {{ description }}
+      </p>
+    {% endif %}
+
+    <!-- Medium-Inspired Author Byline Bar -->
+    <div class="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-base-200 text-sm">
+      <div class="flex items-center gap-3">
+        <div class="avatar placeholder">
+          <div class="bg-primary text-primary-content rounded-full w-10 h-10 font-black text-sm flex items-center justify-center">
+            {{ (author or 'P')[0] }}
+          </div>
+        </div>
+        <div>
+          <div class="font-bold text-base-content flex items-center gap-2">
+            <span>{{ author or "Parag Chatterjee" }}</span>
+            <span class="badge badge-xs badge-success text-[10px]">Author</span>
+          </div>
+          <div class="text-xs text-base-content/60 flex items-center gap-2 mt-0.5">
+            <time datetime="{{ date }}">{{ date | readableDate }}</time>
+            <span>•</span>
+            <span>4 min read</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action / Share Pill -->
+      <div class="flex items-center gap-2">
+        <a
+          href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&url=https://parag.dev{{ page.url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-ghost btn-xs rounded-lg gap-1"
+          title="Share on Twitter / X"
+        >
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+          <span class="hidden sm:inline">Share</span>
+        </a>
+        <a
+          href="/admin/#/collections/posts/entries/{{ page.fileSlug }}"
+          target="_blank"
+          class="btn btn-ghost btn-xs text-primary rounded-lg"
+        >
+          Edit in CMS ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium-Inspired Hero Banner Image Container -->
+  {% if image %}
+    <figure class="mb-12">
+      <div class="relative w-full aspect-video sm:aspect-21/9 rounded-3xl overflow-hidden border border-base-200/80 bg-base-200">
+        <img
+          src="{{ image }}"
+          alt="{{ title }}"
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+      </div>
+      {% if imageCaption %}
+        <figcaption class="text-center text-xs text-base-content/60 mt-3 italic">
+          {{ imageCaption }}
+        </figcaption>
+      {% endif %}
+    </figure>
+  {% else %}
+    <!-- Generative Fallback Banner if no custom image is uploaded -->
+    <div class="mb-12 w-full aspect-video sm:aspect-21/9 rounded-3xl overflow-hidden border border-base-200 bg-linear-to-r from-base-200 via-base-300 to-base-200 flex flex-col justify-center items-center p-8 text-center">
+      <span class="badge badge-primary badge-outline text-xs mb-3 font-mono"
+      >Engineering Article</span>
+      <h2 class="text-2xl sm:text-3xl font-black max-w-xl text-base-content/80">
+        {{ title }}
+      </h2>
+    </div>
+  {% endif %}
+
+  <!-- Article Markdown Content Body -->
+  <div class="prose prose-lg max-w-none text-base-content leading-relaxed space-y-6">
+    {{ content | safe }}
+  </div>
+
+  <!-- Author Bio Card at End of Post -->
+  <div class="mt-16 card bg-base-200/60 border border-base-300 p-6 sm:p-8 rounded-3xl">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+      <div class="avatar placeholder">
+        <div class="bg-primary text-primary-content rounded-2xl w-16 h-16 font-black text-2xl flex items-center justify-center">
+          P
+        </div>
+      </div>
+      <div class="space-y-2 grow">
+        <div class="flex items-center gap-2">
+          <h3 class="text-xl font-bold">Written by Parag Chatterjee</h3>
+          <span class="badge badge-sm badge-ghost">BCA (Hons) '27</span>
+        </div>
+        <p class="text-sm text-base-content/75 leading-relaxed max-w-xl">
+          BCA (Hons) 4 Years Student (Batch of 2023–2027) at Techno India (Hooghly Campus), MAKAUT. Skilled in Java, Spring Boot, React, Angular, C, Python 3, and AWS Cloud.
+        </p>
+        <div class="pt-1 flex flex-wrap gap-4 text-xs font-semibold">
+          <a href="/about/" class="text-primary hover:underline"
+          >Read Full Story →</a>
+          <a href="{{ site.social.linkedin or 'https://www.linkedin.com/in/chatterjeeparag/' }}" target="_blank" rel="noopener noreferrer" class="text-base-content/70 hover:text-primary"
+          >Connect on LinkedIn ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="mt-12 pt-8 border-t border-base-200 flex justify-between items-center">
+    <a href="/blog/" class="btn btn-outline btn-sm rounded-xl">
+      ← Back to All Articles
+    </a>
+    <a href="/projects/" class="btn btn-primary btn-sm rounded-xl">
+      Explore Projects Showcase →
+    </a>
+  </div>
+</article>

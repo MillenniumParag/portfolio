@@ -1,0 +1,413 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Allows editing locally without pushing to GitHub via `npm run cms:proxy`
+local_backend: true
+
+media_folder: "src/uploads"
+public_folder: "/uploads"
+
+# Enforce max file size: 2MB limit (stops accidental multi-megabyte camera raw uploads)
+max_file_size: 2000000
+
+collections:
+  # ==========================================
+  # 1. STANDALONE SITE PAGES
+  # ==========================================
+  - name: "pages"
+    label: "Pages"
+    delete: false
+    files:
+      # Home Page
+      - name: "home"
+        label: "Home Page"
+        file: "src/index.md"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/home.njk" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/" }
+          - { label: "Page Title", name: "title", widget: "string" }
+          - { label: "Meta Description", name: "description", widget: "text" }
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Badge Pill Text", name: "badge", widget: "string" }
+              - { label: "Main Headline", name: "headline", widget: "string" }
+              - { label: "Bio Summary", name: "bio", widget: "text" }
+              - { label: "Primary Button Text", name: "primaryButtonText", widget: "string", default: "Explore Projects →" }
+              - { label: "Primary Button URL", name: "primaryButtonUrl", widget: "string", default: "/projects/" }
+              - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string", default: "Email Me" }
+              - { label: "Secondary Button URL", name: "secondaryButtonUrl", widget: "string", default: "https://www.linkedin.com/in/chatterjeeparag/" }
+              - { label: "CV Button Text", name: "cvButtonText", widget: "string", default: "View Resume / CV" }
+              - { label: "CV Button URL", name: "cvButtonUrl", widget: "string", default: "/resume/" }
+          - label: "Stat Metrics"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Metric Value", name: "value", widget: "string" }
+              - { label: "Metric Label", name: "label", widget: "string" }
+              - { label: "Accent Color", name: "color", widget: "select", options: ["primary", "secondary", "accent"], default: "primary" }
+          - label: "Candidate Status Card"
+            name: "candidateCard"
+            widget: "object"
+            fields:
+              - { label: "Name", name: "name", widget: "string", default: "Parag Chatterjee" }
+              - { label: "Avatar Image", name: "avatar", widget: "image", required: false, default: "/uploads/avatar.webp" }
+              - { label: "Role Title", name: "role", widget: "string" }
+              - { label: "Status Text", name: "status", widget: "string" }
+              - { label: "Education Line", name: "education", widget: "string", default: "BCA (Hons) 4 Years" }
+              - { label: "Primary Stack", name: "primaryStack", widget: "string" }
+              - { label: "Core Strength", name: "coreStrength", widget: "string" }
+              - { label: "Availability", name: "availability", widget: "string" }
+          - { label: "Projects Section Subtitle", name: "projectsSectionSubtitle", widget: "string" }
+          - { label: "Projects Section Title", name: "projectsSectionTitle", widget: "string" }
+          - label: "Engineering Pillars"
+            name: "pillars"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Icon Identifier", name: "icon", widget: "string", default: "palette" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Tech Tags", name: "tags", widget: "list" }
+          - { label: "Blog Section Subtitle", name: "blogSectionSubtitle", widget: "string" }
+          - { label: "Blog Section Title", name: "blogSectionTitle", widget: "string" }
+          - label: "Call to Action Banner"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button URL", name: "buttonUrl", widget: "string" }
+              - { label: "Secondary Button Text", name: "secondaryText", widget: "string", required: false }
+              - { label: "Secondary Button URL", name: "secondaryUrl", widget: "string", required: false }
+
+      # About Page
+      - name: "about"
+        label: "About Page"
+        file: "src/about.md"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/about.njk" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/about/" }
+          - { label: "Page Title", name: "title", widget: "string" }
+          - { label: "Meta Description", name: "description", widget: "text" }
+          - { label: "Top Badge Text", name: "introBadge", widget: "string" }
+          - { label: "Main Headline", name: "headline", widget: "string" }
+          - { label: "Introduction Text", name: "intro", widget: "text" }
+          - { label: "Primary Button Text", name: "primaryButtonText", widget: "string", default: "Explore Projects" }
+          - { label: "Primary Button URL", name: "primaryButtonUrl", widget: "string", default: "/projects/" }
+          - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string", default: "Connect on LinkedIn ↗" }
+          - { label: "Secondary Button URL", name: "secondaryButtonUrl", widget: "string", default: "https://www.linkedin.com/in/chatterjeeparag/" }
+          - label: "Bio Card"
+            name: "bioCard"
+            widget: "object"
+            fields:
+              - { label: "Name", name: "name", widget: "string", default: "Parag Chatterjee" }
+              - { label: "Role Title", name: "role", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "text" }
+              - { label: "Badge 1", name: "badge1", widget: "string", default: "Fresher" }
+              - { label: "Badge 2", name: "badge2", widget: "string", default: "Open to Relocate / Remote" }
+          - { label: "Story Headline", name: "storyTitle", widget: "string" }
+          - { label: "Story Paragraphs", name: "storyParagraphs", widget: "list", field: { label: "Paragraph", name: "para", widget: "text" } }
+          - label: "Education & Foundations"
+            name: "education"
+            widget: "object"
+            fields:
+              - { label: "Degree", name: "degree", widget: "string" }
+              - { label: "School", name: "school", widget: "string" }
+              - { label: "Period", name: "period", widget: "string" }
+              - { label: "GPA", name: "gpa", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Coursework", name: "coursework", widget: "list" }
+          - label: "Principles (What I Bring)"
+            name: "principles"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - label: "Quick Facts"
+            name: "quickFacts"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Value", name: "value", widget: "string" }
+          - label: "Bottom Call to Action"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button URL", name: "buttonUrl", widget: "string" }
+
+      # Experience Page
+      - name: "experience"
+        label: "Experience Page"
+        file: "src/experience.md"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/experience.njk" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/experience/" }
+          - { label: "Page Title", name: "title", widget: "string" }
+          - { label: "Meta Description", name: "description", widget: "text" }
+          - { label: "Badge Pill Text", name: "badgeText", widget: "string" }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - label: "Experience Timeline"
+            name: "timeline"
+            widget: "list"
+            fields:
+              - { label: "Job Title / Role", name: "role", widget: "string" }
+              - { label: "Organization / Company", name: "company", widget: "string" }
+              - { label: "Type", name: "type", widget: "string" }
+              - { label: "Time Period", name: "period", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Key Highlights", name: "highlights", widget: "list" }
+              - { label: "Technologies / Skills", name: "skills", widget: "list" }
+          - label: "Education & Honors Card"
+            name: "educationCard"
+            widget: "object"
+            fields:
+              - { label: "Degree", name: "degree", widget: "string" }
+              - { label: "School", name: "school", widget: "string" }
+              - { label: "Period", name: "period", widget: "string" }
+              - { label: "GPA", name: "gpa", widget: "string" }
+              - { label: "Academic Honors", name: "honors", widget: "list" }
+
+      # Resume Page
+      - name: "resume"
+        label: "Resume / CV Page"
+        file: "src/resume.md"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/resume.njk" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/resume/" }
+          - { label: "Page Title", name: "title", widget: "string" }
+          - { label: "Meta Description", name: "description", widget: "text" }
+          - { label: "Full Name", name: "name", widget: "string", default: "Parag Chatterjee" }
+          - { label: "Role Subtitle", name: "role", widget: "string" }
+          - { label: "Location Preference", name: "location", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "GitHub Profile URL", name: "github", widget: "string" }
+          - { label: "LinkedIn Profile URL", name: "linkedin", widget: "string" }
+          - label: "Stats Banner"
+            name: "statsBanner"
+            widget: "list"
+            fields:
+              - { label: "Value", name: "value", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+          - { label: "Executive Summary", name: "summary", widget: "text" }
+          - label: "Technical Competencies Matrix"
+            name: "skills"
+            widget: "list"
+            fields:
+              - { label: "Category Name", name: "category", widget: "string" }
+              - { label: "Skills List", name: "items", widget: "list" }
+          - label: "Work & Leadership Experience"
+            name: "experience"
+            widget: "list"
+            fields:
+              - { label: "Role Title", name: "role", widget: "string" }
+              - { label: "Company / Organization", name: "company", widget: "string" }
+              - { label: "Period", name: "period", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Bullet Points", name: "points", widget: "list" }
+          - label: "Academic Projects"
+            name: "projects"
+            widget: "list"
+            fields:
+              - { label: "Project Title", name: "title", widget: "string" }
+              - { label: "Tech Stack", name: "tech", widget: "string" }
+              - { label: "Bullet Points", name: "points", widget: "list" }
+          - label: "Education"
+            name: "education"
+            widget: "object"
+            fields:
+              - { label: "Degree", name: "degree", widget: "string" }
+              - { label: "Institution", name: "institution", widget: "string" }
+              - { label: "Period", name: "period", widget: "string" }
+              - { label: "GPA", name: "gpa", widget: "string" }
+              - { label: "Relevant Coursework", name: "coursework", widget: "list" }
+          - { label: "Certifications & Achievements", name: "certifications", widget: "list" }
+
+      # Uses & Workstation Page
+      - name: "uses"
+        label: "Uses & Gear Page"
+        file: "src/uses.md"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/uses.njk" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/uses/" }
+          - { label: "Page Title", name: "title", widget: "string" }
+          - { label: "Meta Description", name: "description", widget: "text" }
+          - { label: "Badge Pill Text", name: "badgeText", widget: "string" }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - label: "Hardware & Gear"
+            name: "hardware"
+            widget: "list"
+            fields:
+              - { label: "Item Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Badges", name: "badges", widget: "list" }
+          - label: "Code Editors & Dev Tools"
+            name: "devtools"
+            widget: "list"
+            fields:
+              - { label: "Item Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Badges", name: "badges", widget: "list" }
+          - label: "Terminal & CLI Environment"
+            name: "terminal"
+            widget: "list"
+            fields:
+              - { label: "Item Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Badges", name: "badges", widget: "list" }
+          - label: "Productivity & Everyday Apps"
+            name: "productivity"
+            widget: "list"
+            fields:
+              - { label: "Item Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Badges", name: "badges", widget: "list" }
+
+
+      # Projects Catalog Header Page
+      - name: "projects_page"
+        label: "Projects Catalog Page"
+        file: "src/projects/index.md"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/projects-catalog.njk" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/projects/" }
+          - { label: "Page Title", name: "title", widget: "string" }
+          - { label: "Meta Description", name: "description", widget: "text" }
+          - { label: "Header Title", name: "headerTitle", widget: "string" }
+          - { label: "Header Description", name: "headerDescription", widget: "text" }
+          - { label: "Badge Text", name: "badgeText", widget: "string" }
+          - label: "Bottom Call to Action"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button URL", name: "buttonUrl", widget: "string" }
+
+      # Blog Catalog Header Page
+      - name: "blog_page"
+        label: "Blog Catalog Page"
+        file: "src/blog/index.md"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/blog-catalog.njk" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/blog/" }
+          - { label: "Page Title", name: "title", widget: "string" }
+          - { label: "Meta Description", name: "description", widget: "text" }
+          - { label: "Header Title", name: "headerTitle", widget: "string" }
+          - { label: "Header Description", name: "headerDescription", widget: "text" }
+          - { label: "Badge Text", name: "badgeText", widget: "string" }
+          - label: "CMS Authoring Notice Banner"
+            name: "cmsNotice"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+  # ==========================================
+  # 2. PORTFOLIO CASE STUDIES (INDIVIDUAL PROJECTS)
+  # ==========================================
+  - name: "projects"
+    label: "Portfolio Projects"
+    folder: "src/projects"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/project.njk" }
+      - { label: "Project Title", name: "title", widget: "string" }
+      - { label: "Short Description", name: "description", widget: "text", hint: "Used for project preview cards and SEO meta description." }
+      - { 
+          label: "Category", 
+          name: "category", 
+          widget: "select", 
+          options: ["Full Stack", "Frontend", "AI & DevOps", "Systems", "Open Source"],
+          default: "Full Stack"
+        }
+      - { label: "Year", name: "year", widget: "string", default: "2026" }
+      - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
+      - { label: "Tags", name: "tags", widget: "list", default: ["project"] }
+      - { label: "Tech Stack", name: "techStack", widget: "list", default: ["TypeScript", "Next.js", "Tailwind CSS"] }
+      - { label: "Live Demo URL", name: "demoUrl", widget: "string", required: false }
+      - { label: "GitHub Code URL", name: "githubUrl", widget: "string", required: false }
+      - { 
+          label: "Project Cover Image", 
+          name: "image", 
+          widget: "image", 
+          required: false,
+          hint: "SEO & Retina Recommended: 1200 x 800 px (3:2) or 1200 x 630 px (1.91:1). WebP/JPEG under 200KB. Automatically compressed upon build."
+        }
+      - { label: "Case Study Content", name: "body", widget: "markdown" }
+
+  # ==========================================
+  # 3. BLOG & ARTICLES COLLECTION
+  # ==========================================
+  - name: "posts"
+    label: "Blog Articles"
+    folder: "src/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk" }
+      - { label: "Article Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string", default: "Parag Chatterjee" }
+      - { label: "Summary Description", name: "description", widget: "text", hint: "Optimized for Google/Bing snippet (140-160 characters)." }
+      - { label: "Tags", name: "tags", widget: "list", default: ["post", "engineering"] }
+      - { label: "Featured Lead Story on Blog Page", name: "featured", widget: "boolean", default: false, hint: "Pin as the Medium-style hero banner on the blog home page." }
+      - { 
+          label: "Cover / Banner Image (Medium-Style Hero)", 
+          name: "image", 
+          widget: "image", 
+          required: false,
+          hint: "Google Discover, Bing & Hero Banner: 1200 x 630 px (16:9 / 1.91:1). WebP/JPEG under 200KB. Auto-compressed upon upload & build."
+        }
+      - { label: "Banner Image Caption", name: "imageCaption", widget: "string", required: false, hint: "Optional photographer attribution or figure caption displayed below the hero banner." }
+      - { label: "Markdown Body", name: "body", widget: "markdown" }
+
+  # ==========================================
+  # 4. GLOBAL SITE SETTINGS & SEO
+  # ==========================================
+  - name: "settings"
+    label: "Site Settings & SEO"
+    delete: false
+    files:
+      - name: "general"
+        label: "Global Site Configuration"
+        file: "src/_data/site.json"
+        format: "json"
+        fields:
+          - { label: "Site Canonical URL", name: "url", widget: "string" }
+          - { label: "Default Site Title", name: "title", widget: "string" }
+          - { label: "Site Owner Name", name: "name", widget: "string", default: "Parag Chatterjee" }
+          - { label: "Author Byline", name: "author", widget: "string", default: "Parag Chatterjee" }
+          - { label: "Professional Role", name: "role", widget: "string" }
+          - { label: "Global Meta Description", name: "description", widget: "text" }
+          - { label: "SEO Keywords", name: "keywords", widget: "list" }
+          - { label: "Default OpenGraph Image URL", name: "ogImage", widget: "string" }
+          - { label: "Twitter / X Handle", name: "twitterHandle", widget: "string" }
+          - label: "Social Links"
+            name: "social"
+            widget: "object"
+            fields:
+              - { label: "GitHub URL", name: "github", widget: "string" }
+              - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+              - { label: "Twitter / X URL", name: "twitter", widget: "string" }
+              - { label: "Contact Email", name: "email", widget: "string" }
+          - label: "Webmaster Verification Tokens"
+            name: "verification"
+            widget: "object"
+            fields:
+              - { label: "Google Search Console Token", name: "google", widget: "string", required: false }
+              - { label: "Bing Webmaster Tools Token", name: "bing", widget: "string", required: false }

@@ -1,0 +1,17 @@
+{% macro pageHeader(title, description=null, badgeText=null, badgeType="primary") %}
+<header class="mb-12 max-w-3xl">
+  {% if badgeText %}
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-{{ badgeType }}/10 text-{{ badgeType }} font-bold text-xs mb-4">
+      <span>{{ badgeText }}</span>
+    </div>
+  {% endif %}
+  <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-4 leading-tight">
+    {{ title }}
+  </h1>
+  {% if description %}
+    <p class="text-lg text-base-content/75 leading-relaxed">
+      {{ description }}
+    </p>
+  {% endif %}
+</header>
+{% endmacro %}

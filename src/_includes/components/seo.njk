@@ -1,0 +1,199 @@
+{#-
+  Advanced Google & Bing SEO Optimization Component
+  Provides Title, Canonical, OpenGraph, Twitter Card, Webmaster Verifications, and Rich JSON-LD Schemas
+-#}
+
+{%- set pageTitle = title or site.title -%}
+{%- set pageDescription = description or site.description -%}
+{%- set pageUrl = site.url + page.url -%}
+{%- set pageImage = image or site.ogImage -%}
+{%- if not (pageImage | startsWith('http')) -%}
+  {%- set pageImage = site.url + pageImage -%}
+{%- endif -%}
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ pageUrl }}" />
+
+<!-- Standard & Search Engine Specific Meta -->
+<title>{{ pageTitle }} | Parag.dev</title>
+<meta name="description" content="{{ pageDescription }}" />
+<meta name="author" content="{{ site.author }}" />
+<meta name="keywords" content="{{ site.keywords | join(', ') }}" />
+
+<!-- Search Engine Crawler Directives (Googlebot & Bingbot) -->
+{%- if noindex %}
+<meta name="robots" content="noindex, nofollow" />
+<meta name="googlebot" content="noindex, nofollow" />
+<meta name="bingbot" content="noindex, nofollow" />
+{%- else %}
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+{%- endif %}
+
+<!-- Webmaster Verification for Google & Bing (Update tokens in src/_data/site.js) -->
+{%- if site.verification.google and site.verification.google != "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TOKEN" %}
+<meta name="google-site-verification" content="{{ site.verification.google }}" />
+{%- endif %}
+{%- if site.verification.bing and site.verification.bing != "YOUR_BING_WEBMASTER_VERIFICATION_TOKEN" %}
+<meta name="msvalidate.01" content="{{ site.verification.bing }}" />
+{%- endif %}
+
+<!-- Open Graph / Facebook / LinkedIn / Discord / Slack -->
+<meta property="og:site_name" content="Parag.dev" />
+<meta property="og:title" content="{{ pageTitle }}" />
+<meta property="og:description" content="{{ pageDescription }}" />
+<meta property="og:url" content="{{ pageUrl }}" />
+<meta property="og:type" content="{{ ogType or ('article' if layout == 'layouts/post.njk' else 'website') }}" />
+<meta property="og:image" content="{{ pageImage }}" />
+<meta property="og:image:alt" content="{{ pageTitle }} • Parag.dev" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="{{ site.locale }}" />
+
+{%- if layout == 'layouts/post.njk' and date %}
+<meta property="article:published_time" content="{{ date.toISOString() if date.toISOString else date }}" />
+<meta property="article:author" content="{{ site.author }}" />
+{%- if tags %}
+  {%- for tag in tags %}
+    {%- if tag != 'post' %}
+<meta property="article:tag" content="{{ tag }}" />
+    {%- endif %}
+  {%- endfor %}
+{%- endif %}
+{%- endif %}
+
+<!-- Twitter / X Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="{{ site.twitterHandle }}" />
+<meta name="twitter:creator" content="{{ site.twitterHandle }}" />
+<meta name="twitter:title" content="{{ pageTitle }}" />
+<meta name="twitter:description" content="{{ pageDescription }}" />
+<meta name="twitter:image" content="{{ pageImage }}" />
+<meta name="twitter:image:alt" content="{{ pageTitle }} • Parag.dev" />
+
+<!-- Structured Data (JSON-LD) for Rich Google & Bing Search Results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}",
+      "name": "Parag.dev",
+      "description": "{{ site.description }}",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "{{ site.url }}/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "{{ site.url }}/#person",
+      "name": "{{ site.name }}",
+      "url": "{{ site.url }}",
+      "jobTitle": "Entry-Level Software Engineer",
+      "description": "BCA (Hons) 4 Years Graduate (Class of 2026) passionate about full-stack engineering, distributed systems, and modern web development.",
+      "image": "{{ site.url }}{{ site.ogImage }}",
+      "sameAs": [
+        "{{ site.social.github }}",
+        "{{ site.social.linkedin }}",
+        "{{ site.social.twitter }}"
+      ],
+      "knowsAbout": [
+        "C",
+        "Java",
+        "Python 3",
+        "JavaScript",
+        "TypeScript",
+        "Spring Boot",
+        "React",
+        "Angular",
+        "TailwindCSS",
+        "Bootstrap",
+        "MySQL",
+        "PostgreSQL",
+        "Oracle SQL Plus",
+        "NeonDB",
+        "AWS Cloud",
+        "SAP ABAP",
+        "Data Structures and Algorithms with C",
+        "Computer Networks",
+        "Linux",
+        "WSL"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Janai, Hooghly",
+        "addressRegion": "West Bengal",
+        "addressCountry": "IN"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Techno India (Hooghly Campus) - Affiliated to MAKAUT University"
+      }
+    }
+    {%- if layout == 'layouts/post.njk' %},
+    {
+      "@type": "BlogPosting",
+      "@id": "{{ pageUrl }}#article",
+      "isPartOf": {
+        "@id": "{{ site.url }}/#website"
+      },
+      "author": {
+        "@id": "{{ site.url }}/#person"
+      },
+      "headline": "{{ pageTitle }}",
+      "description": "{{ pageDescription }}",
+      "mainEntityOfPage": "{{ pageUrl }}",
+      "datePublished": "{{ date.toISOString() if date.toISOString else date }}",
+      "image": "{{ pageImage }}",
+      "publisher": {
+        "@id": "{{ site.url }}/#person"
+      }
+    }
+    {%- elif layout == 'layouts/project.njk' %},
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "{{ pageUrl }}#software",
+      "name": "{{ pageTitle }}",
+      "description": "{{ pageDescription }}",
+      "codeRepository": "{{ githubUrl or 'https://github.com/MillenniumParag' }}",
+      "programmingLanguage": [
+        {%- if techStack -%}
+          {%- for tech in techStack -%}
+            "{{ tech }}"{%- if not loop.last -%},{%- endif -%}
+          {%- endfor -%}
+        {%- else -%}
+          "TypeScript", "Go"
+        {%- endif -%}
+      ],
+      "author": {
+        "@id": "{{ site.url }}/#person"
+      }
+    }
+    {%- endif %}
+    {%- if page.url and page.url != '/' %},
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ pageUrl }}#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ site.url }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ pageTitle }}",
+          "item": "{{ pageUrl }}"
+        }
+      ]
+    }
+    {%- endif %}
+  ]
+}
+</script>

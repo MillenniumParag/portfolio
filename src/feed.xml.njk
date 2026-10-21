@@ -1,0 +1,27 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Parag Chatterjee — Engineering Thoughts &amp; Insights</title>
+  <subtitle>Articles on distributed systems, frontend engineering, and Jamstack
+    architectures.</subtitle>
+  <link href="https://parag.dev/feed.xml" rel="self" />
+  <link href="https://parag.dev/" />
+  <id>https://parag.dev/</id>
+  <author>
+    <name>Parag Chatterjee</name>
+    <uri>https://parag.dev/</uri>
+  </author>
+  {% for post in collections.post | reverse %}
+    <entry>
+      <title>{{ post.data.title }}</title>
+      <link href="https://parag.dev{{ post.url }}" />
+      <updated>{{ post.date.toISOString() }}</updated>
+      <id>https://parag.dev{{ post.url }}</id>
+      <summary>{{ post.data.description }}</summary>
+    </entry>
+  {% endfor %}
+</feed>

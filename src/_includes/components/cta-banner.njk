@@ -1,0 +1,33 @@
+{%
+  macro ctaBanner(title="Have a project or engineering role in mind?", subtitle="I am currently available for select consulting engagements, full-stack architectural builds, and full-time opportunities.", buttonText="Email Me →", buttonUrl="mailto:hello@parag.dev", secondaryText=null, secondaryUrl=null)
+%}
+  <div class="card bg-linear-to-r from-primary to-accent text-primary-content p-8 sm:p-14 rounded-3xl border border-primary/20 relative overflow-hidden">
+    <div class="relative z-10 max-w-2xl space-y-4">
+      <span
+        class="badge badge-ghost text-xs uppercase font-bold tracking-widest"
+      >Get In Touch</span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+        {{ title }}
+      </h2>
+      <p class="text-primary-content/85 text-base sm:text-lg leading-relaxed">
+        {{ subtitle }}
+      </p>
+      <div class="pt-4 flex flex-wrap gap-4">
+        <a
+          href="{{ buttonUrl }}"
+          class="btn bg-base-100 text-base-content hover:bg-base-200 border-none rounded-xl px-8 font-bold"
+        >
+          {{ buttonText }}
+        </a>
+        {% if secondaryText and secondaryUrl %}
+          <a
+            href="{{ secondaryUrl }}"
+            class="btn btn-outline border-white text-white hover:bg-white hover:text-primary rounded-xl px-6 font-bold"
+          >
+            {{ secondaryText }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endmacro %}

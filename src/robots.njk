@@ -1,0 +1,25 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+# robots.txt for Parag.dev
+# Optimized for Googlebot, Bingbot, and modern web crawlers
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /uploads/private/
+
+# Googlebot specific directives
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+
+# Bingbot specific directives
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Crawl-delay: 1
+
+# Canonical XML Sitemap
+Sitemap: https://parag.dev/sitemap.xml

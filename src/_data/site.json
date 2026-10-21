@@ -1,0 +1,51 @@
+{
+  "url": "https://parag.dev",
+  "title": "Parag Chatterjee | BCA (Hons) Student & Aspiring Software Engineer",
+  "name": "Parag Chatterjee",
+  "author": "Parag Chatterjee",
+  "role": "BCA (Hons) Student (Batch of 2023–2027) • Techno India (Hooghly Campus), MAKAUT",
+  "description": "Personal portfolio and technical profile of Parag Chatterjee — BCA (Hons) 4 Years Student (Batch of 2023–2027) at Techno India (Hooghly Campus) affiliated to MAKAUT University. Skilled in C, Java, Python 3, Spring Boot, React, Angular, AWS, and Database Systems.",
+  "location": "Janai, Hooghly",
+  "college": "Techno India (Hooghly Campus)",
+  "university": "MAKAUT University",
+  "batch": "2023 – 2027",
+  "gpa": "7.89",
+  "keywords": [
+    "Parag Chatterjee",
+    "Techno India Hooghly",
+    "MAKAUT University",
+    "BCA Hons",
+    "BCA(H) 4Years",
+    "Janai Hooghly",
+    "Software Engineer",
+    "C",
+    "Java",
+    "Python 3",
+    "Spring Boot",
+    "React",
+    "Angular",
+    "TailwindCSS",
+    "Bootstrap",
+    "MySQL",
+    "PostgreSQL",
+    "Oracle SQL Plus",
+    "NeonDB",
+    "AWS Academy",
+    "SAP ABAP",
+    "DSA with C",
+    "Linux WSL"
+  ],
+  "locale": "en_US",
+  "ogImage": "/uploads/og-default.png",
+  "twitterHandle": "",
+  "social": {
+    "github": "https://github.com/MillenniumParag",
+    "linkedin": "https://www.linkedin.com/in/chatterjeeparag/",
+    "twitter": "",
+    "email": ""
+  },
+  "verification": {
+    "google": "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TOKEN",
+    "bing": "YOUR_BING_WEBMASTER_VERIFICATION_TOKEN"
+  }
+}

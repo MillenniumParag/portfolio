@@ -1,0 +1,165 @@
+---
+layout: layouts/base.njk
+---
+
+<div class="max-w-5xl mx-auto px-4 py-12 sm:px-6">
+  <!-- Header / Action Bar -->
+  <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8 border-b border-base-200 mb-10">
+    <div>
+      <div class="flex items-center gap-2 mb-2">
+        <span class="badge badge-primary font-bold text-xs uppercase tracking-wider">Curriculum Vitae</span>
+        <span class="badge badge-ghost text-xs">{{ badge or "Batch of 2023–2027" }}</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-2">
+        {{ name or "Parag Chatterjee" }}
+      </h1>
+      <p class="text-base sm:text-lg text-base-content/75 font-medium">
+        {{ role or "BCA (Hons) 4 Years (Batch of 2023–2027) • Aspiring Software Engineer" }}
+      </p>
+      <div class="flex flex-wrap items-center gap-4 text-xs text-base-content/65 mt-2">
+        <span class="inline-flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          {{ location or "Janai, Hooghly" }}
+        </span>
+        <span>•</span>
+        <a href="{{ linkedin or 'https://www.linkedin.com/in/chatterjeeparag/' }}" target="_blank" rel="noopener noreferrer" class="hover:text-primary flex items-center gap-1 font-semibold">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn
+        </a>
+        <span>•</span>
+        <a href="{{ github or 'https://github.com/MillenniumParag' }}" target="_blank" rel="noopener noreferrer" class="hover:text-primary flex items-center gap-1 font-semibold">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub (MillenniumParag)
+        </a>
+      </div>
+    </div>
+
+    <!-- Print / Download Actions -->
+    <div class="flex flex-wrap gap-2.5 print:hidden">
+      <button onclick="window.print()" class="btn btn-primary rounded-xl gap-2 font-bold">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+        </svg>
+        <span>Print / Save PDF</span>
+      </button>
+      <a href="{{ linkedin or 'https://www.linkedin.com/in/chatterjeeparag/' }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline rounded-xl font-bold">
+        Connect on LinkedIn ↗
+      </a>
+    </div>
+  </header>
+
+  <!-- Metric Badges -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 bg-base-200/50 rounded-2xl mb-12 border border-base-200">
+    {% for s in statsBanner %}
+      <div>
+        <div class="text-2xl font-black text-primary">{{ s.value }}</div>
+        <div class="text-xs text-base-content/60 font-medium">{{ s.label }}</div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="space-y-12">
+    <!-- Executive Summary -->
+    <section>
+      <h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-3">Professional Summary</h2>
+      <p class="text-base text-base-content/80 leading-relaxed max-w-3xl">
+        {{ summary }}
+      </p>
+    </section>
+
+    <!-- Technical Skills Matrix -->
+    <section>
+      <h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-4">Technical Competencies</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {% for cat in skills %}
+          <div class="card bg-base-100 border border-base-200 p-5 rounded-2xl">
+            <h3 class="font-bold text-sm text-base-content mb-2">{{ cat.category }}</h3>
+            <div class="flex flex-wrap gap-1.5">
+              {% for item in cat.items %}
+                <span class="badge badge-sm badge-ghost font-mono text-xs">{{ item }}</span>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section>
+      <h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-6">Work & Leadership Experience</h2>
+      <div class="space-y-8">
+        {% for exp in experience %}
+          <div class="border-l-2 border-base-300 pl-4 sm:pl-6 space-y-2">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+              <h3 class="font-black text-lg text-base-content">{{ exp.role }}</h3>
+              <span class="text-xs font-mono text-base-content/60">{{ exp.period }} • {{ exp.location }}</span>
+            </div>
+            <p class="text-sm font-semibold text-primary">{{ exp.company }}</p>
+            <ul class="list-disc list-inside text-sm text-base-content/75 space-y-1 pt-1">
+              {% for pt in exp.points %}
+                <li>{{ pt }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Academic / Showcase Projects -->
+    {% if projects and projects.length > 0 %}
+    <section>
+      <h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-6">Selected Software Engineering Projects</h2>
+      <div class="space-y-6">
+        {% for proj in projects %}
+          <div class="card bg-base-100 border border-base-200 p-6 rounded-2xl space-y-2">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <h3 class="font-bold text-base text-base-content">{{ proj.title }}</h3>
+              <span class="text-xs font-mono text-primary">{{ proj.tech }}</span>
+            </div>
+            <ul class="list-disc list-inside text-xs sm:text-sm text-base-content/75 space-y-1">
+              {% for pt in proj.points %}
+                <li>{{ pt }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Education -->
+    <section>
+      <h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-4">Education &amp; Credentials</h2>
+      <div class="card bg-base-100 border border-base-200 p-6 rounded-2xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+          <div>
+            <h3 class="font-black text-lg text-base-content">{{ education.degree }}</h3>
+            <p class="text-sm text-primary font-semibold">{{ education.institution }}</p>
+          </div>
+          <span class="text-xs font-mono bg-base-200 px-3 py-1 rounded-lg w-fit">{{ education.period }} • {{ education.gpa }}</span>
+        </div>
+        <div class="mt-4 pt-4 border-t border-base-200">
+          <div class="text-xs font-bold uppercase tracking-wider text-base-content/60 mb-2">Relevant Coursework:</div>
+          <div class="flex flex-wrap gap-1.5">
+            {% for c in education.coursework %}
+              <span class="badge badge-sm badge-ghost text-xs">{{ c }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section>
+      <h2 class="text-xs font-bold uppercase tracking-widest text-primary mb-3">Certifications &amp; Achievements</h2>
+      <ul class="list-disc list-inside text-sm text-base-content/75 space-y-1.5">
+        {% for cert in certifications %}
+          <li>{{ cert }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+</div>

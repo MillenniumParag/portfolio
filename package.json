@@ -1,0 +1,29 @@
+{
+  "name": "parag",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "dev": "eleventy --serve",
+    "cms:proxy": "decap-server",
+    "dev:cms": "concurrently \"npm run dev\" \"npm run cms:proxy\" --names \"11TY,DECAP\" --prefix-colors \"cyan,magenta\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.7",
+    "@tailwindcss/postcss": "^4.3.3",
+    "daisyui": "^5.7.50",
+    "postcss": "^8.5.31",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6",
+    "decap-server": "^3.11.5"
+  }
+}

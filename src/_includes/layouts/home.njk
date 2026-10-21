@@ -1,0 +1,226 @@
+---
+layout: layouts/base.njk
+
+---
+
+{% from "components/project-card.njk" import projectCard %}
+{% from "components/article-card.njk" import articleCard %}
+{% from "components/cta-banner.njk" import ctaBanner %}
+
+<!-- Hero Section -->
+<section class="relative overflow-hidden py-16 sm:py-24 bg-linear-to-b from-base-200/40 via-base-100 to-base-100 border-b border-base-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- Left Content -->
+      <div class="lg:col-span-8 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs">
+          <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+          <span>{{
+            hero.badge or "BCA (Hons) 4 Years (Class of 2026) • Aspiring Full Stack Engineer"
+          }}</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-base-content leading-[1.08]">
+          {{
+            hero.headline or "Bridging solid CS fundamentals with production-ready software."
+          }}
+        </h1>
+
+        <p class="text-lg sm:text-xl text-base-content/75 max-w-2xl leading-relaxed">
+          {{
+            hero.bio or "Hi, I'm Parag Chatterjee. I'm a BCA (Hons) 4 Years graduate passionate about building responsive web applications, robust backend APIs, and developer tools using TypeScript, Next.js, Go, and PostgreSQL. Excited to bring high energy and relentless curiosity to an engineering team."
+          }}
+        </p>
+
+        <!-- Call to Actions -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="{{ hero.primaryButtonUrl or '/projects/' }}"
+            class="btn btn-primary rounded-xl px-7 text-base font-bold"
+          >
+            {{ hero.primaryButtonText or "Explore Projects →" }}
+          </a>
+          <a
+            href="{{ hero.secondaryButtonUrl or 'https://www.linkedin.com/in/chatterjeeparag/' }}"
+            {% if (hero.secondaryButtonUrl or 'https://www.linkedin.com/in/chatterjeeparag/') | startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}
+            class="btn btn-outline rounded-xl px-7 text-base"
+          >
+            {{ hero.secondaryButtonText or "Connect on LinkedIn ↗" }}
+          </a>
+          <a
+            href="{{ hero.cvButtonUrl or '/resume/' }}"
+            class="btn btn-ghost rounded-xl px-4 text-base-content/70 hover:text-primary"
+          >
+            {{ hero.cvButtonText or "View Resume / CV" }}
+          </a>
+        </div>
+
+        <!-- Metric Badges using daisyUI stats -->
+        <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg border-t border-base-200 text-left">
+          {% for stat in stats %}
+            <div>
+              <div class="text-2xl sm:text-3xl font-black text-{{ stat.color or 'primary' }}">
+                {{ stat.value }}
+              </div>
+              <div class="text-xs text-base-content/60 font-medium">
+                {{ stat.label }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Right Candidate Visual Card -->
+      <div class="lg:col-span-4 flex justify-center">
+        <div class="relative w-full max-w-sm group">
+          <!-- Ambient gradient glow -->
+          <div class="absolute -inset-1 bg-linear-to-r from-primary/30 via-accent/25 to-secondary/30 rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+          </div>
+
+          <!-- Image Container Card -->
+          <div class="relative card bg-base-100/95 backdrop-blur-xl border border-base-200/90 shadow-2xl rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-primary/10 hover:-translate-y-1">
+            <div class="aspect-4/5 w-full overflow-hidden bg-base-200 relative">
+              <img
+                src="{{ heroImage or hero.image or 'https://images.unsplash.com/photo-1534972195531-a756b1126f24?auto=format&fit=crop&w=800&q=80' }}"
+                alt="{{ hero.imageAlt or 'Parag Chatterjee' }}"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                loading="eager"
+              />
+              <div class="absolute inset-0 bg-linear-to-t from-base-100/90 via-transparent to-transparent pointer-events-none"></div>
+              
+              <!-- Floating info pill on image -->
+              <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between p-3 rounded-2xl bg-base-100/90 backdrop-blur-md border border-base-200/80 shadow-lg text-xs">
+                <div>
+                  <div class="font-bold text-base-content text-sm">{{ hero.name or "Parag Chatterjee" }}</div>
+                  <div class="text-[11px] text-primary font-semibold font-mono">BCA (Hons) • 2023–2027</div>
+                </div>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-success/15 text-success text-[10px] font-bold border border-success/30">
+                  <span class="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></span>
+                  Active
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Projects Preview Section -->
+<section class="max-w-6xl mx-auto px-4 sm:px-6 py-20">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+    <div>
+      <div class="text-xs uppercase font-bold tracking-widest text-primary mb-2">
+        {{ projectsSectionSubtitle or "Portfolio Showcase" }}
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight">
+        {{ projectsSectionTitle or "Featured Engineering & Practice" }}
+      </h2>
+    </div>
+    <a href="/projects/" class="btn btn-outline rounded-xl font-bold">
+      View Projects & Repositories →
+    </a>
+  </div>
+
+  {% if collections.project and collections.project.length > 0 %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for project in collections.project | limit(3) %}
+        {{ projectCard(project) }}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="card bg-base-100 border border-base-200 p-8 sm:p-12 text-center rounded-3xl max-w-3xl mx-auto space-y-4">
+      <div class="w-14 h-14 rounded-2xl bg-primary/10 text-primary mx-auto flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+      </div>
+      <h3 class="text-2xl font-black text-base-content">Projects in Active Development</h3>
+      <p class="text-sm text-base-content/75 leading-relaxed max-w-xl mx-auto">
+        Currently architecting and building applications with Spring Boot, Java, React, Angular, and AWS. Check out active work and repositories on GitHub.
+      </p>
+      <div class="pt-2 flex flex-wrap justify-center gap-3">
+        <a href="{{ site.social.github or 'https://github.com/MillenniumParag' }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm rounded-xl font-bold">
+          Follow on GitHub (MillenniumParag) ↗
+        </a>
+        <a href="/experience/" class="btn btn-outline btn-sm rounded-xl font-bold">
+          View Practical Training & Experience →
+        </a>
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+<!-- Core Engineering Pillars -->
+<section class="bg-base-200/50 py-20 border-y border-base-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="text-xs uppercase font-bold tracking-widest text-secondary mb-2">
+        Technical Capabilities
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
+        Areas of Core Competence
+      </h2>
+      <p class="text-sm text-base-content/70 mt-2">
+        Specialized in the full lifecycle of modern digital products.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {% for pillar in pillars %}
+        <div class="card bg-base-100 border border-base-200 p-8 rounded-3xl">
+          <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-2xl font-black mb-6">
+            {{ pillar.icon }}
+          </div>
+          <h3 class="text-xl font-black mb-3">{{ pillar.title }}</h3>
+          <p class="text-sm text-base-content/75 leading-relaxed mb-6">
+            {{ pillar.description }}
+          </p>
+          <div class="flex flex-wrap gap-1.5 text-xs font-mono">
+            {% for tag in pillar.tags %}
+              <span class="badge badge-sm badge-ghost">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Latest Articles Preview -->
+<section class="max-w-6xl mx-auto px-4 sm:px-6 py-20">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+    <div>
+      <div class="text-xs uppercase font-bold tracking-widest text-accent mb-2">
+        {{ blogSectionSubtitle or "Writing & Tutorials" }}
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight">
+        {{ blogSectionTitle or "Recent Thoughts" }}
+      </h2>
+    </div>
+    <a href="/blog/" class="btn btn-outline rounded-xl font-bold">
+      Read All Articles →
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {% for post in collections.post | reverse | limit(2) %}
+      {{ articleCard(post) }}
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Call to Action Banner -->
+<section class="max-w-6xl mx-auto px-4 sm:px-6 mb-20">
+  {{
+    ctaBanner(
+      title=cta.title or "Interested in connecting or discussing engineering opportunities?",
+      subtitle=cta.subtitle or "I am actively seeking software engineering internships and junior developer opportunities. Let's connect on LinkedIn!",
+      buttonText=cta.buttonText or "Connect on LinkedIn →",
+      buttonUrl=cta.buttonUrl or "https://www.linkedin.com/in/chatterjeeparag/",
+      secondaryText=cta.secondaryText or "View GitHub Profile",
+      secondaryUrl=cta.secondaryUrl or "https://github.com/MillenniumParag"
+    )
+  }}
+</section>

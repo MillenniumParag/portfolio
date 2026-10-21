@@ -1,0 +1,122 @@
+---
+layout: layouts/base.njk
+---
+
+<div class="max-w-5xl mx-auto px-4 py-12 sm:px-6">
+  <!-- Header -->
+  <header class="mb-12 max-w-3xl">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-bold text-xs mb-4">
+      <span>{{ badgeText or "Developer Setup • Updated 2026" }}</span>
+    </div>
+    <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-4 leading-tight">
+      {{ headline or "Tools, Gear & Software I Use Daily" }}
+    </h1>
+    <p class="text-lg text-base-content/75 leading-relaxed">
+      {{ intro }}
+    </p>
+  </header>
+
+  <!-- Hardware Section -->
+  <section class="mb-14">
+    <div class="flex items-center justify-between mb-6 pb-2 border-b border-base-200">
+      <h2 class="text-2xl font-black flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <span>Workstation &amp; Hardware</span>
+      </h2>
+      <span class="badge badge-primary badge-outline text-xs">Hardware</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% for item in hardware %}
+        <div class="card bg-base-100 border border-base-200 p-6 rounded-2xl">
+          <h3 class="font-black text-lg mb-1">{{ item.title }}</h3>
+          <p class="text-sm text-base-content/75 mb-3">{{ item.description }}</p>
+          <div class="flex flex-wrap gap-2">
+            {% for b in item.badges %}
+              <span class="badge badge-sm badge-ghost font-mono">{{ b }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Development Tools & Editors -->
+  <section class="mb-14">
+    <div class="flex items-center justify-between mb-6 pb-2 border-b border-base-200">
+      <h2 class="text-2xl font-black flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+        <span>Code Editors &amp; Dev Tools</span>
+      </h2>
+      <span class="badge badge-secondary badge-outline text-xs">Software</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% for item in devtools %}
+        <div class="card bg-base-100 border border-base-200 p-6 rounded-2xl">
+          <h3 class="font-black text-lg mb-1">{{ item.title }}</h3>
+          <p class="text-sm text-base-content/75 mb-3">{{ item.description }}</p>
+          <div class="flex flex-wrap gap-2">
+            {% for b in item.badges %}
+              <span class="badge badge-sm badge-ghost font-mono">{{ b }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Terminal & CLI Environment -->
+  <section class="mb-14">
+    <div class="flex items-center justify-between mb-6 pb-2 border-b border-base-200">
+      <h2 class="text-2xl font-black flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <span>Terminal &amp; CLI Tools</span>
+      </h2>
+      <span class="badge badge-accent badge-outline text-xs">Environment</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% for item in terminal %}
+        <div class="card bg-base-100 border border-base-200 p-6 rounded-2xl">
+          <h3 class="font-black text-lg mb-1">{{ item.title }}</h3>
+          <p class="text-sm text-base-content/75 mb-3">{{ item.description }}</p>
+          <div class="flex flex-wrap gap-2">
+            {% for b in item.badges %}
+              <span class="badge badge-sm badge-ghost font-mono">{{ b }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Productivity & Everyday Apps -->
+  <section class="mb-14">
+    <div class="flex items-center justify-between mb-6 pb-2 border-b border-base-200">
+      <h2 class="text-2xl font-black flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-warning" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+        <span>Productivity &amp; Utilities</span>
+      </h2>
+      <span class="badge badge-ghost text-xs">Everyday</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% for item in productivity %}
+        <div class="card bg-base-100 border border-base-200 p-6 rounded-2xl">
+          <h3 class="font-black text-lg mb-1">{{ item.title }}</h3>
+          <p class="text-sm text-base-content/75 mb-3">{{ item.description }}</p>
+          <div class="flex flex-wrap gap-2">
+            {% for b in item.badges %}
+              <span class="badge badge-sm badge-ghost font-mono">{{ b }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>

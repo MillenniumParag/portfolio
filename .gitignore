@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Eleventy output
+_site/
+dist/
+
+# OS and logs
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*

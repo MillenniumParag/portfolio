@@ -1,0 +1,112 @@
+---
+layout: layouts/resume.njk
+permalink: /resume/
+title: "Resume & Curriculum Vitae | Parag Chatterjee"
+description: "Professional resume and engineering CV of Parag Chatterjee — BCA (Hons) 4 Years Student (Batch of 2023–2027) at Techno India (Hooghly Campus), MAKAUT."
+name: "Parag Chatterjee"
+role: "BCA (Hons) 4 Years (Batch 2023–2027) • Aspiring Software Engineer"
+location: "Janai, Hooghly"
+github: "https://github.com/MillenniumParag"
+linkedin: "https://www.linkedin.com/in/chatterjeeparag/"
+statsBanner:
+  - value: "7.89"
+    label: "Academic GPA"
+  - value: "2023–27"
+    label: "BCA(H) 4 Years"
+  - value: "Techno India"
+    label: "Hooghly (MAKAUT)"
+  - value: "AWS & SAP"
+    label: "Practical Training"
+summary: "Motivated BCA (Hons) 4 Years Student (Batch of 2023–2027) at Techno India (Hooghly Campus) affiliated to MAKAUT University, with an academic GPA of 7.89. Grounded in solid computer science fundamentals, data structures, and algorithms with C, along with practical training in AWS Cloud Foundations (demonstrating automated CI/CD pipelining) and SAP ABAP programming. Skilled in Java, Spring Boot, React, Angular, Python 3, and relational databases (MySQL, PostgreSQL, Oracle SQL Plus). Actively seeking software engineering internships and junior developer roles."
+skills:
+  - category: "Programming Languages"
+    items:
+      - "C"
+      - "Java"
+      - "Python 3"
+      - "SQL"
+      - "JavaScript"
+      - "TypeScript"
+      - "PHP"
+  - category: "Frontend & UI"
+    items:
+      - "HTML5"
+      - "CSS3"
+      - "JavaScript"
+      - "TypeScript"
+      - "React"
+      - "Angular"
+      - "TailwindCSS (v2, v3 & v4)"
+      - "Bootstrap v6"
+  - category: "Backend & Cloud Services"
+    items:
+      - "Spring Boot"
+      - "Netlify"
+      - "Vercel"
+      - "GitHub & Git"
+      - "NeonDB"
+      - "AWS Cloud"
+      - "SAP ABAP"
+  - category: "Databases"
+    items:
+      - "MySQL"
+      - "PostgreSQL"
+      - "Oracle SQL Plus"
+  - category: "Build Tools & Environment"
+    items:
+      - "Maven"
+      - "npm"
+      - "Vite"
+  - category: "Systems & Core CS"
+    items:
+      - "Computer Networks"
+      - "DSA with C"
+      - "Microsoft Windows 10 & 11"
+      - "Linux/UNIX (WSL: Ubuntu, Debian, Arch)"
+      - "Zsh"
+  - category: "Design & Practices"
+    items:
+      - "Responsive Design"
+      - "Semantic Web"
+      - "Web Accessibility"
+      - "Performance Optimization"
+experience:
+  - role: "Bootcamp — SAP Advanced Business Application Programming (ABAP) Programmer"
+    company: "Techno India Group & AWS Academy"
+    period: "Aug 2025 – Jan 2026"
+    location: "Campus / Hybrid"
+    points:
+      - "Learned the fundamentals of SAP ABAP programming, including reports, internal tables, and basic SAP development concepts."
+      - "Gained introductory experience in developing business applications within the SAP environment."
+      - "Explored database selections, data dictionary structures, and enterprise business processes."
+  - role: "Internship — AWS Academy Graduate - Cloud Foundations"
+    company: "Techno Billion AI"
+    period: "Jul 2025 – Dec 2025"
+    location: "Remote / Hybrid"
+    points:
+      - "Mastered foundational AWS cloud concepts including compute, storage, networking, and cloud security architecture."
+      - "Created a demonstration project on pipelining with an example Weather Application for the showcase."
+      - "Automated continuous delivery triggers from Git repositories to cloud environments."
+projects:
+  - title: "AWS CI/CD Weather Application Pipeline Showcase"
+    tech: "AWS, CI/CD, Git, Weather API"
+    points:
+      - "Demonstration of automated cloud pipelining and continuous deployment developed during the AWS Academy Cloud Foundations internship."
+      - "Configured cloud infrastructure and automated triggers to deploy an example weather application."
+education:
+  degree: "Bachelor of Computer Applications (Honours) — 4 Years (BCA Hons)"
+  institution: "Techno India (Hooghly Campus) — Affiliated to MAKAUT University"
+  period: "2023 – 2027"
+  gpa: "GPA: 7.89"
+  coursework:
+    - "Data Structures & Algorithms with C"
+    - "Object-Oriented Programming with Java"
+    - "Database Management Systems (MySQL, PostgreSQL, Oracle SQL Plus)"
+    - "Computer Networks"
+    - "Web Technologies (HTML5, CSS3, JavaScript, PHP)"
+    - "Python Programming"
+certifications:
+  - "AWS Academy Graduate — Cloud Foundations (Techno Billion AI, 2025)"
+  - "SAP Advanced Business Application Programming (ABAP) Bootcamp Graduate (Techno India Group & AWS Academy, 2026)"
+  - "Academic Cumulative GPA: 7.89 (MAKAUT University Coursework)"
+---
