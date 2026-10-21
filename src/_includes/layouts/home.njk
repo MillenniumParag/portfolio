@@ -276,51 +276,93 @@ layout: layouts/base.njk
       var totalItems = items.length;
       if (totalItems === 0) return;
 
-      function getItemWidth() {
-        var item = carousel.querySelector('.carousel-item');
-        if (!item) return 360;
-        var style = window.getComputedStyle(carousel);
-        var gap = parseFloat(style.gap) || 24;
-        return item.getBoundingClientRect().width + gap;
+      function getVisibleCount() {
+        if (window.innerWidth >= 1024) return 3; // Desktop: 3 cards
+        if (window.innerWidth >= 640) return 2;  // Tablet: 2 cards
+        return 1;                                // Mobile: 1 card
       }
 
-      function scrollToItem(index) {
-        var step = getItemWidth();
+      function getTotalPages() {
+        var visible = getVisibleCount();
+        return Math.ceil(totalItems / visible);
+      }
+
+      function scrollToPage(pageIndex) {
+        var visible = getVisibleCount();
+        var targetIndex = Math.min(pageIndex * visible, totalItems - 1);
+        var targetItem = items[targetIndex];
+        if (!targetItem) return;
+        var targetLeft = targetItem.offsetLeft - carousel.offsetLeft;
         carousel.scrollTo({
-          left: index * step,
+          left: targetLeft,
           behavior: 'smooth'
         });
       }
 
-      // Generate indicator dots
-      if (indicatorsContainer) {
+      function getCurrentPage() {
+        var visible = getVisibleCount();
+        var totalPages = getTotalPages();
+        var scrollLeft = carousel.scrollLeft;
+        var maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+        if (scrollLeft <= 10) return 0;
+        if (scrollLeft >= maxScroll - 10) return totalPages - 1;
+
+        var closestPage = 0;
+        var minDiff = Infinity;
+        for (var p = 0; p < totalPages; p++) {
+          var targetIndex = Math.min(p * visible, totalItems - 1);
+          var targetLeft = items[targetIndex].offsetLeft - carousel.offsetLeft;
+          var diff = Math.abs(scrollLeft - targetLeft);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestPage = p;
+          }
+        }
+        return closestPage;
+      }
+
+      function renderIndicators() {
+        if (!indicatorsContainer) return;
+        var visible = getVisibleCount();
+        var totalPages = getTotalPages();
         indicatorsContainer.innerHTML = '';
-        for (var i = 0; i < totalItems; i++) {
+
+        for (var p = 0; p < totalPages; p++) {
           var dot = document.createElement('button');
           dot.type = 'button';
-          dot.className = 'h-2 rounded-full transition-all duration-300 ' + (i === 0 ? 'bg-primary w-6' : 'bg-base-content/20 hover:bg-base-content/40 w-2');
-          dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-          dot.dataset.index = i;
+          var startItem = p * visible + 1;
+          var endItem = Math.min((p + 1) * visible, totalItems);
+          var label = visible === 1 
+            ? 'Go to slide ' + startItem + ' of ' + totalItems
+            : 'Go to slide ' + (p + 1) + ' (items ' + startItem + '–' + endItem + ')';
+
+          dot.setAttribute('aria-label', label);
+          dot.setAttribute('title', label);
+          dot.dataset.page = p;
+          dot.className = 'h-2 rounded-full transition-all duration-300 ' + (p === 0 ? 'bg-primary w-6' : 'bg-base-content/20 hover:bg-base-content/40 w-2');
+
           dot.addEventListener('click', function(e) {
-            var targetIndex = parseInt(e.currentTarget.dataset.index, 10);
-            scrollToItem(targetIndex);
+            var targetPage = parseInt(e.currentTarget.dataset.page, 10);
+            scrollToPage(targetPage);
           });
+
           indicatorsContainer.appendChild(dot);
         }
       }
 
       function updateControls() {
-        var scrollLeft = carousel.scrollLeft;
-        var maxScroll = carousel.scrollWidth - carousel.clientWidth;
-        var step = getItemWidth();
-        var activeIndex = Math.round(scrollLeft / step);
-        if (activeIndex < 0) activeIndex = 0;
-        if (activeIndex >= totalItems) activeIndex = totalItems - 1;
+        var totalPages = getTotalPages();
+        var activePage = getCurrentPage();
 
         if (indicatorsContainer) {
           var dots = indicatorsContainer.querySelectorAll('button');
+          if (dots.length !== totalPages) {
+            renderIndicators();
+            dots = indicatorsContainer.querySelectorAll('button');
+          }
           dots.forEach(function(d, idx) {
-            if (idx === activeIndex) {
+            if (idx === activePage) {
               d.className = 'h-2 rounded-full transition-all duration-300 bg-primary w-6';
             } else {
               d.className = 'h-2 rounded-full transition-all duration-300 bg-base-content/20 hover:bg-base-content/40 w-2';
@@ -328,6 +370,8 @@ layout: layouts/base.njk
           });
         }
 
+        var scrollLeft = carousel.scrollLeft;
+        var maxScroll = carousel.scrollWidth - carousel.clientWidth;
         if (scrollLeft <= 5) {
           prevBtn.classList.add('opacity-40');
         } else {
@@ -341,23 +385,20 @@ layout: layouts/base.njk
         }
       }
 
+      renderIndicators();
+
       prevBtn.addEventListener('click', function() {
-        var step = getItemWidth();
-        if (carousel.scrollLeft <= 5) {
-          carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
-        } else {
-          carousel.scrollBy({ left: -step, behavior: 'smooth' });
-        }
+        var totalPages = getTotalPages();
+        var currentPage = getCurrentPage();
+        var prevPage = (currentPage - 1 + totalPages) % totalPages;
+        scrollToPage(prevPage);
       });
 
       nextBtn.addEventListener('click', function() {
-        var step = getItemWidth();
-        var maxScroll = carousel.scrollWidth - carousel.clientWidth;
-        if (carousel.scrollLeft >= maxScroll - 5) {
-          carousel.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          carousel.scrollBy({ left: step, behavior: 'smooth' });
-        }
+        var totalPages = getTotalPages();
+        var currentPage = getCurrentPage();
+        var nextPage = (currentPage + 1) % totalPages;
+        scrollToPage(nextPage);
       });
 
       carousel.addEventListener('scroll', function() {
@@ -390,7 +431,11 @@ layout: layouts/base.njk
         carousel.scrollLeft = scrollLeftPos - walk;
       });
 
-      window.addEventListener('resize', updateControls);
+      window.addEventListener('resize', function() {
+        renderIndicators();
+        updateControls();
+      });
+
       updateControls();
     }
 
