@@ -19,7 +19,7 @@ hero:
   secondaryButtonText: Connect on LinkedIn ↗
   headline: Crafting software with robust fundamentals & modern full-stack tools.
   primaryButtonUrl: /experience/
-  image: https://images.unsplash.com/photo-1534972195531-a756b1126f24?auto=format&fit=crop&w=800&q=80
+  image: /uploads/avatar.jpg
 stats:
   - value: "7.89"
     label: Academic GPA
@@ -30,15 +30,6 @@ stats:
   - value: AWS & SAP
     label: Practical Training
     color: accent
-candidateCard:
-  avatar: /uploads/20250801_145748.avif
-  name: Parag Chatterjee
-  role: Student
-  status: Frontend Dev
-  education: BCA Grad
-  primaryStack: React
-  coreStrength: Java
-  availability: Rare
 projectsSectionSubtitle: Engineering & Practice
 projectsSectionTitle: Featured Engineering & Practice
 pillars:

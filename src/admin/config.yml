@@ -35,9 +35,18 @@ collections:
               - { label: "Badge Pill Text", name: "badge", widget: "string" }
               - { label: "Main Headline", name: "headline", widget: "string" }
               - { label: "Bio Summary", name: "bio", widget: "text" }
-              - { label: "Primary Button Text", name: "primaryButtonText", widget: "string", default: "Explore Projects →" }
-              - { label: "Primary Button URL", name: "primaryButtonUrl", widget: "string", default: "/projects/" }
-              - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string", default: "Email Me" }
+              - { 
+                  label: "Hero Profile Image", 
+                  name: "image", 
+                  widget: "image", 
+                  required: false, 
+                  default: "/uploads/avatar.jpg", 
+                  hint: "Hero portrait image (upload from your device or select from media folder)." 
+                }
+              - { label: "Hero Image Alt Text", name: "imageAlt", widget: "string", default: "Parag Chatterjee" }
+              - { label: "Primary Button Text", name: "primaryButtonText", widget: "string", default: "Explore Experience & Training →" }
+              - { label: "Primary Button URL", name: "primaryButtonUrl", widget: "string", default: "/experience/" }
+              - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string", default: "Connect on LinkedIn ↗" }
               - { label: "Secondary Button URL", name: "secondaryButtonUrl", widget: "string", default: "https://www.linkedin.com/in/chatterjeeparag/" }
               - { label: "CV Button Text", name: "cvButtonText", widget: "string", default: "View Resume / CV" }
               - { label: "CV Button URL", name: "cvButtonUrl", widget: "string", default: "/resume/" }
@@ -48,20 +57,8 @@ collections:
               - { label: "Metric Value", name: "value", widget: "string" }
               - { label: "Metric Label", name: "label", widget: "string" }
               - { label: "Accent Color", name: "color", widget: "select", options: ["primary", "secondary", "accent"], default: "primary" }
-          - label: "Candidate Status Card"
-            name: "candidateCard"
-            widget: "object"
-            fields:
-              - { label: "Name", name: "name", widget: "string", default: "Parag Chatterjee" }
-              - { label: "Avatar Image", name: "avatar", widget: "image", required: false, default: "/uploads/avatar.webp" }
-              - { label: "Role Title", name: "role", widget: "string" }
-              - { label: "Status Text", name: "status", widget: "string" }
-              - { label: "Education Line", name: "education", widget: "string", default: "BCA (Hons) 4 Years" }
-              - { label: "Primary Stack", name: "primaryStack", widget: "string" }
-              - { label: "Core Strength", name: "coreStrength", widget: "string" }
-              - { label: "Availability", name: "availability", widget: "string" }
-          - { label: "Projects Section Subtitle", name: "projectsSectionSubtitle", widget: "string" }
-          - { label: "Projects Section Title", name: "projectsSectionTitle", widget: "string" }
+          - { label: "Projects Section Subtitle", name: "projectsSectionSubtitle", widget: "string", default: "Portfolio Showcase" }
+          - { label: "Projects Section Title", name: "projectsSectionTitle", widget: "string", default: "Featured Engineering & Practice" }
           - label: "Engineering Pillars"
             name: "pillars"
             widget: "list"
