@@ -1,6 +1,6 @@
 {% macro projectCard(project) %}
   <li
-    class="list-row hover:bg-base-200/50 transition-colors items-center gap-4 p-4 sm:p-5 project-card relative cursor-pointer group"
+    class="list-row rounded-none hover:bg-base-200/50 transition-colors items-center gap-4 p-4 sm:p-5 project-card relative cursor-pointer group"
     data-category="{{ project.data.category }}"
     onclick="if (!event.target.closest('a[target], button') && !window.getSelection().toString()) { if (event.metaKey || event.ctrlKey) { window.open('{{ project.url }}', '_blank'); } else { window.location.href='{{ project.url }}'; } }"
   >
@@ -11,11 +11,11 @@
           <img
             src="{{ project.data.image }}"
             alt="{{ project.data.title }}"
-            class="size-16 sm:size-20 rounded-2xl object-cover bg-base-200 border border-base-200 shadow-xs transition-transform duration-300 group-hover:scale-105"
+            class="size-16 sm:size-20 rounded-none object-cover bg-base-200 border border-base-200 shadow-xs transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
           />
         {% else %}
-          <div class="size-16 sm:size-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-xl shadow-xs transition-transform duration-300 group-hover:scale-105">
+          <div class="size-16 sm:size-20 rounded-none bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-xl shadow-xs transition-transform duration-300 group-hover:scale-105">
             {{ (project.data.title or 'P')[0] }}
           </div>
         {% endif %}
@@ -65,7 +65,7 @@
           href="{{ project.data.demoUrl }}"
           target="_blank"
           rel="noopener noreferrer"
-          class="btn btn-square btn-ghost btn-sm text-base-content/70 hover:text-primary"
+          class="btn btn-square rounded-none btn-ghost btn-sm text-base-content/70 hover:text-primary"
           title="Live Demo"
           aria-label="Visit Live Demo"
           onclick="event.stopPropagation();"
@@ -91,7 +91,7 @@
           href="{{ project.data.githubUrl }}"
           target="_blank"
           rel="noopener noreferrer"
-          class="btn btn-square btn-ghost btn-sm text-base-content/70 hover:text-primary"
+          class="btn btn-square rounded-none btn-ghost btn-sm text-base-content/70 hover:text-primary"
           title="GitHub Code"
           aria-label="View Source on GitHub"
           onclick="event.stopPropagation();"
@@ -103,7 +103,7 @@
       {% endif %}
       <a
         href="{{ project.url }}"
-        class="btn btn-sm btn-ghost btn-circle text-primary group-hover:bg-primary group-hover:text-primary-content transition-colors"
+        class="btn btn-sm btn-ghost btn-square rounded-none text-primary group-hover:bg-primary group-hover:text-primary-content transition-colors"
         title="View Details"
         aria-label="View Details for {{ project.data.title }}"
       >

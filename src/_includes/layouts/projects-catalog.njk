@@ -78,7 +78,7 @@ layout: layouts/base.njk
   <!-- Projects List using DaisyUI List Component -->
   {% if collections.project and collections.project.length > 0 %}
     <ul
-      class="list bg-base-100 rounded-3xl border border-base-200 shadow-sm overflow-hidden"
+      class="list bg-base-100 rounded-none border border-base-200 shadow-sm overflow-hidden"
       id="projects-list"
     >
       {% for project in collections.project %}

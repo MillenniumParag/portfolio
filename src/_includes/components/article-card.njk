@@ -1,6 +1,6 @@
 {% macro articleCard(post) %}
   <li
-    class="list-row hover:bg-base-200/50 transition-colors items-center gap-4 p-4 sm:p-5 article-card relative cursor-pointer group"
+    class="list-row rounded-none hover:bg-base-200/50 transition-colors items-center gap-4 p-4 sm:p-5 article-card relative cursor-pointer group"
     onclick="if (!event.target.closest('a, button') && !window.getSelection().toString()) { if (event.metaKey || event.ctrlKey) { window.open('{{ post.url }}', '_blank'); } else { window.location.href='{{ post.url }}'; } }"
   >
     <!-- Article Cover Image -->
@@ -10,11 +10,11 @@
           <img
             src="{{ post.data.image }}"
             alt="{{ post.data.title }}"
-            class="size-16 sm:size-20 rounded-2xl object-cover bg-base-200 border border-base-200 shadow-xs transition-transform duration-300 group-hover:scale-105"
+            class="size-16 sm:size-20 rounded-none object-cover bg-base-200 border border-base-200 shadow-xs transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
           />
         {% else %}
-          <div class="size-16 sm:size-20 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary font-bold text-xl shadow-xs transition-transform duration-300 group-hover:scale-105">
+          <div class="size-16 sm:size-20 rounded-none bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary font-bold text-xl shadow-xs transition-transform duration-300 group-hover:scale-105">
             {{ (post.data.title or 'P')[0] }}
           </div>
         {% endif %}
@@ -63,7 +63,7 @@
     <div class="shrink-0">
       <a
         href="{{ post.url }}"
-        class="btn btn-sm btn-ghost btn-circle text-primary group-hover:bg-primary group-hover:text-primary-content transition-colors"
+        class="btn btn-sm btn-ghost btn-square rounded-none text-primary group-hover:bg-primary group-hover:text-primary-content transition-colors"
         title="Read Article"
         aria-label="Read {{ post.data.title }}"
       >

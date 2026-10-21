@@ -22,7 +22,7 @@ layout: layouts/base.njk
   {% if allPosts and allPosts.length > 0 %}
     <!-- Articles List using DaisyUI List Component -->
     <ul
-      class="list bg-base-100 rounded-3xl border border-base-200 shadow-sm overflow-hidden"
+      class="list bg-base-100 rounded-none border border-base-200 shadow-sm overflow-hidden"
       id="blog-list"
     >
       {% for post in allPosts %}
