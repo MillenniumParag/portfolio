@@ -79,6 +79,21 @@ samp,
   border-radius: 0.75rem;
   overflow-x: auto;
   margin: 1.5rem 0;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+  scrollbar-width: thin;
+}
+.prose pre::-webkit-scrollbar {
+  height: 5px;
+}
+.prose pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+.prose pre::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+}
+.prose pre::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary, #10b981);
 }
 .prose pre code {
   background-color: transparent;
@@ -167,14 +182,122 @@ html.lenis body {
 }
 
 /* =================================================== */
-/* No Scrollbar Utility                                */
+/* Custom Scrollbars: Design Tokens & Components       */
 /* =================================================== */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+:root {
+  --scrollbar-thumb: color-mix(in oklab, var(--color-primary, #10b981) 40%, var(--color-base-content, #1f2937) 20%);
+  --scrollbar-thumb-hover: color-mix(in oklab, var(--color-primary, #10b981) 85%, var(--color-base-content, #1f2937) 15%);
+  --scrollbar-track: color-mix(in oklab, var(--color-base-200, #f3f4f6) 65%, transparent);
 }
+
+[data-theme="forest"] {
+  --scrollbar-thumb: color-mix(in oklab, var(--color-primary, #1eb854) 45%, var(--color-base-content, #e5e7eb) 20%);
+  --scrollbar-thumb-hover: color-mix(in oklab, var(--color-primary, #1eb854) 85%, #ffffff 15%);
+  --scrollbar-track: color-mix(in oklab, var(--color-base-200, #130e0e) 65%, transparent);
+}
+
+/* Global document scrollbars with modern standards */
+html,
+body {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+/* Global WebKit / Blink smooth rounded scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Component Classes */
+.custom-scrollbar {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  background-clip: padding-box;
+}
+
+/* Ultra-thin scrollbar component (ideal for code blocks, tables, chips, dropdowns) */
+.custom-scrollbar-thin {
+  --scrollbar-track: transparent;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+.custom-scrollbar-thin::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.custom-scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+}
+.custom-scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* No-scrollbar component: hides visual scrollbar while preserving swipe & keyboard scrollability */
+.custom-scrollbar-none,
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+.custom-scrollbar-none::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* High-contrast accessibility preference fallback */
+@media (prefers-contrast: more) {
+  :root,
+  [data-theme="forest"],
+  .custom-scrollbar,
+  .custom-scrollbar-thin {
+    --scrollbar-thumb: var(--color-primary, #059669);
+    --scrollbar-thumb-hover: var(--color-primary, #047857);
+    --scrollbar-track: var(--color-base-300, #d1d5db);
+  }
 }
 
 /* =================================================== */
