@@ -423,6 +423,17 @@ layout: layouts/base.njk
   window.addEventListener('scroll', handleScrollOrResize, { passive: true });
   window.addEventListener('resize', handleScrollOrResize, { passive: true });
 
+  function hookLenis() {
+    if (window.lenis) {
+      window.lenis.on('scroll', updateTabsPosition);
+    }
+  }
+  if (window.lenis) {
+    hookLenis();
+  } else {
+    document.addEventListener('DOMContentLoaded', hookLenis);
+  }
+
   function setActiveTab(tab, shouldScroll) {
     var meContent = document.getElementById('tab-content-me');
     var expContent = document.getElementById('tab-content-exp');
@@ -477,7 +488,11 @@ layout: layouts/base.njk
     }
 
     if (shouldScroll && window.scrollY > 120) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window.lenis) {
+        window.lenis.scrollTo(0, { duration: 0.6 });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
 
     // Recalculate position as content height may have changed
