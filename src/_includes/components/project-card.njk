@@ -1,121 +1,124 @@
 {% macro projectCard(project) %}
-  <div
-    class="project-card card bg-base-100 border border-base-200 hover:border-primary/60 transition-colors flex flex-col justify-between group rounded-3xl overflow-hidden"
+  <li
+    class="list-row hover:bg-base-200/50 transition-colors items-center gap-4 p-4 sm:p-5 project-card"
     data-category="{{ project.data.category }}"
   >
-    <!-- Project Visual Preview Banner Area -->
-    <div class="relative w-full aspect-video bg-base-200 overflow-hidden border-b border-base-200">
-      {% if project.data.image %}
-        <img
-          src="{{ project.data.image }}"
-          alt="{{ project.data.title }} Preview"
-          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-          loading="lazy"
-        />
-      {% else %}
-        <!-- Fallback Aesthetic Gradient Graphic -->
-        <div class="w-full h-full bg-linear-to-br from-base-200 via-base-300 to-base-200 flex flex-col justify-center items-center p-6 text-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mb-2 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-          <span class="font-bold text-sm text-base-content/70">{{
-            project.data.category
-          }}</span>
-        </div>
-      {% endif %}
-
-      <!-- Top floating badges -->
-      <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-        <span
-          class="badge badge-primary font-bold text-xs uppercase tracking-wider backdrop-blur-md shadow-sm"
-        >
-          {{ project.data.category }}
-        </span>
-        {% if project.data.featured %}
-          <span class="badge badge-accent font-bold text-xs shadow-sm">
-            Featured
-          </span>
+    <!-- Project Thumbnail Image -->
+    <div class="shrink-0">
+      <a href="{{ project.url }}" class="block group">
+        {% if project.data.image %}
+          <img
+            src="{{ project.data.image }}"
+            alt="{{ project.data.title }}"
+            class="size-16 sm:size-20 rounded-2xl object-cover bg-base-200 border border-base-200 shadow-xs transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
+        {% else %}
+          <div class="size-16 sm:size-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-xl shadow-xs transition-transform duration-300 group-hover:scale-105">
+            {{ (project.data.title or 'P')[0] }}
+          </div>
         {% endif %}
-      </div>
+      </a>
     </div>
 
-    <!-- Card Body -->
-    <div class="p-6 sm:p-7 grow flex flex-col justify-between">
-      <div>
-        <div class="flex items-center justify-between text-xs text-base-content/60 font-mono mb-2">
-          <span>Year {{ project.data.year or '2026' }}</span>
-          <span>Case Study</span>
-        </div>
-
-        <h3 class="text-2xl font-black mb-2.5 group-hover:text-primary transition-colors leading-snug">
-          <a href="{{ project.url }}">{{ project.data.title }}</a>
-        </h3>
-
-        <p class="text-base-content/75 text-sm leading-relaxed mb-6 line-clamp-3">
-          {{ project.data.description }}
-        </p>
+    <!-- Main Content (list-col-grow) -->
+    <div class="list-col-grow min-w-0 space-y-1">
+      <div class="flex flex-wrap items-center gap-2">
+        <a
+          href="{{ project.url }}"
+          class="font-bold text-base sm:text-lg text-base-content hover:text-primary transition-colors leading-snug"
+        >
+          {{ project.data.title }}
+        </a>
+        {% if project.data.category %}
+          <span class="badge badge-sm badge-outline font-mono text-[11px]">{{
+            project.data.category
+          }}</span>
+        {% endif %}
+        {% if project.data.featured %}
+          <span class="badge badge-sm badge-primary text-[11px] font-bold">Featured</span>
+        {% endif %}
       </div>
 
-      <!-- Tech Stack Badges -->
-      <div class="flex flex-wrap gap-1.5 mb-2">
+      <p class="text-xs sm:text-sm text-base-content/75 line-clamp-2 leading-relaxed">
+        {{ project.data.description }}
+      </p>
+
+      <!-- Tech Stack Badges & Year -->
+      <div class="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
+        <span class="text-base-content/50 font-mono text-[11px] mr-1">{{
+          project.data.year or '2026'
+        }} •</span>
         {% for tech in project.data.techStack %}
-          <span class="badge badge-sm badge-ghost font-mono text-xs">{{
+          <span class="badge badge-xs badge-ghost font-mono text-[10px]">{{
             tech
           }}</span>
         {% endfor %}
       </div>
     </div>
 
-    <!-- Card Actions Footer -->
-    <div class="px-6 py-4 bg-base-200/40 border-t border-base-200 flex items-center justify-between gap-3">
+    <!-- Actions / Links -->
+    <div class="flex items-center gap-1 shrink-0">
+      {% if project.data.demoUrl %}
+        <a
+          href="{{ project.data.demoUrl }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-square btn-ghost btn-sm text-base-content/70 hover:text-primary"
+          title="Live Demo"
+          aria-label="Visit Live Demo"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="size-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+            />
+          </svg>
+        </a>
+      {% endif %}
+      {% if project.data.githubUrl %}
+        <a
+          href="{{ project.data.githubUrl }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-square btn-ghost btn-sm text-base-content/70 hover:text-primary"
+          title="GitHub Code"
+          aria-label="View Source on GitHub"
+        >
+          <svg class="size-4 fill-current" viewBox="0 0 24 24">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+        </a>
+      {% endif %}
       <a
         href="{{ project.url }}"
-        class="btn btn-sm btn-primary rounded-xl font-bold"
+        class="btn btn-sm btn-ghost btn-circle text-primary hover:bg-primary hover:text-primary-content transition-colors"
+        title="View Details"
+        aria-label="View Details for {{ project.data.title }}"
       >
-        Read Case Study →
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
       </a>
-
-      <div class="flex items-center gap-2">
-        {% if project.data.demoUrl %}
-          <a
-            href="{{ project.data.demoUrl }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-sm btn-circle btn-ghost"
-            title="Live Demo"
-            aria-label="Visit Live Demo"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-              />
-            </svg>
-          </a>
-        {% endif %}
-        {% if project.data.githubUrl %}
-          <a
-            href="{{ project.data.githubUrl }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-sm btn-circle btn-ghost"
-            title="GitHub Code"
-            aria-label="View Source on GitHub"
-          >
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-            </svg>
-          </a>
-        {% endif %}
-      </div>
     </div>
-  </div>
+  </li>
 {% endmacro %}

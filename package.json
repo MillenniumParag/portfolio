@@ -8,6 +8,7 @@
     "start": "eleventy --serve",
     "dev": "eleventy --serve",
     "cms:proxy": "decap-server",
+    "generate:assets": "node scripts/generate-assets.js",
     "dev:cms": "concurrently \"npm run dev\" \"npm run cms:proxy\" --names \"11TY,DECAP\" --prefix-colors \"cyan,magenta\""
   },
   "keywords": [],

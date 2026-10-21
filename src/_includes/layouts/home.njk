@@ -100,11 +100,11 @@ layout: layouts/base.njk
   </div>
 
   {% if collections.project and collections.project.length > 0 %}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {% for project in collections.project | limit(3) %}
+    <ul class="list bg-base-100 rounded-3xl border border-base-200 shadow-sm overflow-hidden">
+      {% for project in collections.project | limit(4) %}
         {{ projectCard(project) }}
       {% endfor %}
-    </div>
+    </ul>
   {% else %}
     <div class="card bg-base-100 border border-base-200 p-8 sm:p-14 text-center rounded-3xl max-w-2xl mx-auto space-y-4">
       <div class="w-14 h-14 rounded-2xl bg-base-200 text-base-content/40 mx-auto flex items-center justify-center">
@@ -196,11 +196,11 @@ layout: layouts/base.njk
   </div>
 
   {% if collections.post and collections.post.length > 0 %}
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {% for post in collections.post | reverse | limit(2) %}
+    <ul class="list bg-base-100 rounded-3xl border border-base-200 shadow-sm overflow-hidden">
+      {% for post in collections.post | reverse | limit(3) %}
         {{ articleCard(post) }}
       {% endfor %}
-    </div>
+    </ul>
   {% else %}
     <div class="card bg-base-100 border border-base-200 p-8 sm:p-14 text-center rounded-3xl max-w-2xl mx-auto space-y-4">
       <div class="w-14 h-14 rounded-2xl bg-base-200 text-base-content/40 mx-auto flex items-center justify-center">
