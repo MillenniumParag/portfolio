@@ -1,10 +1,11 @@
 {% macro articleCard(post) %}
   <li
-    class="list-row hover:bg-base-200/50 transition-colors items-center gap-4 p-4 sm:p-5 article-card"
+    class="list-row hover:bg-base-200/50 transition-colors items-center gap-4 p-4 sm:p-5 article-card relative cursor-pointer group"
+    onclick="if (!event.target.closest('a, button') && !window.getSelection().toString()) { if (event.metaKey || event.ctrlKey) { window.open('{{ post.url }}', '_blank'); } else { window.location.href='{{ post.url }}'; } }"
   >
     <!-- Article Cover Image -->
     <div class="shrink-0">
-      <a href="{{ post.url }}" class="block group">
+      <a href="{{ post.url }}" class="block" aria-label="{{ post.data.title }}">
         {% if post.data.image %}
           <img
             src="{{ post.data.image }}"
@@ -25,7 +26,7 @@
       <div class="flex flex-wrap items-center gap-2">
         <a
           href="{{ post.url }}"
-          class="font-bold text-base sm:text-lg text-base-content hover:text-primary transition-colors leading-snug"
+          class="font-bold text-base sm:text-lg text-base-content group-hover:text-primary transition-colors leading-snug"
         >
           {{ post.data.title }}
         </a>
@@ -62,7 +63,7 @@
     <div class="shrink-0">
       <a
         href="{{ post.url }}"
-        class="btn btn-sm btn-ghost btn-circle text-primary hover:bg-primary hover:text-primary-content transition-colors"
+        class="btn btn-sm btn-ghost btn-circle text-primary group-hover:bg-primary group-hover:text-primary-content transition-colors"
         title="Read Article"
         aria-label="Read {{ post.data.title }}"
       >
