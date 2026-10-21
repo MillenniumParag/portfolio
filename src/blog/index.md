@@ -6,7 +6,4 @@ description: "Reflections on distributed systems, modern frontend tooling, datab
 headerTitle: "Engineering Journal & Notes"
 headerDescription: "Reflections on distributed systems, modern frontend tooling, database benchmarking, and practical lessons learned while building web applications."
 badgeText: "Publications & Technical Writing"
-cmsNotice:
-  title: "Want to publish or edit an article?"
-  description: "All articles support banner images, markdown formatting, and automated image compression via the Decap CMS web interface."
 ---

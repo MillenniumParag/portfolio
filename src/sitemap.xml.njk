@@ -22,7 +22,7 @@ eleventyExcludeFromCollections: true
     {%- elif item.url == '/blog/' %}
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    {%- elif item.url.startsWith('/projects/') or item.url.startsWith('/posts/') %}
+    {%- elif ('/projects/' in item.url) or ('/posts/' in item.url) %}
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     {%- else %}

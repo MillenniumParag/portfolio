@@ -324,7 +324,7 @@ collections:
           label: "Category", 
           name: "category", 
           widget: "select", 
-          options: ["Full Stack", "Frontend", "AI & DevOps", "Systems", "Open Source"],
+          options: ["Full Stack", "Frontend", "Cloud & DevOps", "Systems", "Open Source"],
           default: "Full Stack"
         }
       - { label: "Year", name: "year", widget: "string", default: "2026" }

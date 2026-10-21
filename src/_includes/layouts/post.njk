@@ -3,7 +3,7 @@ layout: layouts/base.njk
 
 ---
 
-<article class="max-w-4xl mx-auto px-4 py-12 sm:px-6">
+<article class="max-w-6xl mx-auto px-4 py-12 sm:px-6">
   <!-- Top Navigation & Category -->
   <div class="mb-8">
     <div class="flex items-center justify-between gap-4 mb-6">
@@ -76,7 +76,7 @@ layout: layouts/base.njk
       <!-- Action / Share Pill -->
       <div class="flex items-center gap-2">
         <a
-          href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&url=https://parag.dev{{ page.url }}"
+          href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&url={{ site.url or 'https://paragchatterjee.me' }}{{ page.url }}"
           target="_blank"
           rel="noopener noreferrer"
           class="btn btn-ghost btn-xs rounded-lg gap-1"
@@ -86,13 +86,6 @@ layout: layouts/base.njk
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
           </svg>
           <span class="hidden sm:inline">Share</span>
-        </a>
-        <a
-          href="/admin/#/collections/posts/entries/{{ page.fileSlug }}"
-          target="_blank"
-          class="btn btn-ghost btn-xs text-primary rounded-lg"
-        >
-          Edit in CMS ↗
         </a>
       </div>
     </div>
